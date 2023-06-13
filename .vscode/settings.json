@@ -1,0 +1,12 @@
+{
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "eslint.validate": ["javascript", "typescript", "html"],
+  "eslint.options": {
+    "extensions": [".js", ".ts", "html"]
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "html.format.wrapLineLength": 120
+}
