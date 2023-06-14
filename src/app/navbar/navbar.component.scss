@@ -2,6 +2,11 @@ nav {
     background-color: var(--primary-color);
     height: 90px;
     display: flex;
+    justify-content: space-between;
+}
+
+.chefs-compass {
+    display: flex;
 }
 
 .nav-logo {
@@ -15,11 +20,15 @@ nav {
     top: 20px;
 }
 
-.button-menu {
-    display: flex;
-    position: absolute;
-    right: 0px;
-    top: 8px;
-    align-items: center;
+
+.search-module {
+    position: relative;
+    top: 30px;
 }
 
+.button-menu {
+    display: flex;
+    position: relative;
+    right: 0px;
+    align-items: center;
+}
