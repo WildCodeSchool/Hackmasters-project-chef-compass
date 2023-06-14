@@ -1,0 +1,122 @@
+nav {
+    background-color: var(--primary-color);
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+// Brand --------------------------------
+
+.chefs-compass {
+    display: flex;
+}
+
+.nav-logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.slogan {
+    color: var(--secondardy-text-color);
+    position: relative;
+    top: 20px;
+    right: 25px;
+}
+
+// Search --------------------------------
+
+
+.search-module {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-module input[type="text"] {
+    padding: 13px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 250px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-module input[type="text"]:focus {
+    border-color: #007bff;
+  }
+  
+  .search-module button[type="submit"] {
+    position: relative;
+    padding: 0px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    right: 34px;
+  }
+  
+  .search-module button[type="submit"]:hover {
+    background-color: gray;
+  }
+
+  .mini-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    right: 13px;
+  }
+
+  .line {
+    width: 23px;
+    height: 3px;
+    background-color: gray;
+    
+  }
+
+  // Button menu
+
+.button-menu {
+    display: flex;
+    position: relative;
+    right: 0px;
+    top: 5px;
+    align-items: baseline;
+    padding-right: 10px;
+    gap: 30px;
+  }
+
+.button-menu button {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.button-menu button {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.button-menu div:nth-child(2) img {
+  width: 35px;
+  position: relative;
+  top: 2px;
+}
+
+.button-menu div:nth-child(3) img {
+  width: 40px;
+  position: relative;
+  top: 10px;
+}
+
+.button-menu button {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.button-menu p {
+  margin-top: 5px;
+}
+
