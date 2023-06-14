@@ -1,5 +1,5 @@
 nav {
-    background-color: #82D0C2;
+    background-color: var(--primary-color);
     height: 90px;
     display: flex;
 }
@@ -7,6 +7,19 @@ nav {
 .nav-logo {
     position: relative;
     padding-left: 22px;
-    top: 50px;
+}
+
+.slogan {
+    color: var(--secondardy-text-color);
+    position: relative;
+    top: 20px;
+}
+
+.button-menu {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    top: 8px;
+    align-items: center;
 }
 
