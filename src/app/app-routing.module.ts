@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DemoPageComponent } from './pages/demo/demo.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [{ path: 'about', component: AboutComponent }];
 
@@ -8,4 +8,6 @@ const routes: Routes = [{ path: 'about', component: AboutComponent }];
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  ROUTES = routes;
+}

@@ -1,0 +1,30 @@
+.page-content {
+    margin: 20px;
+    font-size: 14pt;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    border: 1px solid white;
+    border-radius: 30px;
+    margin-top: 50px;
+}
+
+.cards img {
+    border-radius: 165px;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.links {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
