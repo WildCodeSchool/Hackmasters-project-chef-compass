@@ -60,12 +60,61 @@ nav {
     background-color: gray;
   }
 
+  .mini-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    right: 13px;
+  }
+
+  .line {
+    width: 23px;
+    height: 3px;
+    background-color: gray;
+    
+  }
+
   // Button menu
 
 .button-menu {
     display: flex;
     position: relative;
     right: 0px;
-    align-items: center;
+    top: 5px;
+    align-items: baseline;
+    padding-right: 10px;
+    gap: 30px;
+  }
+
+.button-menu button {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.button-menu button {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.button-menu div:nth-child(2) img {
+  width: 35px;
+  position: relative;
+  top: 2px;
+}
+
+.button-menu div:nth-child(3) img {
+  width: 40px;
+  position: relative;
+  top: 10px;
+}
+
+.button-menu button {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+.button-menu p {
+  margin-top: 5px;
 }
 
