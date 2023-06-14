@@ -5,6 +5,8 @@ nav {
     justify-content: space-between;
 }
 
+// Brand --------------------------------
+
 .chefs-compass {
     display: flex;
 }
@@ -20,11 +22,45 @@ nav {
     top: 20px;
 }
 
+// Search --------------------------------
+
 
 .search-module {
     position: relative;
-    top: 30px;
+    display: flex;
+    align-items: center;
 }
+
+.search-module input[type="text"] {
+    padding: 13px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 250px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-module input[type="text"]:focus {
+    border-color: #007bff;
+  }
+  
+  .search-module button[type="submit"] {
+    position: relative;
+    padding: 0px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    right: 34px;
+  }
+  
+  .search-module button[type="submit"]:hover {
+    background-color: gray;
+  }
+
+  // Button menu
 
 .button-menu {
     display: flex;
@@ -32,3 +68,4 @@ nav {
     right: 0px;
     align-items: center;
 }
+
