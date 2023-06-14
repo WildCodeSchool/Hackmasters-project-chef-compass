@@ -14,6 +14,10 @@ import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, AboutComponent],
+import { HomepageComponent } from './homepage/homepage.component';
+
+@NgModule({
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, AboutComponent, HomepageComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],

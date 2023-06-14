@@ -1,0 +1,22 @@
+.page-container {
+    height: 100%; /* Make sure the body takes up the full height of the viewport */
+    margin: 0;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  :host {
+    display: block;
+    background-image: url("/assets/background.png"); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .main-logo {
+    
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
