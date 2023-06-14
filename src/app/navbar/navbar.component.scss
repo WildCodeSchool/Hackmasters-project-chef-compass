@@ -13,13 +13,15 @@ nav {
 
 .nav-logo {
     position: relative;
-    padding-left: 22px;
+    width: 100px;
+    height: 100px;
 }
 
 .slogan {
     color: var(--secondardy-text-color);
     position: relative;
     top: 20px;
+    right: 25px;
 }
 
 // Search --------------------------------
