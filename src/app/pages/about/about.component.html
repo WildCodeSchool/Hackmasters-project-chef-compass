@@ -1,0 +1,18 @@
+<section class="container">
+    <h1>About The <span>Team</span></h1>
+
+<div class="team">
+    <section class="team_member" *ngFor="let team of teams" >
+        <div class="team_member--image">
+            <img [src]="team.getImage()" [alt]="team.getName">
+        </div>
+        <div class="team_member--info">
+            <h2>{{team.getName()}}</h2>
+            <a [href]="team.getGithub()">Github</a>
+    
+            <a [href]="team.getLinkedin()">Linkedin</a>
+        </div>
+    </section>
+</div>
+
+</section>
