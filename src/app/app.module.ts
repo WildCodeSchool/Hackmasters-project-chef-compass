@@ -10,26 +10,7 @@ import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { FooterComponent } from './footer/footer.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { AboutComponent } from './about/about.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    DemoPageComponent,
-    DemoComponent,
-    DemoPipe,
-    DemoDirective,
-    FooterComponent,
-    AboutComponent,
-  ],
-=======
-
-@NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, FooterComponent],
->>>>>>> origin/footer
-=======
 import { AboutComponent } from './about/about.component';
 import { CommunityComponent } from './community/community.component';
 
@@ -44,7 +25,7 @@ import { CommunityComponent } from './community/community.component';
     AboutComponent,
     CommunityComponent,
   ],
->>>>>>> origin/community
+
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
