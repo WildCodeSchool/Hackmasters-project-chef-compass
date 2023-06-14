@@ -1,0 +1,90 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .chef-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  /* Styles pour l'image du chef */
+  .chef-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles pour les titres */
+  .chef-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles pour les paragraphes */
+  .chef-card p {
+    margin-bottom: 5px;
+  }
+  
+  /* Styles pour la citation */
+  .chef-card blockquote {
+    font-style: italic;
+    margin: 10px 0;
+  }
+  
+  /* Styles pour les centres d'intérêt */
+  .chef-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .chef-card ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  /* Styles pour la note du chef */
+  .chef-card .rating {
+    margin: 10px 0;
+  }
+  
+  .chef-card .star {
+    color: #ffd700;
+    font-size: 18px;
+  }
+  
+  .chef-card .star.filled {
+    color: #f9a825;
+  }
+  
+  /* Styles pour les plats */
+  .chef-card ul.dishes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .chef-card ul.dishes li {
+    margin-bottom: 5px;
+  }
+  
+  .chef-card ul.dishes li a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  /* Styles pour la biographie */
+  .chef-card .bio {
+    font-style: italic;
+  }
+  
+  

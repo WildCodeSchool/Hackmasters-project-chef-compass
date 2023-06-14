@@ -8,4 +8,6 @@ const routes: Routes = [{ path: 'about', component: AboutComponent }];
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  ROUTES = routes;
+}
