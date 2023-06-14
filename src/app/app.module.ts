@@ -13,6 +13,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, NavbarComponent],
+import { HomepageComponent } from './homepage/homepage.component';
+
+@NgModule({
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, HomepageComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
