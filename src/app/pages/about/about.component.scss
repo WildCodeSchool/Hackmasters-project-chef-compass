@@ -4,6 +4,9 @@ h1{
     font-size: 50px;
     
 }
+h2{
+    margin: 2px 0 0 0;
+}
 span{
     color: $primaryColor;
     font: inherit;
@@ -18,12 +21,23 @@ span{
 
 .team{
     display: flex;
+    flex-wrap: wrap;
 
     &_member{
-        margin-right: 1.8rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        border-radius: 50%;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        margin: 10px; 
+        max-width: 300px;
+        &:hover{
+            transform: translatex(-10px);
+            background-color: rgb(255, 136, 0);
+            color: #fff; 
+        }
         & img {
             width: 150px;
             height: 150px;
@@ -34,18 +48,30 @@ span{
             display: flex;
             flex-direction: column;
             align-items: center;
+            & img{
+                width: 23px;
+                height: 23px;
+                
+                margin-left:4px ;
+            }
+            & p{
+                margin: 3px;
+            }
             & a{
+                margin-right: 0;
+                display: flex;
+                align-items: center;
                 text-decoration: none;
                 font-size: 1.2rem;
                 font-weight: 500;
                 margin-bottom: .5REM;
-                padding: 0.5rem 1.5rem;
+                padding: 0rem 1rem;
                 border: 1px solid $primaryColor;
                 border-radius: 100px;
                 color: black;
                 background-color: #ffff;
                 text-align: center;
-                box-shadow: rgba($primaryColor,.1) 0 -25px 18px -14px inset,rgba($primaryColor, .1) 0 1px 2px,rgba($primaryColor, .1) 0 2px 4px,rgba($primaryColor, .1) 0 4px 8px,rgba($primaryColor, .15) 0 8px 16px,rgba($primaryColor, .1) 0 14px 30px;
+                
                 transition: all 250ms;
                 &:hover{ 
                     box-shadow: rgba($primaryColor,.35) 0 -25px 18px -14px inset,rgba($primaryColor,.25) 0 1px 2px,rgba($primaryColor,.25) 0 2px 4px,rgba($primaryColor,.25) 0 4px 8px,rgba($primaryColor,.25) 0 8px 16px,rgba($primaryColor,.25) 0 16px 32px;

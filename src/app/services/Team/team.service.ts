@@ -28,12 +28,7 @@ export class TeamService {
         'https://github.com/remy-rm',
         'https://www.linkedin.com/in/remy-marquis-38b114278/'
         ),
-      new Teams(
-        'https://avatars.githubusercontent.com/u/115029585?v=4',
-        'Yohann',
-        'https://github.com/GessyBoy',
-        'https://www.linkedin.com/in/yohann-deletrez/'
-        ),
+      
       new Teams(
         'https://placehold.it/150x150',
         'Daniel',

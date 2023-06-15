@@ -1,5 +1,10 @@
 <section class="container">
     <h1>About The <span>Team</span></h1>
+    <p>
+        Chef’s Compass is a recipe finding app for you, the user. It helps you find a recipe based on your
+        hunger-tackling desires and any ingredients stocked in your kitchen. Not sure how to use them effectively? Let
+        Chef’s Compass show you the way.
+      </p>
 
 <div class="team">
     <section class="team_member" *ngFor="let team of teams" >
@@ -8,9 +13,16 @@
         </div>
         <div class="team_member--info">
             <h2>{{team.getName()}}</h2>
-            <a [href]="team.getGithub()">Github</a>
+            <h4>Web Developer</h4>
+            <a [href]="team.getGithub()">
+                <p>Github</p>
+                <img src="../../../assets/icon/github.png" alt="">
+                </a>
     
-            <a [href]="team.getLinkedin()">Linkedin</a>
+            <a [href]="team.getLinkedin()">
+                <p>Linkedin</p>
+                <img src="../../../assets/icon/linkedin.png" alt="">
+            </a>
         </div>
     </section>
 </div>
