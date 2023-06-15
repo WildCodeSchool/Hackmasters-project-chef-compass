@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import { DemoPageComponent } from './pages/demo/demo.component';
 import { DemoComponent } from './components/demo/demo.component';
@@ -14,8 +15,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, HomepageComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
