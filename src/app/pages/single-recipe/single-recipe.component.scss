@@ -1,0 +1,171 @@
+@import '../../style/variables';
+@import '../../style/_animation';
+:host {
+    display: block;
+    position: relative;
+  }
+  
+  :host::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: opacity(0.2);
+ 
+    z-index: -1;
+  }
+  
+  .recipe {
+    position: relative;
+    z-index: 1;
+  }
+img {
+    max-width: 400px;
+    max-height: 300px;
+    aspect-ratio: 5/4;
+    object-fit: cover;
+    object-position: 50% 40%;
+    position: relative;
+    bottom: 1vh;
+    border-radius: 50px;
+ 
+}
+
+h1 {
+    text-align: center;
+    padding: 5vh;
+    color: $primaryColor;
+    
+}
+p{
+
+}
+.recipe{
+    margin: 0vh 3vh;    
+    &_information{
+    display: flex;
+    align-items:flex-start; 
+    justify-content: space-between;
+    filter: blur(20px)
+    
+    & h2{
+        margin: 0;
+    }
+    &--price ,&--time{
+        & h2{
+            margin-bottom: 16px;
+        }
+    }
+
+    }
+    &_details{
+       
+        &--origin{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10%;
+        }
+        & li{
+            margin: 10px 0;
+        }
+    }
+    &_comments{
+        display: flex;
+        justify-content: space-between;
+
+    
+        &--send{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+           
+        & textarea{
+            resize: none;
+            border-radius:25px ;
+            border: 1px solid $primaryColor;
+            padding: 10px;
+            &:focus{
+                background-color: lighten($color: $primaryColor, $amount: 10);    
+                color: white;
+                outline: none;
+            }
+           
+        }
+       
+        & button{
+            margin-right: 0;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: .5REM;
+            padding: 0rem 1rem;
+            border: 1px solid $primaryColor;
+            border-radius: 100px;
+            color: black;
+            background-color: #ffff;
+            text-align: center;
+            
+            transition: all 250ms;
+            &:hover{ 
+                box-shadow: rgba($primaryColor,.35) 0 -25px 18px -14px inset,rgba($primaryColor,.25) 0 1px 2px,rgba($primaryColor,.25) 0 2px 4px,rgba($primaryColor,.25) 0 4px 8px,rgba($primaryColor,.25) 0 8px 16px,rgba($primaryColor,.25) 0 16px 32px;
+                animation: button 0.4s ease-in both;
+              }
+        }
+        &--flex{
+            
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+        
+            
+        }
+        
+        }
+        &--msg p {
+            max-width: 400px;
+            max-height: 350px;
+            padding: 18px;
+            border: $primaryColor solid 1px;
+            border-radius: 0 40px 40px 40px;
+
+            background-color: #ffff;
+
+        }
+    }
+    
+}
+.butn{display: none;}
+.rating > label{ position: relative;}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label
+{color:transparent ;}
+
+.rating > label:hover::before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label::before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: $primaryColor;
+}
+.rating{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    color: $primaryColor;
+    font-size: 2rem;
+}
+.rating > label:hover{
+    transform: scale(1.4);
+}
+

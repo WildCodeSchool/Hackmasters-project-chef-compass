@@ -12,11 +12,12 @@ import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 
 
 @NgModule({
 
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective,NavbarComponent, HomepageComponent ],
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective,NavbarComponent, HomepageComponent, SingleRecipeComponent ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

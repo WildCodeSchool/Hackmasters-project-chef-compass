@@ -1,0 +1,69 @@
+
+    <div class="recipe">
+         <h1>{{ recipe.recipe_name }}</h1>
+        <article class="recipe_information" >
+            <section class="recipe_information--ingredient">
+                <h2>Ingredients:</h2>
+                <ul>
+                    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+                </ul>
+            
+            </section>
+            <section class="recipe_information--time">
+                <h2>time :</h2>
+                <p>Prep Time: {{ recipe.prep_time }}</p>
+                <p>Cook Time: {{ recipe.cook_time }}</p>
+                <p>Total Time: {{ calculateTotalTime(recipe) }}</p>
+            </section>
+            <section class="recipe_information--price">
+                <h2>Budget:</h2>
+                <p>{{getPriceSymbol(recipe.price)}}</p>
+                <p>price: {{recipe.price}} €</p>
+            </section>
+             <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe-image">
+        </article>
+       
+      <article class="recipe_details">
+        <section class="recipe_details--origin " >
+        <h4> {{ recipe.recipe_type }}</h4>
+        <h4>Country: {{ recipe.country_of_origin }}</h4>
+        </section>
+        <h3>Steps:</h3>
+        <ol>
+          <li *ngFor="let step of recipe.steps">{{ step }}</li>
+        </ol>
+    </article>
+    <article class="recipe_comments">  
+        <section class="recipe_comments--send">
+            <div class="recipe_comments--rating">
+                <form method="post">
+                <div class="rating">
+                    <input type="radio" name="rating" value="star1.2" id="star1.2" class="radio-btn butn">
+                    <label for="star1.2">☆</label>
+                    <input type="radio" name="rating" value="star2.2" id="star2.2" class="radio-btn butn">
+                    <label for="star2.2">☆</label>
+                    <input type="radio" name="rating" value="star3.2" id="star3.2" class="radio-btn butn">
+                    <label for="star3.2">☆</label>
+                    <input type="radio" name="rating" value="star4.2" id="star4.2" class="radio-btn butn">
+                    <label for="star4.2">☆</label>
+                    <input type="radio" name="rating" value="star5.2" id="star5.2" class="radio-btn butn">
+                    <label for="star5.2">☆</label>  
+                </div>
+            </form></div>
+            <div class="recipe_comments--send--flex">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <br>
+                <button>Here We Go !</button>
+            </div>
+        </section>
+        <section class="recipe_comments--msg">
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Enim nunc faucibus "</p>
+            <p>Elementum integer enim neque volutpate massa placerat duis ultricies. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Eget mi proin sed libero
+            </p>
+        </section>
+    </article>
+    </div>
+
+  
