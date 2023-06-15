@@ -1,4 +1,4 @@
-nav {
+header {
     background-color: var(--primary-color);
     height: 90px;
     display: flex;
@@ -79,41 +79,37 @@ nav {
 
   // Button menu
 
-.button-menu {
+  .button-menu ul {
     display: flex;
     position: relative;
     right: 0px;
-    top: 5px;
+    bottom: 5px;
     align-items: baseline;
     padding-right: 10px;
     gap: 30px;
+    list-style: none;
   }
 
-.button-menu button {
+.button-menu link {
     background-color: var(--primary-color);
     border: none;
 }
 
-.button-menu button {
-  background-color: var(--primary-color);
-  border: none;
+.button-menu img {
+  position: relative;
+  left: 20px;
 }
 
-.button-menu div:nth-child(2) img {
+.button-menu li:nth-child(2) img {
   width: 35px;
   position: relative;
   top: 2px;
 }
 
-.button-menu div:nth-child(3) img {
+.button-menu li:nth-child(3) img {
   width: 40px;
   position: relative;
   top: 10px;
-}
-
-.button-menu button {
-  background-color: var(--primary-color);
-  border: none;
 }
 
 .button-menu p {
