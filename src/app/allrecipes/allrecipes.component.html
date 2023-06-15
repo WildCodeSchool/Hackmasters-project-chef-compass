@@ -1,1 +1,15 @@
-<p>allrecipes works!</p>
+<div class="allrecipes-container">
+  <h2 class="allrecipes-title">All Recipes</h2>
+  <div class="allrecipes-cards" #carouselContainer>
+    <div class="recipe-card" *ngFor="let recipe of recipes">
+      <img [src]="'assets/' + recipe.photo" alt="Recipe Image" />
+      <h3 class="recipe-name">{{ recipe.name }}</h3>
+      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cookingTime }}</p>
+      <p class="recipe-origin">Origin: {{ recipe.origin }}</p>
+      <p class="recipe-budget">Budget: {{ recipe.budget }}</p>
+    </div>
+  </div>
+</div>
+
+<button (click)="scrollLeft()">Précédent</button>
+<button (click)="scrollRight()">Suivant</button>

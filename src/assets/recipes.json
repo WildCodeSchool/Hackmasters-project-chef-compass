@@ -1,0 +1,48 @@
+{
+    "recipes": [
+      {
+        "photo": "recipe1.png",
+        "name": "Recipe 1",
+        "cookingTime": "30 minutes",
+        "origin": "Italian",
+        "budget": "Medium"
+      },
+      {
+        "photo": "recipe2.png",
+        "name": "Recipe 2",
+        "cookingTime": "45 minutes",
+        "origin": "Mexican",
+        "budget": "Low"
+      },
+      {
+        "photo": "recipe3.png",
+        "name": "Recipe 3",
+        "cookingTime": "60 minutes",
+        "origin": "Indian",
+        "budget": "High"
+      },
+      {
+        "photo": "recipe4.png",
+        "name": "Recipe 4",
+        "cookingTime": "90 minutes",
+        "origin": "American",
+        "budget": "High"
+      },
+      {
+        "photo": "recipe5.png",
+        "name": "Recipe 5",
+        "cookingTime": "120 minutes",
+        "origin": "French",
+        "budget": "High"
+      },
+      {
+        "photo": "recipe6.png",
+        "name": "Recipe 6",
+        "cookingTime": "150 minutes",
+        "origin": "Spanish",
+        "budget": "High"
+      }
+      
+    ]
+  }
+  

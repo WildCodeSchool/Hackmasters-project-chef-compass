@@ -1,0 +1,53 @@
+.allrecipes-container {
+    margin: 20px;
+  }
+  
+  .allrecipes-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .allrecipes-cards {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+  
+  .recipe-card {
+    flex-shrink: 0;
+    width: 300px;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  
+  .recipe-card:hover {
+    transform: translatex(-10px);
+    background-color: rgb(255, 136, 0); 
+  }
+  
+  
+  .recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .recipe-cooking-time,
+  .recipe-origin,
+  .recipe-budget {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  
