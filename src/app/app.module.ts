@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { CommunityComponent } from './community/community.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AllrecipesComponent } from './allrecipes/allrecipes.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     CommunityComponent,
     NavbarComponent,
     HomepageComponent,
+    AllrecipesComponent,
   ],
 
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
