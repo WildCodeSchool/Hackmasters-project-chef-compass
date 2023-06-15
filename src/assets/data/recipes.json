@@ -2,7 +2,7 @@
   {
     "recipe_id": 1,
     "recipe_type": "Dessert",
-    "recipe_name": "Chocolate Cake",
+    "recipe_name": "chocolate-cake",
     "country_of_origin": "France",
     "prep_time": "20 minutes",
     "cook_time": "30 minutes",
@@ -29,7 +29,7 @@
   {
     "recipe_id": 2,
     "recipe_type": "Dessert",
-    "recipe_name": "Tiramisu",
+    "recipe_name": "tiramisu",
     "country_of_origin": "Italy",
     "prep_time": "30 minutes",
     "cook_time": "0 minutes (no cooking required)",
@@ -59,7 +59,7 @@
   {
     "recipe_id": 3,
     "recipe_type": "Main Dish",
-    "recipe_name": "Spaghetti Bolognese",
+    "recipe_name": "spaghetti-bolognese",
     "country_of_origin": "Italy",
     "prep_time": "15 minutes",
     "cook_time": "1 hour",
@@ -97,7 +97,7 @@
   }, {
     "recipe_id": 4,
     "recipe_type": "Appetizer",
-    "recipe_name": "Guacamole",
+    "recipe_name": "guacamole",
     "country_of_origin": "Mexico",
     "prep_time": "10 minutes",
     "cook_time": "0 minutes (no cooking required)",
@@ -128,7 +128,7 @@
   {
     "recipe_id": 5,
     "recipe_type": "Main Dish",
-    "recipe_name": "Chicken Stir-Fry",
+    "recipe_name": "chicken-stir-Fry",
     "country_of_origin": "China",
     "prep_time": "15 minutes",
     "cook_time": "15 minutes",
@@ -168,7 +168,7 @@
   {
     "recipe_id": 6,
     "recipe_type": "Breakfast",
-    "recipe_name": "Scrambled Eggs",
+    "recipe_name": "scrambled-eggs",
     "country_of_origin": "Various",
     "prep_time": "5 minutes",
     "cook_time": "5 minutes",
@@ -196,7 +196,7 @@
   },
   {
     "recipe_id": 7,
-    "recipe_type": "Dessert",
+    "recipe_type": "dessert",
     "recipe_name": "Apple Pie",
     "country_of_origin": "United States",
     "prep_time": "30 minutes",
@@ -235,7 +235,7 @@
   {
     "recipe_id": 8,
     "recipe_type": "Main Dish",
-    "recipe_name": "Spicy Thai Basil Chicken",
+    "recipe_name": "spicy-thai-basil-chicken",
     "country_of_origin": "Thailand",
     "prep_time": "15 minutes",
     "cook_time": "10 minutes",
@@ -277,7 +277,7 @@
   {
     "recipe_id": 9,
     "recipe_type": "Side Dish",
-    "recipe_name": "Garlic Mashed Potatoes",
+    "recipe_name": "garlic-mashed-potatoes",
     "country_of_origin": "Various",
     "prep_time": "15 minutes",
     "cook_time": "20 minutes",
@@ -311,7 +311,7 @@
   {
     "recipe_id": 10,
     "recipe_type": "Dessert",
-    "recipe_name": "Vanilla Cupcakes",
+    "recipe_name": "vanilla-cupcakes",
     "country_of_origin": "Various",
     "prep_time": "15 minutes",
     "cook_time": "20 minutes",
@@ -349,7 +349,7 @@
  {
     "recipe_id": 11,
     "recipe_type": "Main Dish",
-    "recipe_name": "Beef Stroganoff",
+    "recipe_name": "beef-troganoff",
     "country_of_origin": "Russia",
     "prep_time": "15 minutes",
     "cook_time": "30 minutes",
@@ -393,7 +393,7 @@
   {
     "recipe_id": 12,
     "recipe_type": "Appetizer",
-    "recipe_name": "Caprese Skewers",
+    "recipe_name": "caprese-skewers",
     "country_of_origin": "Italy",
     "prep_time": "15 minutes",
     "cook_time": "0 minutes (no cooking required)",
@@ -421,7 +421,7 @@
   {
     "recipe_id": 13,
     "recipe_type": "Breakfast",
-    "recipe_name": "Pancakes",
+    "recipe_name": "pancakes",
     "country_of_origin": "Various",
     "prep_time": "10 minutes",
     "cook_time": "15 minutes",
@@ -457,7 +457,7 @@
   {
     "recipe_id": 14,
     "recipe_type": "Main Dish",
-    "recipe_name": "Chicken Parmesan",
+    "recipe_name": "chicken-parmesan",
     "country_of_origin": "Italy",
     "prep_time": "20 minutes",
     "cook_time": "30 minutes",
@@ -503,7 +503,7 @@
   {
     "recipe_id": 15,
     "recipe_type": "Dessert",
-    "recipe_name": "Chocolate Chip Cookies",
+    "recipe_name": "chocolate-chip-cookies",
     "country_of_origin": "United States",
     "prep_time": "15 minutes",
     "cook_time": "10 minutes",
@@ -538,7 +538,7 @@
   {
     "recipe_id": 16,
     "recipe_type": "Side Dish",
-    "recipe_name": "Roasted Brussels Sprouts",
+    "recipe_name": "roasted-brussels-sprouts",
     "country_of_origin": "Various",
     "prep_time": "10 minutes",
     "cook_time": "25 minutes",
@@ -571,7 +571,7 @@
   {
     "recipe_id": 17,
     "recipe_type": "Main Dish",
-    "recipe_name": "Sushi Rolls",
+    "recipe_name": "sushi-rolls",
     "country_of_origin": "Japan",
     "prep_time": "30 minutes",
     "cook_time": "0 minutes (no cooking required)",
@@ -604,7 +604,7 @@
 {
   "recipe_id": 18,
   "recipe_type": "Main Dish",
-  "recipe_name": "Moules Frites",
+  "recipe_name": "moules-frites",
   "country_of_origin": "Belgium",
   "prep_time": "20 minutes",
   "cook_time": "15 minutes",
@@ -642,7 +642,7 @@
 {
   "recipe_id": 19,
   "recipe_type": "Main Dish",
-  "recipe_name": "Veal Blanquette",
+  "recipe_name": "veal-blanquette",
   "country_of_origin": "France",
   "prep_time": "30 minutes",
   "cook_time": "2 hours",
@@ -687,7 +687,7 @@
 {
   "recipe_id": 20,
   "recipe_type": "Dessert",
-  "recipe_name": "Strawberry Charlotte",
+  "recipe_name": "strawberry-charlotte",
   "country_of_origin": "France",
   "prep_time": "30 minutes",
   "chill_time": "4 hours",
