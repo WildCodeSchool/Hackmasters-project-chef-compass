@@ -1,9 +1,13 @@
-@import '../../style/_variables.scss' ,'../../style/_animation.scss';
+@import '../../style/_variables' ,'../../style/_animation';
 h1{
     text-align: center;
     font-size: 50px;
     
 }
+ul{
+    list-style-type: none;
+
+    }
 h2{
     margin: 2px 0 0 0;
 }

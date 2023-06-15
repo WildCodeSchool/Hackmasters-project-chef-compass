@@ -6,14 +6,14 @@
         Chef’s Compass show you the way.
       </p>
 
-<div class="team">
-    <section class="team_member" *ngFor="let team of teams" >
+<ul class="team">
+    <li class="team_member" *ngFor="let team of teams" >
         <div class="team_member--image">
             <img [src]="team.getImage()" [alt]="team.getName">
         </div>
         <div class="team_member--info">
             <h2>{{team.getName()}}</h2>
-            <h4>Web Developer</h4>
+            <h3>Web Developer</h3>
             <a [href]="team.getGithub()">
                 <p>Github</p>
                 <img src="../../../assets/icon/github.png" alt="">
@@ -24,7 +24,7 @@
                 <img src="../../../assets/icon/linkedin.png" alt="">
             </a>
         </div>
-    </section>
-</div>
+    </li>
+</ul>
 
 </section>
