@@ -16,7 +16,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
 
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective],
+  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective,NavbarComponent, HomepageComponent ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
