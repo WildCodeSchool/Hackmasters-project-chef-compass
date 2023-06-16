@@ -11,8 +11,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 
+
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+
 
   @NgModule({
   

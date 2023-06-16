@@ -10,7 +10,6 @@ const routes: Routes =
   { path: '', component: HomepageComponent }, 
   { path: 'recipe/:name', component: SingleRecipeComponent} 
   {path: 'about', component: AboutComponent},
-  
   ];
 
   
