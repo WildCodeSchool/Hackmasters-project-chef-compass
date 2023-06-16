@@ -10,9 +10,18 @@ import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoPageComponent, DemoComponent, DemoPipe, DemoDirective, FooterComponent],
+  declarations: [
+    AppComponent,
+    DemoPageComponent,
+    DemoComponent,
+    DemoPipe,
+    DemoDirective,
+    FooterComponent,
+    AboutComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
