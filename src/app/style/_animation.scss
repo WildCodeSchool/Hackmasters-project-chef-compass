@@ -1,4 +1,4 @@
-@import 'variables';
+@use './variables' as *;
 @keyframes button {
     0% {
         transform: scale(1);
