@@ -11,10 +11,6 @@ import { DemoComponent } from './components/demo/demo.component';
 import { DemoPipe } from './pipes/demo.pipe';
 import { DemoDirective } from './directives/demo.directive';
 import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
-import { CommunityComponent } from './community/community.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { AllrecipesComponent } from './allrecipes/allrecipes.component';
 
 @NgModule({
@@ -25,10 +21,6 @@ import { AllrecipesComponent } from './allrecipes/allrecipes.component';
     DemoPipe,
     DemoDirective,
     FooterComponent,
-    AboutComponent,
-    CommunityComponent,
-    NavbarComponent,
-    HomepageComponent,
     AllrecipesComponent,
   ],
 

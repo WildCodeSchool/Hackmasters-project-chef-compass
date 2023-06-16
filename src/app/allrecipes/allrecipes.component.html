@@ -1,11 +1,11 @@
 <div class="allrecipes-container">
   <h2 class="allrecipes-title">Dish</h2>
-  <div class="allrecipes-cards" #carouselContainer>
+  <div class="allrecipes-cards">
     <div class="recipe-card" *ngFor="let recipe of dishRecipes">
-      <img class="recipe-image" [src]="recipe.imgUrl" alt="Recipe Image" />
-      <h3 class="recipe-name">{{ recipe.recipe_name }}</h3>
-      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cook_time }}</p>
-      <p class="recipe-origin">Origin: {{ recipe.country_of_origin }}</p>
+      <img [src]="'assets/' + recipe.photo" alt="Recipe Image" />
+      <h3 class="recipe-name">{{ recipe.name }}</h3>
+      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cookingTime }}</p>
+      <p class="recipe-origin">Origin: {{ recipe.origin }}</p>
       <p class="recipe-budget">Budget: {{ recipe.budget }}</p>
     </div>
   </div>
@@ -13,12 +13,12 @@
 
 <div class="allrecipes-container">
   <h2 class="allrecipes-title">Desserts</h2>
-  <div class="allrecipes-cards" #carouselContainer>
+  <div class="allrecipes-cards">
     <div class="recipe-card" *ngFor="let recipe of dessertRecipes">
-      <img class="recipe-image" [src]="recipe.imgUrl" alt="Recipe Image" />
-      <h3 class="recipe-name">{{ recipe.recipe_name }}</h3>
-      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cook_time }}</p>
-      <p class="recipe-origin">Origin: {{ recipe.country_of_origin }}</p>
+      <img [src]="'assets/' + recipe.photo" alt="Recipe Image" />
+      <h3 class="recipe-name">{{ recipe.name }}</h3>
+      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cookingTime }}</p>
+      <p class="recipe-origin">Origin: {{ recipe.origin }}</p>
       <p class="recipe-budget">Budget: {{ recipe.budget }}</p>
     </div>
   </div>
@@ -26,12 +26,12 @@
 
 <div class="allrecipes-container">
   <h2 class="allrecipes-title">Starters</h2>
-  <div class="allrecipes-cards" #carouselContainer>
+  <div class="allrecipes-cards">
     <div class="recipe-card" *ngFor="let recipe of starterRecipes">
-      <img class="recipe-image" [src]="recipe.imgUrl" alt="Recipe Image" />
-      <h3 class="recipe-name">{{ recipe.recipe_name }}</h3>
-      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cook_time }}</p>
-      <p class="recipe-origin">Origin: {{ recipe.country_of_origin }}</p>
+      <img [src]="'assets/' + recipe.photo" alt="Recipe Image" />
+      <h3 class="recipe-name">{{ recipe.name }}</h3>
+      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cookingTime }}</p>
+      <p class="recipe-origin">Origin: {{ recipe.origin }}</p>
       <p class="recipe-budget">Budget: {{ recipe.budget }}</p>
     </div>
   </div>
@@ -39,12 +39,12 @@
 
 <div class="allrecipes-container">
   <h2 class="allrecipes-title">Apéritifs</h2>
-  <div class="allrecipes-cards" #carouselContainer>
+  <div class="allrecipes-cards">
     <div class="recipe-card" *ngFor="let recipe of aperitifRecipes">
-      <img class="recipe-image" [src]="recipe.imgUrl" alt="Recipe Image" />
-      <h3 class="recipe-name">{{ recipe.recipe_name }}</h3>
-      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cook_time }}</p>
-      <p class="recipe-origin">Origin: {{ recipe.country_of_origin }}</p>
+      <img [src]="'assets/' + recipe.photo" alt="Recipe Image" />
+      <h3 class="recipe-name">{{ recipe.name }}</h3>
+      <p class="recipe-cooking-time">Cooking Time: {{ recipe.cookingTime }}</p>
+      <p class="recipe-origin">Origin: {{ recipe.origin }}</p>
       <p class="recipe-budget">Budget: {{ recipe.budget }}</p>
     </div>
   </div>

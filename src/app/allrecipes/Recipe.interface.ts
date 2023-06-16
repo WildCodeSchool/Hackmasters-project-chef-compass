@@ -1,24 +1,12 @@
 export interface Recipe {
-  recipe_id: number;
-  imgUrl: string;
-  recipe_name: string;
+  name: string;
+  photo: string;
   cookingTime: string;
-  origin: {
-    country: string;
-    flag: string;
-  };
+  origin: string;
   budget: string;
-  category: {
-    dish: boolean;
-    dessert: boolean;
-    starter: boolean;
-    aperitif: boolean;
-  };
-  prep_time: string;
-  cook_time: string;
-  ingredients: string[];
-  allergens: string[];
-  diet: string;
-  steps: string[];
-  country_of_origin: string;
+  country: string;
+  dish: boolean;
+  dessert: boolean;
+  starter: boolean;
+  aperitif: boolean;
 }
