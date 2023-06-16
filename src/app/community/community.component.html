@@ -64,16 +64,16 @@
         chefCard.appendChild(chefRating);
 
         // Ajout des plats du chef
-        const chefDishes = document.createElement('ul');
-        chef.dishes.forEach((dish) => {
+        const chefdishs = document.createElement('ul');
+        chef.dishs.forEach((dish) => {
           const dishItem = document.createElement('li');
           const dishLink = document.createElement('a');
           dishLink.href = `#`; // Remplacez '#' par l'URL du composant de chaque plat
           dishLink.textContent = dish;
           dishItem.appendChild(dishLink);
-          chefDishes.appendChild(dishItem);
+          chefdishs.appendChild(dishItem);
         });
-        chefCard.appendChild(chefDishes);
+        chefCard.appendChild(chefdishs);
 
         // Ajout de la biographie du chef
         const chefBio = document.createElement('p');

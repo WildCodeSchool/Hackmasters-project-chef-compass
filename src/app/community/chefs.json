@@ -10,7 +10,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 5,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
       },
       {
@@ -23,7 +23,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 4,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
       },
       {
@@ -36,7 +36,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 3,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
       },
       {
@@ -49,7 +49,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 2,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
       },
       {
@@ -62,7 +62,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 1,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
       },
       {
@@ -75,7 +75,7 @@
         "quote": "J’aime jouer sur des textures opposées dans mes assiettes, ajoute-t-elle",
         "interests": ["Culture", "Amis", "Voyages", "Gastronomie"],
         "rating": 0,
-        "dishes": ["Choucroute", "Paella", "Pabellon"],
+        "dishs": ["Choucroute", "Paella", "Pabellon"],
         "bio": "Le voyage permet de découvrir un monde nouveau et des cultures qui nous sont encore inconnues"
 
       }
