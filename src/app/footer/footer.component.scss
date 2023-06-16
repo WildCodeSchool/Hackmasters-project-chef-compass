@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
   .content {
     padding-top: 15px;
     position: fixed;
@@ -18,17 +17,14 @@
   }
   .content #instagram-logo,
   .content #facebook-logo,
-  .content #configuration-log,
+  .content #configuration-logo,
   .content #about-logo {
-    height: 4vh;
+    height: 6vh;
     margin: 0 1vh;
     padding-bottom: 2vh;
     cursor: pointer;
     fill: black;
   }
-
-
-
 
   .about {
     position:   absolute;
@@ -36,6 +32,7 @@
     display: flex;
     justify-content: flex-end;
     align-self: flex-end;   
+
   }
   
   .footer {
@@ -51,3 +48,15 @@
     padding: 20px;
   }
   
+  .about-link {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  text-decoration: none;
+}
+
+.about-text{
+  bottom:20px;
+  position: relative;
+  left: 5px;
+}
