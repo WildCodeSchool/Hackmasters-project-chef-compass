@@ -21,7 +21,7 @@
     align-items: center;
     margin: 0;
  
-    & a{
+    & .button{
   
       margin-top: 1rem;
       margin-left: 5rem;
@@ -49,7 +49,6 @@
     background-image: url("/assets/background.png");
     background-repeat: no-repeat;
     background-size: cover;
-
     z-index: -1;
   }
   
