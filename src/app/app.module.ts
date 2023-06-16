@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import { DemoPageComponent } from './pages/demo/demo.component';
 import { DemoComponent } from './components/demo/demo.component';
@@ -18,6 +19,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AllrecipesComponent } from './allrecipes/allrecipes.component';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     DemoPageComponent,

@@ -1,40 +1,50 @@
-<nav>
+<header>
   <div class="chefs-compass">
-    <img class="nav-logo" src="/assets/main-logo.svg" alt="nav-logo" />
-    <p class="slogan">Global flavours from your kitchen</p>
+    <a routerLink="/" class="compass-link">
+      <img class="nav-logo" src="/assets/main-logo.svg" alt="home-link-picture" />
+      <p class="slogan">Global flavours from your kitchen</p>
+    </a>
   </div>
-  <div class="search-module">
-    <input type="text" placeholder="dishs..." />
-    <button type="submit"><img src="/assets/mag-glass.png" /></button>
-    <div class="mini-burger">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-  </div>
-  <div class="button-menu">
-    <div>
-      <button>
-        <a [routerLink]="['/community']" rel="noopener" title="About" id="community-logo">Community</a>
-      </button>
-    </div>
-    <div>
-      <button>
-        <img src="/assets/favorite-button.png" alt="nav-logo" />
-        <p>Favourites</p>
-      </button>
-    </div>
-    <div>
-      <button>
-        <img src="/assets/add-button.png" alt="nav-logo" />
-        <p>Add Recipes</p>
-      </button>
-    </div>
-    <div>
-      <button>
-        <img src="/assets/recipes-button.png" alt="nav-logo" />
-        <p>All Recipes</p>
-      </button>
+  <!-- Search module display: none; until able to search, waiting to be implemented -->
+
+  <div style="display: none">
+    <div class="search-module">
+      <input type="text" placeholder="Dishes..." />
+      <button type="submit"><img src="/assets/mag-glass.png" /></button>
+      <div class="mini-burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
     </div>
   </div>
-</nav>
+
+  <nav class="links-menu">
+    <ul>
+      <li>
+          <a [routerLink]="['/community']" rel="noopener" title="About" id="community-logo">
+          <img src="/assets/community-button.png" alt="nav-logo" />
+          <p>Community</p>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img src="/assets/favorite-button.png" alt="nav-logo" />
+          <p>Favourites</p>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img src="/assets/add-button.png" alt="nav-logo" />
+          <p>Add Recipes</p>
+        </a>
+      </li>
+      <li>
+        <a>
+          <img src="/assets/recipes-button.png" alt="nav-logo" />
+          <p>All Recipes</p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

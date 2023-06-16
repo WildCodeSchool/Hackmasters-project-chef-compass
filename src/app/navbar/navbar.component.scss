@@ -1,4 +1,4 @@
-nav {
+header {
     background-color: var(--primary-color);
     height: 90px;
     display: flex;
@@ -8,7 +8,14 @@ nav {
 // Brand --------------------------------
 
 .chefs-compass {
-    display: flex;
+  display: flex;
+  align-items: center; 
+}
+
+.compass-link {
+  display: flex;
+  align-items: center; 
+  text-decoration: none; 
 }
 
 .nav-logo {
@@ -20,8 +27,7 @@ nav {
 .slogan {
     color: var(--secondardy-text-color);
     position: relative;
-    top: 20px;
-    right: 25px;
+    right: 20px;
 }
 
 // Search --------------------------------
@@ -79,44 +85,40 @@ nav {
 
   // Button menu
 
-.button-menu {
+  .links-menu ul {
     display: flex;
     position: relative;
     right: 0px;
-    top: 5px;
+    bottom: 5px;
     align-items: baseline;
     padding-right: 10px;
     gap: 30px;
+    list-style: none;
   }
 
-.button-menu button {
+.links-menu link {
     background-color: var(--primary-color);
     border: none;
 }
 
-.button-menu button {
-  background-color: var(--primary-color);
-  border: none;
+.links-menu img {
+  position: relative;
+  left: 24px;
 }
 
-.button-menu div:nth-child(2) img {
+.links-menu li:nth-child(2) img {
   width: 35px;
   position: relative;
   top: 2px;
 }
 
-.button-menu div:nth-child(3) img {
+.links-menu li:nth-child(3) img {
   width: 40px;
   position: relative;
   top: 10px;
 }
 
-.button-menu button {
-  background-color: var(--primary-color);
-  border: none;
-}
-
-.button-menu p {
+.links-menu p {
   margin-top: 5px;
 }
 
