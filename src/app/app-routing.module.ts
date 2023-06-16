@@ -4,8 +4,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 
 const routes: Routes = [
+
   { path: '', component: HomepageComponent },
-  { path: 'recipe', component: SingleRecipeComponent} 
+  { path: 'recipe/:name', component: SingleRecipeComponent} 
   ];
 
 @NgModule({

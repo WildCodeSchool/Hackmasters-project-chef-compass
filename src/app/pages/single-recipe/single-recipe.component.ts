@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 
 @Component({
@@ -7,25 +9,22 @@ import { RecipesService } from 'src/app/services/recipies/recipes.service';
   styleUrls: ['./single-recipe.component.scss']
 })
 export class SingleRecipeComponent implements OnInit {
-  data?: any;
+  recipe: any;
+  routeSubscription!: Subscription;
 
-  constructor(private recipesService: RecipesService) {}
-  recipes: any[] = [];
-  recipe: any;  
+  constructor(private recipesService: RecipesService, private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.recipesService.getRecipies().subscribe(
-      (data: any[]) => {
-        this.recipes = data;
-        this.recipe = this.recipes[15];
-        // Affichez les données dans la console pour vérifier
-        console.log(this.recipes);
+  ngOnInit(): void {
+    this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+      const recipeName = params.get('name');
+      this.recipesService.getRecipeByName(recipeName!).subscribe((recipe: any) => {
+        this.recipe = recipe;
+      });
+    });
+  }
 
-      },
-      (error) => {
-        console.error('Une erreur s\'est produite lors du chargement des recettes :', error);
-      }
-    );
+  ngOnDestroy(): void {
+    this.routeSubscription.unsubscribe();
   }
   calculateTotalTime(recipe: any): string {
     const prepTime = this.extractTimeInMinutes(recipe.prep_time);

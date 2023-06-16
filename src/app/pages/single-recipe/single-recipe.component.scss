@@ -26,19 +26,9 @@
     position: relative;
     z-index: 1;
   }
-img {
-    max-width: 400px;
-    max-height: 300px;
-    aspect-ratio: 5/4;
-    object-fit: cover;
-    object-position: 50% 40%;
-    position: relative;
-    bottom: 1vh;
-    border-radius: 50px;
- 
-}
 
-h1 {
+
+.tittle {
     text-align: center;
     padding: 5vh;
     color: $primaryColor;
@@ -60,6 +50,17 @@ h1 {
         & h2{
             margin-bottom: 16px;
         }
+    }
+    &--img{
+        max-width: 400px;
+        max-height: 300px;
+        aspect-ratio: 5/4;
+        object-fit: cover;
+        object-position: 50% 40%;
+        position: relative;
+        bottom: 1vh;
+        border-radius: 50px;
+     
     }
 
     }
