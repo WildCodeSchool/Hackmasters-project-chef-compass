@@ -12,13 +12,12 @@ import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 
 
-import { FooterComponent } from './footer/footer.component';
-import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';;
 
 
   @NgModule({
   
-  declarations: [AppComponent,NavbarComponent, HomepageComponent, SingleRecipeComponent,AboutComponent ],
+  declarations: [AppComponent,NavbarComponent, HomepageComponent, SingleRecipeComponent,AboutComponent,FooterComponent ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
