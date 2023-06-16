@@ -24,14 +24,16 @@
         </article>
        
       <article class="recipe_details">
-        <section class="recipe_details--origin " >
-        <h4> {{ recipe.recipe_type }}</h4>
-        <h4>Country: {{ recipe.country_of_origin }}</h4>
-        </section>
-        <h3>Steps:</h3>
+        <section class="recipe_details--steps">
+            <h3>Steps:</h3>
         <ol>
           <li *ngFor="let step of recipe.steps">{{ step }}</li>
         </ol>
+        </section>
+        <section class="recipe_details--origin " >
+            <h4> {{ recipe.recipe_type }}</h4>
+            <h4>Country: {{ recipe.country_of_origin }}</h4>
+            </section>
     </article>
     <article class="recipe_comments">  
         <section class="recipe_comments--send">

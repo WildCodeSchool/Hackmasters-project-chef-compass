@@ -1,5 +1,7 @@
-@import '../../style/variables';
-@import '../../style/_animation';
+@use '../../style/_mixin' as *;
+@use '../../style/_variables' as *;
+@use '../../style/_animation' as *;
+
 :host {
     display: block;
     position: relative;
@@ -42,9 +44,7 @@ h1 {
     color: $primaryColor;
     
 }
-p{
 
-}
 .recipe{
     margin: 0vh 3vh;    
     &_information{
@@ -64,12 +64,18 @@ p{
 
     }
     &_details{
+        display: flex;
+        justify-content: space-between;
+        margin-top:2vh ;
+        
        
         &--origin{
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             margin-top: 30px;
             gap: 10%;
+            align-items: flex-end;
+            flex-direction: column;
         }
         & li{
             margin: 10px 0;
@@ -96,27 +102,12 @@ p{
                 outline: none;
             }
            
-        }
-       
+        }    
         & button{
-            margin-right: 0;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: .5REM;
-            padding: 0rem 1rem;
-            border: 1px solid $primaryColor;
-            border-radius: 100px;
-            color: black;
-            background-color: #ffff;
-            text-align: center;
+          @include button;
             
-            transition: all 250ms;
             &:hover{ 
-                box-shadow: rgba($primaryColor,.35) 0 -25px 18px -14px inset,rgba($primaryColor,.25) 0 1px 2px,rgba($primaryColor,.25) 0 2px 4px,rgba($primaryColor,.25) 0 4px 8px,rgba($primaryColor,.25) 0 8px 16px,rgba($primaryColor,.25) 0 16px 32px;
-                animation: button 0.4s ease-in both;
+                @include buttonHover;
               }
         }
         &--flex{
