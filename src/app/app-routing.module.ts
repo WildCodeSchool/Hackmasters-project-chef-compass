@@ -4,6 +4,8 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [{ path: 'about', component: AboutComponent }];
 
+
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
