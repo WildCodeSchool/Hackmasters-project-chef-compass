@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'recipe/:name', component: SingleRecipeComponent} 
   ];
 
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
