@@ -6,6 +6,7 @@
     "country_of_origin": "France",
     "prep_time": "20 minutes",
     "cook_time": "30 minutes",
+    "price": 20,
     "ingredients": [
       "Salted Butter: 200 gr",
       "Chocolate :200 gr",
@@ -33,6 +34,7 @@
     "country_of_origin": "Italy",
     "prep_time": "30 minutes",
     "cook_time": "0 minutes (no cooking required)",
+    "price": 10,
     "ingredients": [
       "Mascarpone Cheese: 250 gr",
       "Ladyfingers: 24",
@@ -63,6 +65,7 @@
     "country_of_origin": "Italy",
     "prep_time": "15 minutes",
     "cook_time": "1 hour",
+    "price":5,
     "ingredients": [
       "Spaghetti: 300 g",
       "Ground Beef: 500 g",
@@ -101,6 +104,7 @@
     "country_of_origin": "Mexico",
     "prep_time": "10 minutes",
     "cook_time": "0 minutes (no cooking required)",
+    "price": 10,
     "ingredients": [
       "Ripe Avocados: 2",
       "Lime: 1",
@@ -132,6 +136,7 @@
     "country_of_origin": "China",
     "prep_time": "15 minutes",
     "cook_time": "15 minutes",
+    "price": 15,
     "ingredients": [
       "Chicken Breast: 500 g",
       "Bell Peppers: 2",
@@ -172,6 +177,7 @@
     "country_of_origin": "Various",
     "prep_time": "5 minutes",
     "cook_time": "5 minutes",
+    "price": 25,
     "ingredients": [
       "Eggs: 4",
       "Milk: 2 tablespoons",
@@ -201,6 +207,7 @@
     "country_of_origin": "United States",
     "prep_time": "30 minutes",
     "cook_time": "50 minutes",
+    "price": 30,
     "ingredients": [
       "Pie Crust: 2 (store-bought or homemade)",
       "Apples: 6",
@@ -239,6 +246,7 @@
     "country_of_origin": "Thailand",
     "prep_time": "15 minutes",
     "cook_time": "10 minutes",
+    "price": 15,
     "ingredients": [
       "Chicken Thighs: 500 g",
       "Garlic Cloves: 4",
@@ -281,6 +289,7 @@
     "country_of_origin": "Various",
     "prep_time": "15 minutes",
     "cook_time": "20 minutes",
+    "price": 25,
     "ingredients": [
       "Potatoes: 1 kg",
       "Garlic Cloves: 4",
@@ -315,6 +324,7 @@
     "country_of_origin": "Various",
     "prep_time": "15 minutes",
     "cook_time": "20 minutes",
+    "price": 10,
     "ingredients": [
       "All-Purpose Flour: 1 1/2 cups",
       "Baking Powder: 1 1/2 teaspoons",
@@ -353,6 +363,7 @@
     "country_of_origin": "Russia",
     "prep_time": "15 minutes",
     "cook_time": "30 minutes",
+    "price": 55,
     "ingredients": [
       "Beef Sirloin: 500 g",
       "Onion: 1",
@@ -397,6 +408,7 @@
     "country_of_origin": "Italy",
     "prep_time": "15 minutes",
     "cook_time": "0 minutes (no cooking required)",
+    "price": 17,
     "ingredients": [
       "Cherry Tomatoes: 20",
       "Fresh Mozzarella Balls: 20",
@@ -425,6 +437,7 @@
     "country_of_origin": "Various",
     "prep_time": "10 minutes",
     "cook_time": "15 minutes",
+    "price": 10,
     "ingredients": [
       "All-Purpose Flour: 1 1/2 cups",
       "Sugar: 2 tablespoons",
@@ -461,6 +474,7 @@
     "country_of_origin": "Italy",
     "prep_time": "20 minutes",
     "cook_time": "30 minutes",
+    "price": 150,
     "ingredients": [
       "Chicken Breasts: 2",
       "All-Purpose Flour: 1/2 cup",
@@ -507,6 +521,7 @@
     "country_of_origin": "United States",
     "prep_time": "15 minutes",
     "cook_time": "10 minutes",
+    "price": 20,
     "ingredients": [
       "All-Purpose Flour: 2 1/4 cups",
       "Baking Soda: 1/2 teaspoon",
@@ -542,6 +557,7 @@
     "country_of_origin": "Various",
     "prep_time": "10 minutes",
     "cook_time": "25 minutes",
+    "price": 50,
     "ingredients": [
       "Brussels Sprouts: 500 g",
       "Olive Oil: 3 tablespoons",
@@ -575,6 +591,7 @@
     "country_of_origin": "Japan",
     "prep_time": "30 minutes",
     "cook_time": "0 minutes (no cooking required)",
+    "price": 10,
     "ingredients":[
       "Sushi Rice: 2 cups (cooked and seasoned)",
       "Nori Sheets: 10",
@@ -608,6 +625,7 @@
   "country_of_origin": "Belgium",
   "prep_time": "20 minutes",
   "cook_time": "15 minutes",
+  "price": 20,
   "ingredients": [
     "Mussels: 1 kg",
     "Shallots: 2",
@@ -646,6 +664,7 @@
   "country_of_origin": "France",
   "prep_time": "30 minutes",
   "cook_time": "2 hours",
+  "price": 30,
   "ingredients": [
     "Veal Stew Meat: 800 gr",
     "Onion: 1",
@@ -691,6 +710,7 @@
   "country_of_origin": "France",
   "prep_time": "30 minutes",
   "chill_time": "4 hours",
+  "price": 15,
   "ingredients": [
     "Ladyfinger Biscuits: 200 gr",
     "Fresh Strawberries: 500 gr",
