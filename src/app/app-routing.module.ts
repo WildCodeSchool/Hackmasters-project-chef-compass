@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HomepageComponent } from './homepage/homepage.component';
 import { AboutComponent } from './about/about.component';
 import { CommunityComponent } from './community/community.component';
 import { AllrecipesComponent } from './allrecipes/allrecipes.component';
@@ -10,13 +11,6 @@ const routes: Routes = [
   { path: 'community', component: CommunityComponent, pathMatch: 'full' },
   { path: 'recipes', component: AllrecipesComponent, pathMatch: 'full' },
 ];
-
-import { HomepageComponent } from './homepage/homepage.component';
-
-const routes: Routes = [
-  { path: '', component: HomepageComponent } 
-  ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
