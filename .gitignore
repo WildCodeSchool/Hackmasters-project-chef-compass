@@ -36,7 +36,8 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-src/environment
+src/environment/environment.ts
+src/environment/environment.prod.ts
 
 
 # System files
