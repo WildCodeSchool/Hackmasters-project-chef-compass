@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ConverterRecipesService } from 'src/app/services/converter/converter-recipes.service';
-
 @Component({
   selector: 'app-single-recipe',
   templateUrl: './single-recipe.component.html',
