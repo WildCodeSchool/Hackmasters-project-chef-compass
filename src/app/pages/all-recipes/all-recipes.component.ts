@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef,} from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class AllRecipesComponent {
               private recipesService :RecipesService  ) {}
               moveLeft(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts -= 100; // Adjust the value according to your needs
+                  this.translateValueDesserts -= 100; 
                 } else if (recipe === 'mainDishes') {
                   this.translateValueMainDishes -= 100;
                 } else if (recipe === 'appetizers') {
@@ -40,7 +40,7 @@ export class AllRecipesComponent {
               
               moveRight(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts += 100; // Adjust the value according to your needs
+                  this.translateValueDesserts += 100; 
                 } else if (recipe === 'mainDishes') {
                   this.translateValueMainDishes += 100;
                 } else if (recipe === 'appetizers') {
