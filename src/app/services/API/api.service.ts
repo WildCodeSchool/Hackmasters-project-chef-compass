@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class APIService {
     const url = `${this.apiUrl}/typehead?q=${encodeURIComponent(query)}`;
     const headers = new HttpHeaders({
       'content-type': 'application/json',
-      'Authorization': ''
+      'Authorization': `Bearer ${environment.apiKey}`
     });
     return this.http.get(url, { headers })
   }
