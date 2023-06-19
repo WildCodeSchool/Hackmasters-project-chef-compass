@@ -60,7 +60,7 @@
   },
   {
     "recipe_id": 3,
-    "recipe_type": "Main Dish",
+    "recipe_type": "MainDish",
     "recipe_name": "spaghetti-bolognese",
     "country_of_origin": "Italy",
     "prep_time": "15 minutes",
@@ -131,7 +131,7 @@
   },
   {
     "recipe_id": 5,
-    "recipe_type": "Main Dish",
+    "recipe_type": "MainDish",
     "recipe_name": "chicken-stir-Fry",
     "country_of_origin": "China",
     "prep_time": "15 minutes",
@@ -241,7 +241,7 @@
   },
   {
     "recipe_id": 8,
-    "recipe_type": "Main Dish",
+    "recipe_type": "MainDish",
     "recipe_name": "spicy-thai-basil-chicken",
     "country_of_origin": "Thailand",
     "prep_time": "15 minutes",
@@ -284,7 +284,7 @@
   },
   {
     "recipe_id": 9,
-    "recipe_type": "Side Dish",
+    "recipe_type": "SideDish",
     "recipe_name": "garlic-mashed-potatoes",
     "country_of_origin": "Various",
     "prep_time": "15 minutes",
@@ -358,7 +358,7 @@
   },
  {
     "recipe_id": 11,
-    "recipe_type": "Main Dish",
+    "recipe_type": "MainDish",
     "recipe_name": "beef-troganoff",
     "country_of_origin": "Russia",
     "prep_time": "15 minutes",
@@ -469,7 +469,7 @@
   },
   {
     "recipe_id": 14,
-    "recipe_type": "Main Dish",
+    "recipe_type": "MainDish",
     "recipe_name": "chicken-parmesan",
     "country_of_origin": "Italy",
     "prep_time": "20 minutes",
@@ -552,7 +552,7 @@
   },
   {
     "recipe_id": 16,
-    "recipe_type": "Side Dish",
+    "recipe_type": "SideDish",
     "recipe_name": "roasted-brussels-sprouts",
     "country_of_origin": "Various",
     "prep_time": "10 minutes",
@@ -620,7 +620,7 @@
   },
 {
   "recipe_id": 18,
-  "recipe_type": "Main Dish",
+  "recipe_type": "MainDish",
   "recipe_name": "moules-frites",
   "country_of_origin": "Belgium",
   "prep_time": "20 minutes",
@@ -659,7 +659,7 @@
 },
 {
   "recipe_id": 19,
-  "recipe_type": "Main Dish",
+  "recipe_type": "MainDish",
   "recipe_name": "veal-blanquette",
   "country_of_origin": "France",
   "prep_time": "30 minutes",
