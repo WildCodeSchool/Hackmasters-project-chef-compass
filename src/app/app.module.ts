@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 import { FooterComponent } from './footer/footer.component';;
@@ -18,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';;
   @NgModule({
   
   declarations: [AppComponent,NavbarComponent, HomepageComponent, SingleRecipeComponent,AboutComponent,FooterComponent ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
