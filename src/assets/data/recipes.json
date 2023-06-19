@@ -24,7 +24,8 @@
       "Butter and flour a cake pan.",
       "Pour the mixture into the pan and bake at 190 degrees for 15 to 20 minutes."
     ],
-    "imgUrl": "https://images.pexels.com/photos/4110008/pexels-photo-4110008.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/4110008/pexels-photo-4110008.jpeg",
+    "description":"Indulgent and moist chocolate cake, perfect for chocoholics and special occasions."
   
   },
   {
@@ -55,7 +56,8 @@
       "Refrigerate for at least 4 hours or overnight before serving.",
       "Sprinkle additional cocoa powder on top before serving, if desired."
     ],
-    "imgUrl": "https://images.pexels.com/photos/14766327/pexels-photo-14766327.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/14766327/pexels-photo-14766327.jpeg",
+    "description": "Luscious Italian dessert with layers of coffee-soaked ladyfingers and creamy mascarpone cheese, dusted with cocoa."
     
   },
   {
@@ -95,7 +97,9 @@
       "Garnish with grated Parmesan cheese.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/15500451/pexels-photo-15500451/free-photo-of-nourriture-diner-repas-pates.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/15500451/pexels-photo-15500451/free-photo-of-nourriture-diner-repas-pates.jpeg",
+    "description": "Hearty Italian pasta dish with rich tomato sauce, ground beef, and aromatic herbs."
+
     
   }, {
     "recipe_id": 4,
@@ -126,7 +130,9 @@
       "Serve the guacamole with tortilla chips.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/3535380/pexels-photo-3535380.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/3535380/pexels-photo-3535380.jpeg",
+    "description": "Creamy avocado dip with fresh lime juice, red onion, tomato, cilantro, and jalapeño pepper."
+
     
   },
   {
@@ -167,7 +173,8 @@
       "Serve the chicken stir-fry with steamed rice or noodles.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/16108119/pexels-photo-16108119/free-photo-of-nourriture-poulet-viande-barbecue.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/16108119/pexels-photo-16108119/free-photo-of-nourriture-poulet-viande-barbecue.jpeg",
+    "description": "Quick and healthy dish with tender chicken, crisp vegetables, and a savory stir-fry sauce."
     
   },
   {
@@ -197,13 +204,15 @@
       "Serve the scrambled eggs hot.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/8055162/pexels-photo-8055162.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/8055162/pexels-photo-8055162.jpeg",
+    "description": "Light and fluffy scrambled eggs, perfect for a quick and satisfying breakfast."
+    
     
   },
   {
     "recipe_id": 7,
     "recipe_type": "dessert",
-    "recipe_name": "Apple Pie",
+    "recipe_name": "Apple-Pie",
     "country_of_origin": "United States",
     "prep_time": "30 minutes",
     "cook_time": "50 minutes",
@@ -237,7 +246,8 @@
       "Serve the apple pie warm or at room temperature.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/1282279/pexels-photo-1282279.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/1282279/pexels-photo-1282279.jpeg",
+    "description": "Classic dessert with a buttery crust and sweet and tangy apple filling, perfect for special occasions."
   },
   {
     "recipe_id": 8,
@@ -279,7 +289,9 @@
       "Serve the spicy Thai basil chicken over steamed rice.",
       "Enjoy!"
     ],
-    "imgUrl": "https://thewoksoflife.com/wp-content/uploads/2016/06/thai-basil-chicken-8.jpg"
+    "imgUrl": "https://thewoksoflife.com/wp-content/uploads/2016/06/thai-basil-chicken-8.jpg",
+    "description": "Fiery stir-fry dish with chicken, Thai basil leaves, chili peppers, and a blend of savory sauces."
+
     
   },
   {
@@ -314,7 +326,8 @@
       "Serve the garlic mashed potatoes hot.",
       "Enjoy!"
     ],
-    "imgUrl": "https://www.recette-americaine.com/wp-content/uploads/2013/12/mashed-potatoes.jpg"
+    "imgUrl": "https://www.recette-americaine.com/wp-content/uploads/2013/12/mashed-potatoes.jpg",
+    "description": "Creamy mashed potatoes infused with aromatic garlic, creating a flavorful side dish."
    
   },
   {
@@ -353,7 +366,9 @@
       "Once cooled, decorate the cupcakes with buttercream frosting or any desired toppings.",
       "Enjoy the vanilla cupcakes!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/913134/pexels-photo-913134.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/913134/pexels-photo-913134.jpeg",
+    "description": "Soft and moist vanilla-flavored cupcakes crowned with creamy frosting, perfect for special occasions."
+
 
   },
  {
@@ -399,7 +414,9 @@
       "Serve the beef stroganoff over the cooked egg noodles.",
       "Enjoy!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/16134562/pexels-photo-16134562/free-photo-of-nourriture-diner-viande-delicieux.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/16134562/pexels-photo-16134562/free-photo-of-nourriture-diner-viande-delicieux.jpeg",
+    "description": "Comforting dish of tender beef strips, mushrooms, and onions cooked in a creamy sauce, ideal for special occasions."
+
   },
   {
     "recipe_id": 12,
@@ -428,7 +445,8 @@
       "Serve the caprese skewers as a delicious appetizer.",
       "Enjoy!"
     ],
-    "imgUrl": "https://cdn.loveandlemons.com/wp-content/uploads/2021/08/caprese-skewers-1-746x1024.jpg"
+    "imgUrl": "https://cdn.loveandlemons.com/wp-content/uploads/2021/08/caprese-skewers-1-746x1024.jpg",
+    "description": "Refreshing skewers featuring fresh mozzarella, cherry tomatoes, and basil leaves, drizzled with balsamic glaze."
   },
   {
     "recipe_id": 13,
@@ -464,7 +482,8 @@
       "Serve the pancakes hot with maple syrup or any desired toppings.",
       "Enjoy a stack of fluffy pancakes!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/2516025/pexels-photo-2516025.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/2516025/pexels-photo-2516025.jpeg",
+    "description": "Fluffy and golden breakfast staples, perfect for a leisurely morning meal."
    
   },
   {
@@ -511,7 +530,8 @@
       "Garnish with fresh basil.",
       "Enjoy!"
     ],
-    "imgUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F4b067cd907c6d86384b336405a8c505e%2F168523035350920230527_183149.jpg"
+    "imgUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F4b067cd907c6d86384b336405a8c505e%2F168523035350920230527_183149.jpg",
+    "description": "Breaded chicken cutlets topped with marinara sauce, melted cheese, and served with spaghetti."
     
   },
   {
@@ -548,7 +568,9 @@
       "Transfer the cookies to a wire rack to cool completely.",
       "Enjoy the delicious homemade chocolate chip cookies!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/189536/pexels-photo-189536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    "imgUrl": "https://images.pexels.com/photos/189536/pexels-photo-189536.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "description": "Irresistible homemade cookies loaded with chunks of rich chocolate for chocoholics and special occasions."
+
   },
   {
     "recipe_id": 16,
@@ -582,7 +604,8 @@
       "Serve as a flavorful side dish.",
       "Enjoy!"
     ],
-    "imgUrl": "https://cookieandkate.com/images/2019/11/best-roasted-brussels-sprouts-recipe-1-768x1154.jpg"
+    "imgUrl": "https://cookieandkate.com/images/2019/11/best-roasted-brussels-sprouts-recipe-1-768x1154.jpg",
+    "description": "Crispy and flavorful roasted Brussels sprouts seasoned with olive oil, garlic, and a touch of salt."
   },
   {
     "recipe_id": 17,
@@ -615,7 +638,8 @@
       "Serve the sushi rolls with soy sauce, wasabi, and pickled ginger.",
       "Enjoy the homemade sushi rolls!"
     ],
-    "imgUrl": "https://images.pexels.com/photos/8951148/pexels-photo-8951148.jpeg"
+    "imgUrl": "https://images.pexels.com/photos/8951148/pexels-photo-8951148.jpeg",
+    "description": "Traditional Japanese rolls made with vinegared rice, fresh seafood or vegetables, and wrapped in seaweed."
     
   },
 {
@@ -654,7 +678,9 @@
     "Serve the moules frites with the crispy fries on the side.",
     "Enjoy!"
   ],
-	"imgUrl": "https://static.750g.com/images/640-420/203a157ca1eec1f5271705aa553435f4/adobestock-184713102.jpeg"
+	"imgUrl": "https://static.750g.com/images/640-420/203a157ca1eec1f5271705aa553435f4/adobestock-184713102.jpeg",
+  "description": "Classic Belgian dish of steamed mussels served with crispy golden fries."
+
 
 },
 {
@@ -701,7 +727,8 @@
     "Enjoy!"
 
 ], 
-	"imgUrl":"https://assets.afcdn.com/recipe/20190529/93191_w1024h1024c1cx4330cy2886.jpg"
+	"imgUrl":"https://assets.afcdn.com/recipe/20190529/93191_w1024h1024c1cx4330cy2886.jpg",
+  "description": "Tender veal stew cooked in a creamy white sauce with vegetables, herbs, and aromatic spices."
 },
 {
   "recipe_id": 20,
@@ -740,8 +767,8 @@
     "Serve the strawberry charlotte chilled.",
     "Enjoy!"
   ],
-	"imgUrl":"https://www.spatuladesserts.com/wp-content/uploads/2022/02/Strawberry-charlotte-cake-2170260.jpg"
-
+	"imgUrl":"https://www.spatuladesserts.com/wp-content/uploads/2022/02/Strawberry-charlotte-cake-2170260.jpg",
+  "description": "Delightful dessert with layers of sponge cake and fresh strawberries, topped with a creamy filling."
 }
 ]
 

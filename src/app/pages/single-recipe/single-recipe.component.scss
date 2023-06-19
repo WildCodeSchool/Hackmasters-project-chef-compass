@@ -36,7 +36,7 @@
 }
 
 .recipe{
-    margin: 0vh 3vh;    
+    margin:$marginPage;    
     &_information{
     display: flex;
     align-items:flex-start; 

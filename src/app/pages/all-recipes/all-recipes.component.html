@@ -1,49 +1,68 @@
 <div class="allrecipes">
+    <h2 class="allrecipes--title">appetizers</h2>
     <div class="allrecipes_container">
-        <h2 class="allrecipes_container">entrich</h2>
-        <div class="allrecipes_container" >
-            <div class="recipe_container--card" *ngFor="let recipe of appetizers">
-              <h3>{{recipe.recipe_name}}</h3>
-              <p>{{recipe.recipe_price}}</p>
+        <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueAppetizers + 'px)'">
+            <app-card-recipes  *ngFor="let recipe of appetizers" [recipe]="recipe">
+            </app-card-recipes>
             </div>
-        </div>
-    </div>
-    <div class="allrecipes_container">
-        <h2 class="allrecipes_container">desserts</h2>
-        <div class="allrecipes_container" >
-            <div class="recipe_container--card" *ngFor="let recipe of sideDishes">
-              <h3>{{recipe.recipe_name}}</h3>
-              <p>{{recipe.recipe_price}}</p>
-            </div>
-        </div>
-    </div>
-    <div class="allrecipes_container">
-        <h2 class="allrecipes_container">entrich</h2>
-        <div class="allrecipes_container" >
-            <div class="recipe_container--card" *ngFor="let recipe of mainDishes">
-              <h3>{{recipe.recipe_name}}</h3>
-              <p>{{recipe.recipe_price}}</p>
-            </div>
-        </div>
-    </div>
+             <div class="allrecipes_container--card--buttons">
+            <button class="allrecipes_container--buttons--left  button_selection" (click)="moveLeft('appetizers')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right  button_selection" (click)="moveRight('appetizers')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+          </div>
 
-    <div class="allrecipes_container">
-        <h2 class="allrecipes_container">entrich</h2>
-        <div class="allrecipes_container" >
-            <div class="recipe_container--card" *ngFor="let recipe of breakfasts">
-              <h3>{{recipe.recipe_name}}</h3>
-              <p>{{recipe.recipe_price}}</p>
-            </div>
+        
         </div>
-    </div>
-    <div class="allrecipes_container">
-        <h2 class="allrecipes_container">entrich</h2>
-        <div class="allrecipes_container" >
-            <div class="recipe_container--card" *ngFor="let recipe of desserts ">
-              <h3>{{recipe.recipe_name}}</h3>
-              <p>{{recipe.recipe_price}}</p>
+        <h2 class="allrecipes--title">breakfasts</h2>
+        <div class="allrecipes_container">
+            <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueBreakfasts + 'px)'">
+                <app-card-recipes  *ngFor="let recipe of breakfasts" [recipe]="recipe">
+                </app-card-recipes>
+                </div>
+                 <div class="allrecipes_container--card--buttons">
+                <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('breakfasts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('breakfasts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+              </div>
+    
+            
             </div>
-        </div>
-    </div>
+            <h2 class="allrecipes--title">side dishes</h2>
+            <div class="allrecipes_container">
+                <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueSideDishes + 'px)'">
+                    <app-card-recipes  *ngFor="let recipe of sideDishes" [recipe]="recipe">
+                    </app-card-recipes>
+                    </div>
+                     <div class="allrecipes_container--card--buttons">
+                    <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('sideDishes')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                    <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('sideDishes')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+                  </div>
+        
+                
+                </div>
+                <h2 class="allrecipes--title">main Dishes</h2>
+                <div class="allrecipes_container">
+                    <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueMainDishes + 'px)'">
+                        <app-card-recipes  *ngFor="let recipe of mainDishes" [recipe]="recipe">
+                        </app-card-recipes>
+                        </div>
+                         <div class="allrecipes_container--card--buttons">
+                        <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('mainDishes')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                        <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('mainDishes')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+                      </div>
+            
+                    
+                    </div>
+                    <h2 class="allrecipes--title">desserts</h2>
+                    <div class="allrecipes_container">
+                        <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueDesserts + 'px)'">
+                            <app-card-recipes  *ngFor="let recipe of desserts" [recipe]="recipe">
+                            </app-card-recipes>
+                            </div>
+                             <div class="allrecipes_container--card--buttons">
+                            <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+                          </div>
+                
+                        
+                        </div>
 </div>
 

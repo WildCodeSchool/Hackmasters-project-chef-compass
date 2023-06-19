@@ -1,0 +1,38 @@
+.card{
+    gap: 10px;
+    width: 245px;
+    &_img--img{
+        width: 100%;
+        
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border-radius: 25px;
+    }
+    &_information{
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 0px  0px 25px 25px ;
+        padding: 1px;
+
+        height: 250px;
+        flex-direction: column;
+        padding: .5vh .2vh;
+        &--title{
+            margin :0;
+            height: 60px;
+           
+        }
+
+        &--price-duree{
+            & p{
+                margin: 5px;
+                
+            }
+            display: flex;
+            align-self: normal;
+            justify-content: space-evenly;
+        }
+
+    }
+    
+}

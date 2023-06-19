@@ -13,9 +13,44 @@ export class AllRecipesComponent {
   appetizers: any[] = [];
   breakfasts: any[] = [];
   sideDishes: any[] = [];
+  translateValueDesserts = 0;
+  translateValueMainDishes = 0;
+  translateValueAppetizers = 0;
+  translateValueBreakfasts = 0;
+  translateValueSideDishes = 0;
+
+
+  
 
   constructor(private http: HttpClient,
               private recipesService :RecipesService  ) {}
+              moveLeft(recipe: string) {
+                if (recipe === 'desserts') {
+                  this.translateValueDesserts -= 100; // Adjust the value according to your needs
+                } else if (recipe === 'mainDishes') {
+                  this.translateValueMainDishes -= 100;
+                } else if (recipe === 'appetizers') {
+                  this.translateValueAppetizers -= 100;
+                } else if (recipe === 'breakfasts') {
+                  this.translateValueBreakfasts -= 100;
+                } else if (recipe === 'sideDishes') {
+                  this.translateValueSideDishes -= 100;
+                }
+              }
+              
+              moveRight(recipe: string) {
+                if (recipe === 'desserts') {
+                  this.translateValueDesserts += 100; // Adjust the value according to your needs
+                } else if (recipe === 'mainDishes') {
+                  this.translateValueMainDishes += 100;
+                } else if (recipe === 'appetizers') {
+                  this.translateValueAppetizers += 100;
+                } else if (recipe === 'breakfasts') {
+                  this.translateValueBreakfasts += 100;
+                } else if (recipe === 'sideDishes') {
+                  this.translateValueSideDishes += 100;
+                }
+              }
 
   ngOnInit(): void {
     this.recipesService.getRecipeByCategory('Dessert').subscribe((recipes: any[]) => {
@@ -36,6 +71,7 @@ export class AllRecipesComponent {
     });
     this.recipesService.getRecipeByCategory('SideDish').subscribe((recipes: any[]) => {  
       this.sideDishes = recipes;
+      console.log(this.sideDishes);
     });
 
   }
