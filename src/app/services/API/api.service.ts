@@ -8,16 +8,12 @@ import { environment } from 'src/environment/environment';
 })
 export class APIService {
 
-  private apiUrl = 'https://api.edamam.com/api/recipes/v2'
+  private apiUrl = 'https://www.themealdb.com/api/json/v1/' + environment.apiKey;
 
   constructor(private http: HttpClient) {}
 
   getRecipes(query: string): Observable<any> {
-    const url = `${this.apiUrl}/typehead?q=${encodeURIComponent(query)}`;
-    const headers = new HttpHeaders({
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${environment.apiKey}`
-    });
-    return this.http.get(url, { headers })
+    const url = `${this.apiUrl}/search.php?s=${encodeURIComponent(query)}`;
+    return this.http.get(url)
   }
 }
