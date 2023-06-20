@@ -26,20 +26,6 @@ export class AllRecipesComponent {
               private recipesService :RecipesService  ) {}
               moveLeft(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts -= 100; 
-                } else if (recipe === 'mainDishes') {
-                  this.translateValueMainDishes -= 100;
-                } else if (recipe === 'appetizers') {
-                  this.translateValueAppetizers -= 100;
-                } else if (recipe === 'breakfasts') {
-                  this.translateValueBreakfasts -= 100;
-                } else if (recipe === 'sideDishes') {
-                  this.translateValueSideDishes -= 100;
-                }
-              }
-              
-              moveRight(recipe: string) {
-                if (recipe === 'desserts') {
                   this.translateValueDesserts += 100; 
                 } else if (recipe === 'mainDishes') {
                   this.translateValueMainDishes += 100;
@@ -49,6 +35,20 @@ export class AllRecipesComponent {
                   this.translateValueBreakfasts += 100;
                 } else if (recipe === 'sideDishes') {
                   this.translateValueSideDishes += 100;
+                }
+              }
+              
+              moveRight(recipe: string) {
+                if (recipe === 'desserts') {
+                  this.translateValueDesserts -= 100; 
+                } else if (recipe === 'mainDishes') {
+                  this.translateValueMainDishes -= 100;
+                } else if (recipe === 'appetizers') {
+                  this.translateValueAppetizers -= 100;
+                } else if (recipe === 'breakfasts') {
+                  this.translateValueBreakfasts -= 100;
+                } else if (recipe === 'sideDishes') {
+                  this.translateValueSideDishes -= 100;
                 }
               }
 
