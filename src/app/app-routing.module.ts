@@ -9,9 +9,9 @@ import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 const routes: Routes = 
 [
   { path: '', component: HomepageComponent }, 
-  { path: 'recipe', component: AllRecipesComponent},
-  { path: 'recipe/:name', component: SingleRecipeComponent},
-  {path: 'about', component: AboutComponent}
+  { path: 'recipes', component: AllRecipesComponent},
+  { path: 'recipes/:name', component: SingleRecipeComponent},
+  { path: 'about', component: AboutComponent}
   ];
 
   
