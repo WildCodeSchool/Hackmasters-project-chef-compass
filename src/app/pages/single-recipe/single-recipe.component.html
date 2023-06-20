@@ -13,11 +13,11 @@
                 <h2>time :</h2>
                 <p>Prep Time: {{ recipe.prep_time }}</p>
                 <p>Cook Time: {{ recipe.cook_time }}</p>
-                <p>Total Time: {{ calculateTotalTime(recipe) }}</p>
+                <p>Total Time: {{ converter.calculateTotalTime(recipe) }}</p>
             </section>
             <section class="recipe_information--price">
                 <h2>Budget:</h2>
-                <p>{{getPriceSymbol(recipe.price)}}</p>
+                <p>{{converter.getPriceSymbol(recipe.price)}}</p>
                 <p>price: {{recipe.price}} €</p>
             </section>
              <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img">

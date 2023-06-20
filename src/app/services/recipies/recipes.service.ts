@@ -23,4 +23,10 @@ export class RecipesService {
       map(recipes => recipes.find(recipe => recipe.recipe_name.toLowerCase() === nameId.toLowerCase()))
     );
   }
+  getRecipeByCategory(typeId: string): Observable<any[]> {
+
+    return this.getAllRecipes().pipe(
+      map(recipes => recipes.filter(recipe => recipe.recipe_type.toLowerCase() === typeId.toLowerCase()))
+    );
+  }
 }

@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
+import { CardRecipesComponent } from './component/card-recipes/card-recipes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -17,7 +19,7 @@ import { FooterComponent } from './footer/footer.component';;
 
   @NgModule({
   
-  declarations: [AppComponent,NavbarComponent, HomepageComponent, SingleRecipeComponent,AboutComponent,FooterComponent ],
+  declarations: [AppComponent,NavbarComponent, HomepageComponent, SingleRecipeComponent,AboutComponent,FooterComponent,CardRecipesComponent,AllRecipesComponent ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
