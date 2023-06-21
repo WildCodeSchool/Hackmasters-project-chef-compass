@@ -1,0 +1,80 @@
+  <ng-container *ngIf="!haveFavorites && currentRoute === 'favourites'">
+    <h2>You haven't added any recipes to your favorites.</h2>
+</ng-container> 
+<div class="allrecipes" *ngIf="recipes.length !== 0 ">
+
+
+  <section *ngIf="recipes.appetizers.length > 0">
+    <h2 class="allrecipes--title">appetizers</h2>
+    <div class="allrecipes_container">
+        <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueAppetizers + 'px)'">
+            <app-card-recipes  *ngFor="let recipe of recipes.appetizers" [recipe]="recipe">
+            </app-card-recipes>
+            </div>
+             <div class="allrecipes_container--card--buttons">
+            <button class="allrecipes_container--buttons--left  button_selection" (click)="moveLeft('appetizers')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right  button_selection" (click)="moveRight('appetizers')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+          </div>
+      </div>
+  </section>
+
+        
+  <section *ngIf="recipes.breakfasts.length > 0">
+    <h2 class="allrecipes--title" >breakfasts</h2>
+        <div class="allrecipes_container">
+            <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueBreakfasts + 'px)'">
+                <app-card-recipes  *ngFor="let recipe of recipes.breakfasts" [recipe]="recipe">
+                </app-card-recipes>
+                </div>
+                 <div class="allrecipes_container--card--buttons">
+                <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('breakfasts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+                <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('breakfasts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+              </div>
+            </div>
+  </section>
+  <section *ngIf="recipes.mainDishes.length > 0">
+    <h2 class="allrecipes--title" >mainDishes</h2>
+    <div class="allrecipes_container">
+        <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueDesserts + 'px)'">
+            <app-card-recipes  *ngFor="let recipe of recipes.mainDishes" [recipe]="recipe">
+            </app-card-recipes>
+            </div>
+             <div class="allrecipes_container--card--buttons">
+            <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+          </div>
+
+        </div>
+</section>
+
+  <section *ngIf="recipes.sideDishes.length > 0">
+    <h2 class="allrecipes--title">side dishes</h2>
+    <div class="allrecipes_container">
+        <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueSideDishes + 'px)'">
+            <app-card-recipes  *ngFor="let recipe of recipes.sideDishes" [recipe]="recipe">
+            </app-card-recipes>
+            </div>
+             <div class="allrecipes_container--card--buttons">
+            <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('sideDishes')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('sideDishes')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+          </div>
+        </div>
+  </section>
+
+
+               
+   <section *ngIf="recipes.desserts.length > 0">
+                      <h2 class="allrecipes--title" >desserts</h2>
+                      <div class="allrecipes_container">
+                          <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueDesserts + 'px)'">
+                              <app-card-recipes  *ngFor="let recipe of recipes.desserts" [recipe]="recipe">
+                              </app-card-recipes>
+                              </div>
+                               <div class="allrecipes_container--card--buttons">
+                              <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
+                              <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                            </div>
+                
+                          </div>
+   </section>
+</div>

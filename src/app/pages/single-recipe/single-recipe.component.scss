@@ -21,11 +21,7 @@
  
     z-index: -1;
   }
-  
-  .recipe {
-    position: relative;
-    z-index: 1;
-  }
+
 
 
 .title {
@@ -36,13 +32,28 @@
 }
 
 .recipe{
-    margin:$marginPage;    
+    margin:$marginPage; 
+    position: relative;
+    z-index: 1;
+    &_fav{
+        position: absolute;
+        top: 2%;
+        right: 5%;
+        background-color:transparent;
+        border: none;
+        font-size: 1.8rem;
+        cursor:pointer;
+        &:hover , &--active {
+        opacity: 1;
+        color: $primaryColor;
+        }
+
+    }   
     &_information{
     display: flex;
     align-items:flex-start; 
     justify-content: space-between;
-    filter: blur(20px)
-    
+
     & h2{
         margin: 0;
     }

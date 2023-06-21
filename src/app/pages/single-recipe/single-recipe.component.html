@@ -53,19 +53,24 @@
                 </div>
             </form></div>
             <div class="recipe_comments--send--flex">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText"></textarea>
                 <br>
-                <button>Here We Go !</button>
-            </div>
+                <button (click)="addComment(recipe.recipe_id, commentText)">Here We Go!</button>
+              </div>
         </section>
-        <section class="recipe_comments--msg">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Enim nunc faucibus "</p>
-            <p>Elementum integer enim neque volutpate massa placerat duis ultricies. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Eget mi proin sed libero
+        <section class="recipe_comments--msg" *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length > 0">
+            <p *ngFor="let comment of userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2)">
+              {{ comment }}
             </p>
-        </section>
-    </article>
+          </section>
+          
+          <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length === 0">No comments</span>
+        </article>
+  
+    <button [ngClass]="{'recipe_fav--active':userService.isActive(recipe.recipe_id)}  " class="recipe_fav" (click)="userService.addFavorite(recipe.recipe_id)">
+        <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
+        <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
+    </button>
     </div>
 
   

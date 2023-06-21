@@ -1,12 +1,37 @@
+@use '../../style/variables' as *;
 .card{
     gap: 10px;
     width: 245px;
-    &_img--img{
+    position: relative;
+     &_fav{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            font-size:24px;
+            cursor:pointer;
+            width:38px; 
+            height:38px;
+            border-radius:50%;
+            opacity: 0.8;
+            border: none ;
+            &:hover , &--active {
+                opacity: 1;
+            
+             color: $primaryColor;
+            }
+        }
+    &_img{
+        position: relative;
+        &--img{
         width: 100%;
         
         aspect-ratio: 16/10;
         object-fit: cover;
         border-radius: 25px;
+        }
+       
+
     }
     &_information{
         text-align: center;
