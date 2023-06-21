@@ -1,106 +1,104 @@
 header {
-    background-color: var(--primary-color);
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+  background-color: var(--primary-color);
+  height: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 // Brand --------------------------------
 
 .chefs-compass {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .compass-link {
   display: flex;
-  align-items: center; 
-  text-decoration: none; 
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-logo {
-    position: relative;
-    width: 100px;
-    height: 100px;
+  position: relative;
+  width: 100px;
+  height: 100px;
 }
 
 .slogan {
-    color: var(--secondardy-text-color);
-    position: relative;
-    right: 20px;
+  color: var(--secondardy-text-color);
+  position: relative;
+  right: 20px;
 }
 
 // Search --------------------------------
 
-
 .search-module {
-    position: relative;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.search-module input[type="text"] {
-    padding: 13px;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    font-size: 16px;
-    width: 250px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .search-module input[type="text"]:focus {
-    border-color: #007bff;
-  }
-  
-  .search-module button[type="submit"] {
-    position: relative;
-    padding: 0px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    right: 34px;
-  }
-  
-  .search-module button[type="submit"]:hover {
-    background-color: gray;
-  }
+.search-module input[type='text'] {
+  padding: 13px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  width: 250px;
+  transition: border-color 0.3s ease;
+}
 
-  .mini-burger {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-    right: 13px;
-  }
+.search-module input[type='text']:focus {
+  border-color: #007bff;
+}
 
-  .line {
-    width: 23px;
-    height: 3px;
-    background-color: gray;
-    
-  }
+.search-module button[type='submit'] {
+  position: relative;
+  padding: 0px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  right: 34px;
+}
 
-  // Button menu
+.search-module button[type='submit']:hover {
+  background-color: gray;
+}
 
-  .links-menu ul {
-    display: flex;
-    position: relative;
-    right: 0px;
-    bottom: 5px;
-    align-items: baseline;
-    padding-right: 10px;
-    gap: 30px;
-    list-style: none;
-  }
+.mini-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  right: 13px;
+}
+
+.line {
+  width: 23px;
+  height: 3px;
+  background-color: gray;
+}
+
+// Button menu
+
+.links-menu ul {
+  display: flex;
+  position: relative;
+  right: 0px;
+  bottom: 5px;
+  align-items: baseline;
+  padding-right: 10px;
+  gap: 30px;
+  list-style: none;
+}
 
 .links-menu link {
-    background-color: var(--primary-color);
-    border: none;
+  background-color: var(--primary-color);
+  border: none;
 }
 
 .links-menu img {
@@ -125,3 +123,29 @@ header {
   margin-top: 0;
 }
 
+////////////// Responive design
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    bottom: 0;
+    margin-top: 200px;
+    display: block;
+  }
+
+  .nav-logo {
+    position: fixed;
+    top: 0;
+  }
+
+  .slogan {
+    display: none;
+  }
+
+  .links-menu ul {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    right: initial;
+    width: 100%;
+  }
+}
