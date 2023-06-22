@@ -1,16 +1,15 @@
-<a routerLink="{{recipe.recipe_name}}">
-    <article class="card">
-        <section class="card_img" >
-            <img   class="card_img--img" [src]="recipe.imgUrl" alt="">
-        </section>
-        <section class="card_information">
-            <h2 class="card_information--title">{{ recipe.recipe_name }}</h2>
-            <div class="card_information--price-duree">
-                <p>{{converter.getPriceSymbol(recipe.price)}}</p>
-                <p>{{converter.calculateTotalTime(recipe)}}</p>
-            </div>
-            <p class="card_information--description">{{ recipe.description }}</p>
-    
-        </section>
-    </article>
+<a routerLink="{{ recipe.recipe_name }}">
+  <article class="card">
+    <section class="card_img">
+      <img class="card_img--img" [src]="recipe.imgUrl" alt="" />
+    </section>
+    <section class="card_information">
+      <h2 class="card_information--title">{{ recipe.recipe_name }}</h2>
+      <div class="card_information--price-duree">
+        <p>{{ converter.getPriceSymbol(recipe.price) }}</p>
+        <p>{{ converter.calculateTotalTime(recipe) }}</p>
+      </div>
+      <p class="card_information--description">{{ recipe.description }}</p>
+    </section>
+  </article>
 </a>
