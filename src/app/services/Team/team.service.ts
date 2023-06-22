@@ -11,7 +11,7 @@ export class TeamService {
   constructor() { 
     this.Teams=[
       new Teams(
-        'https://avatars.githubusercontent.com/u/48420322?s=48&v=4',
+        '/assets/arturo.jpg',
         'Arturo',
         'https://github.com/ArPimentel',
         'https://www.linkedin.com/in/arturo-pimentel-developpeur-web/'
@@ -30,7 +30,7 @@ export class TeamService {
         ),
       
       new Teams(
-        'https://placehold.it/150x150',
+        '/assets/stock-photo.jpeg',
         'Daniel',
         'Undefined',
         'https://www.linkedin.com/in/daniel-ndoumbe-235aa5154'
