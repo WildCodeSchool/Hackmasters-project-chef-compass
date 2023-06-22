@@ -126,26 +126,25 @@ header {
 ////////////// Responive design
 
 @media (max-width: 768px) {
-  header {
-    position: fixed;
-    bottom: 0;
-    margin-top: 200px;
-    display: block;
-  }
+  // header {
+  //     position: absolute;
+  //     bottom: 0;
+  //     display: block;
+  // }
 
-  .nav-logo {
-    position: fixed;
-    top: 0;
-  }
+  // .nav-logo {
+  //   position: fixed;
+  //   top: 0;
+  // }
 
-  .slogan {
-    display: none;
-  }
+  // .slogan {
+  //   display: none;
+  // }
 
-  .links-menu ul {
-    display: flex;
-    justify-content: center; /* Center the items horizontally */
-    right: initial;
-    width: 100%;
-  }
+  // .links-menu ul {
+  //   display: flex;
+  //   justify-content: center; /* Center the items horizontally */
+  //   right: initial;
+  //   width: 100%;
+  // }
 }
