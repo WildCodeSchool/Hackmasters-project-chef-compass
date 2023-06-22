@@ -1,5 +1,5 @@
-<a routerLink="{{ recipe.recipe_name }}">
-  <article class="card">
+<article class="card">
+  <a routerLink="{{ recipe.recipe_name }}">
     <section class="card_img">
       <img class="card_img--img" [src]="recipe.imgUrl" alt="" />
     </section>
@@ -11,5 +11,13 @@
       </div>
       <p class="card_information--description">{{ recipe.description }}</p>
     </section>
-  </article>
-</a>
+  </a>
+  <button
+    [ngClass]="{ 'card_fav--active': userService.isActive(recipe.recipe_id) }"
+    class="card_fav"
+    (click)="userService.addFavorite(recipe.recipe_id)"
+  >
+    <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
+    <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
+  </button>
+</article>

@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RecipeFormComponent } from './recipe-form/recipe-form/recipe-form.component';
 import { ErrorModalComponent } from './error-modal/error-modal/error-modal.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { RecipesdisplayComponent } from './component/recipes-display/recipes-display.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { ErrorModalComponent } from './error-modal/error-modal/error-modal.compo
     AllRecipesComponent,
     RecipeFormComponent,
     ErrorModalComponent,
-
+    RecipesdisplayComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { ErrorModalComponent } from './error-modal/error-modal/error-modal.compo
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    FontAwesomeModule
   ],
+
   providers: [],
   bootstrap: [AppComponent],
   
