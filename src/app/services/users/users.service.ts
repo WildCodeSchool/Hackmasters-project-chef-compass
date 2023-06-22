@@ -8,14 +8,16 @@ import { map, filter, distinctUntilChanged } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsersService {
-  favoriteRecipes: number[] = [1];
+  favoriteRecipes: number[] = [];
 
 
   comments=[
-    {recipe:1,comment:["Commentaire ","commentaire 3"]},
-    {recipe:2,comment:["Commentaire 3","commentaire 4"]}
+    {"recipe": 1, "comment": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum"]},
+    {"recipe": 2, "comment": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt"]},
+    {"recipe": 3, "comment": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem"]}
+]
 
-  ]
+  
 
   // Create a subject to emit updates when favorites change
   private favoriteUpdateSubject = new Subject<void>();
