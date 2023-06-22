@@ -7,8 +7,8 @@ import { Recipes } from 'src/app/models/recipes.model';
 
 @Component({
   selector: 'app-recipesdisplay',
-  templateUrl: './recipesdisplay.component.html',
-  styleUrls: ['./recipesdisplay.component.scss']
+  templateUrl: './recipes-display.component.html',
+  styleUrls: ['./recipes-display.component.scss']
 })
 export class RecipesdisplayComponent implements OnInit{
   @Input() recipes!: Recipes; 
@@ -30,29 +30,29 @@ export class RecipesdisplayComponent implements OnInit{
   ngOnInit(): void { }
               moveLeft(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts += 100; 
+                  this.translateValueDesserts += 300; 
                 } else if (recipe === 'mainDishes') {
-                  this.translateValueMainDishes += 100;
+                  this.translateValueMainDishes += 300;
                 } else if (recipe === 'appetizers') {
-                  this.translateValueAppetizers += 100;
+                  this.translateValueAppetizers += 300;
                 } else if (recipe === 'breakfasts') {
-                  this.translateValueBreakfasts += 100;
+                  this.translateValueBreakfasts += 300;
                 } else if (recipe === 'sideDishes') {
-                  this.translateValueSideDishes += 100;
+                  this.translateValueSideDishes += 200;
                 }
               }
               
               moveRight(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts -= 100; 
+                  this.translateValueDesserts -= 300; 
                 } else if (recipe === 'mainDishes') {
-                  this.translateValueMainDishes -= 100;
+                  this.translateValueMainDishes -= 300;
                 } else if (recipe === 'appetizers') {
-                  this.translateValueAppetizers -= 100;
+                  this.translateValueAppetizers -= 300;
                 } else if (recipe === 'breakfasts') {
-                  this.translateValueBreakfasts -= 100;
+                  this.translateValueBreakfasts -= 300;
                 } else if (recipe === 'sideDishes') {
-                  this.translateValueSideDishes -= 100;
+                  this.translateValueSideDishes -= 300;
                 }
               }
      

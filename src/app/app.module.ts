@@ -17,7 +17,7 @@ import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.compo
 
 import { FooterComponent } from './footer/footer.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
-import { RecipesdisplayComponent } from './component/recipesdisplay/recipesdisplay.component';
+import { RecipesdisplayComponent } from './component/recipes-display/recipes-display.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
