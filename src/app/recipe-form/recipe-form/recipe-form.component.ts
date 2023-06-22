@@ -1,39 +1,42 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RecipesService } from 'src/app/services/recipies/recipes.service';
-import { countries } from 'countries-list';
+import * as countries from 'countries-list';
+import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
 import { ErrorModalComponent } from 'src/app/error-modal/error-modal/error-modal.component';
 import { SuccessModalComponent } from 'src/app/success-modal/succes-modal/succes-modal.component';
-
+import { RecipesService } from 'src/app/services/recipies/recipes.service';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-recipe-form',
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.scss'],
 })
-export class RecipeFormComponent {
-  recipe: any = {
-    typeOfDish: '',
-    name: '',
-    country: '',
-    prepTime: null,
-    cookTime: null,
-    allergens: '',
-    diet: '',
-    steps: '',
-  };
-  recipeForm: FormGroup;
-  countriesList: any[] = [];
+export class RecipeFormComponent implements OnDestroy {
+  isFormSubmitted = false;
+  errorMessage: string = '';
+  recipe: Recipe = new Recipe();
+  recipeForm!: FormGroup;
+  countriesList: any[] = Object.values(countries);
   dishOptions: string[] = ['Dish', 'Dessert', 'Starter', 'Aperitif'];
   budgetOptions: string[] = ['Low', 'Medium', 'High'];
+  errorSubject = new Subject<string>();
 
   constructor(
     private router: Router,
     @Inject(MatDialog) private dialog: any,
-    private recipeService: RecipesService,
+    public recipeService: RecipesService,
     private formBuilder: FormBuilder
   ) {
+    this.loadCountries();
+
+    this.errorSubject.subscribe(errorMessage => {
+      const dialogRef = this.dialog.open(ErrorModalComponent);
+      dialogRef.componentInstance.setMessage(errorMessage);
+    });
+
     this.recipeForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       typeOfDish: ['', Validators.required],
@@ -45,21 +48,23 @@ export class RecipeFormComponent {
       diet: ['', Validators.required],
       steps: ['', Validators.required],
     });
-
-    this.loadCountries();
   }
 
   async onSubmit() {
     if (this.recipeForm.invalid) {
       this.markFormGroupTouched(this.recipeForm);
-      this.errorMessage = 'Please fill in all the fields in the form';
-
-      const dialogRef = this.dialog.open(ErrorModalComponent);
-      dialogRef.componentInstance.setMessage(this.errorMessage);
-
+      const errorMessage = 'Please fill in all the fields in the form';
+      this.errorSubject.next(errorMessage);
       return;
     }
-
+  
+    if (this.recipeService.modalOpen$.pipe(take(1))) {
+      // Ne pas définir isFormSubmitted à true si la fenêtre d'erreur est ouverte
+      return;
+    }
+  
+    this.isFormSubmitted = true;
+  
     try {
       await this.recipeService.saveRecipe(this.recipe).toPromise();
       this.router.navigate(['/recipes']);
@@ -68,18 +73,23 @@ export class RecipeFormComponent {
       });
     } catch (error) {
       console.error('POST request error:', error);
-      this.errorMessage = 'An error occurred while saving the recipe.';
-
+      const errorMessage = 'An error occurred while saving the recipe.';
+      this.errorSubject.next(errorMessage);
+  
       const dialogRef = this.dialog.open(ErrorModalComponent);
-      dialogRef.componentInstance.setMessage(this.errorMessage);
+      dialogRef.componentInstance.setMessage(errorMessage);
     }
+  }
+  
+
+  ngOnDestroy() {
+    this.errorSubject.unsubscribe();
   }
 
   onCancel() {
     this.recipeForm.reset();
+    
   }
-
-  errorMessage = '';
 
   onFileChange(event: any) {
     const file = event.target.files[0];
@@ -106,11 +116,12 @@ export class RecipeFormComponent {
 
   isFieldInvalid(fieldName: string): boolean {
     const field = this.recipeForm.get(fieldName);
-    return field ? field.invalid && (field.dirty || field.touched) : false;
+    return field ? (field.invalid && (field.dirty || field.touched || this.isFormSubmitted)) : false;
   }
+  
 
   private loadCountries() {
-    this.countriesList = Object.values(countries);
+    this.countriesList = Object.values(countries.countries);
   }
 
   // Fonction utilitaire pour marquer tous les champs d'un formulaire comme "touchés"
@@ -123,4 +134,9 @@ export class RecipeFormComponent {
       }
     });
   }
+
+  openErrorModal() {
+    this.recipeService.openModal();
+  }
+
 }

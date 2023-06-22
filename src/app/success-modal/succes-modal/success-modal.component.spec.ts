@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SuccessModalComponent } from './succes-modal.component';
 
-describe('SuccesModalComponent', () => {
+
+describe('SuccessModalComponent', () => {
   let component: SuccessModalComponent;
   let fixture: ComponentFixture<SuccessModalComponent>;
 

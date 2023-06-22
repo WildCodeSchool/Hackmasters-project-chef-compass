@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, catchError, throwError } from 'rxjs';
+import { Observable, map, catchError, throwError, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipesService {
   private recipesUrl = '../../assets/data/recipes.json';
+  private modalOpenSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  modalOpen$ = this.modalOpenSubject.asObservable();
 
   constructor(private http: HttpClient) {}
   getRecipes(): Observable<any[]> {
@@ -36,5 +38,12 @@ export class RecipesService {
   private handleError(error: any): Observable<never> {
     console.error('Erreur de requête POST:', error);
     return throwError('Une erreur est survenue. Veuillez réessayer ultérieurement.');
+  }
+  openModal() {
+    this.modalOpenSubject.next(true);
+  }
+
+  closeModal() {
+    this.modalOpenSubject.next(false);
   }
 }

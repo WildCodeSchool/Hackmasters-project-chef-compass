@@ -1,4 +1,7 @@
-
+.container2.disabled {
+  pointer-events: none;
+  opacity: 0.10; // Optionnel : réduire l'opacité des éléments désactivés pour les rendre visuellement distincts
+}
 .video-overlay {
     position: absolute;
     top: 50%;
@@ -9,7 +12,6 @@
   }
   
   .video-title {
-    background-color: white;
     font-size: 40px;
     font-weight: bold;
     color: white;
