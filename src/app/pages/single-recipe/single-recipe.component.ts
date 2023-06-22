@@ -7,13 +7,14 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import  { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { UsersService } from 'src/app/services/users/users.service';
 import { NgModel } from '@angular/forms';
+import { Recipe } from 'src/app/models/recipe.model';
 @Component({
   selector: 'app-single-recipe',
   templateUrl: './single-recipe.component.html',
   styleUrls: ['./single-recipe.component.scss']
 })
 export class SingleRecipeComponent implements OnInit {
-  recipe: any;
+  recipe!: Recipe;
   routeSubscription!: Subscription;
   commentText: string = '';
 

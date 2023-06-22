@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { RecipesService } from '../recipies/recipes.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { Recipe } from 'src/app/models/recipe.model';
+import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +10,28 @@ import { Subject } from 'rxjs';
 export class UsersService {
   favoriteRecipes: number[] = [1];
 
-  comments = [
-    { recipe: 1, comment: "Commentaire 1" },
-    { recipe: 1, comment: "Commentaire 2" },
-    { recipe: 2, comment: "Commentaire 3" },
-    { recipe: 2, comment: "Commentaire 4" },
-    { recipe: 3, comment: "Commentaire 5" }
-  ];
+
+  comments=[
+    {recipe:1,comment:["Commentaire ","commentaire 3"]},
+    {recipe:2,comment:["Commentaire 3","commentaire 4"]}
+
+  ]
 
   // Create a subject to emit updates when favorites change
   private favoriteUpdateSubject = new Subject<void>();
-  favoriteUpdate$ = this.favoriteUpdateSubject.asObservable();
+  favoriteUpdate$: Observable<void> = this.favoriteUpdateSubject.asObservable();
 
-  constructor(public recipeService: RecipesService) {}
+  constructor(private recipeService: RecipesService) {}
 
+  getLatestCommentsByRecipeId(recipeId: number, count: number): string[] {
+    const commentsByRecipe = this.comments.find(c => c.recipe === recipeId);
+    if (commentsByRecipe) {
+      const latestComments = commentsByRecipe.comment.slice(0, count);
+      return latestComments;
+    } else {
+      return [];
+    }
+  }
   addFavorite(id: number): void {
     const index = this.favoriteRecipes.indexOf(id);
     if (index === -1) {
@@ -35,13 +45,31 @@ export class UsersService {
   isActive(id: number): boolean {
     return this.favoriteRecipes.indexOf(id) !== -1;
   }
-
-  getLatestCommentsByRecipeId(recipeId: number, count: number): string[] {
-    const commentsByRecipe = this.comments.filter(comment => comment.recipe === recipeId);
-    const latestComments = commentsByRecipe.slice(-count).map(comment => comment.comment);
-    return latestComments;
-  }
   addComment(recipeId: number, comment: string): void {
-    this.comments.push({ recipe: recipeId, comment: comment });
+    const recipeComments = this.comments.find(c => c.recipe === recipeId);
+    if (recipeComments) {
+      recipeComments.comment.unshift(comment); // Ajoute le commentaire au début du tableau
+    } else {
+      this.comments.push({ recipe: recipeId, comment: [comment] });
+    }
+  }
+
+  async loadFavoriteRecipes(): Promise<void> {
+    await this.recipeService.loadRecipes();
+  }
+
+  getFavoriteRecipes(): any {
+    const allRecipes = this.recipeService.recipes;
+    return {
+      desserts: this.getFilteredRecipes(allRecipes.desserts),
+      mainDishes: this.getFilteredRecipes(allRecipes.mainDishes),
+      appetizers: this.getFilteredRecipes(allRecipes.appetizers),
+      breakfasts: this.getFilteredRecipes(allRecipes.breakfasts),
+      sideDishes: this.getFilteredRecipes(allRecipes.sideDishes)
+    };
+  }
+
+  private getFilteredRecipes(recipes: Recipe[]): Recipe[] {
+    return recipes?.filter((recipe: Recipe) => this.favoriteRecipes.includes(recipe.recipe_id));
   }
 }

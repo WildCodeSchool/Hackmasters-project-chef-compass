@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit,} from '@angular/core';
+import { Recipes } from 'src/app/models/recipes.model';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 
 @Component({
@@ -8,15 +9,11 @@ import { RecipesService } from 'src/app/services/recipies/recipes.service';
   styleUrls: ['./all-recipes.component.scss']
 })
 export class AllRecipesComponent implements OnInit {
-recipes:any 
+recipes!:Recipes; 
 
   constructor( private recipesService: RecipesService, ) {}
   
-  ngOnInit(): void {
-    
-    this.recipes = this.recipesService.recipes;
-    
-  }
+  ngOnInit(): void {this.recipes = this.recipesService.recipes;}
 
 
 

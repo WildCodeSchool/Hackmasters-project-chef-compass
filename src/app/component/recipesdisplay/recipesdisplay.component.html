@@ -1,9 +1,7 @@
   <ng-container *ngIf="!haveFavorites && currentRoute === 'favourites'">
     <h2>You haven't added any recipes to your favorites.</h2>
 </ng-container> 
-<div class="allrecipes" *ngIf="recipes.length !== 0 ">
-
-
+<div class="allrecipes" *ngIf="recipes">
   <section *ngIf="recipes.appetizers.length > 0">
     <h2 class="allrecipes--title">appetizers</h2>
     <div class="allrecipes_container">
@@ -17,8 +15,7 @@
           </div>
       </div>
   </section>
-
-        
+      
   <section *ngIf="recipes.breakfasts.length > 0">
     <h2 class="allrecipes--title" >breakfasts</h2>
         <div class="allrecipes_container">
@@ -32,6 +29,7 @@
               </div>
             </div>
   </section>
+
   <section *ngIf="recipes.mainDishes.length > 0">
     <h2 class="allrecipes--title" >mainDishes</h2>
     <div class="allrecipes_container">
@@ -61,8 +59,6 @@
         </div>
   </section>
 
-
-               
    <section *ngIf="recipes.desserts.length > 0">
                       <h2 class="allrecipes--title" >desserts</h2>
                       <div class="allrecipes_container">
