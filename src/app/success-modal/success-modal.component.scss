@@ -1,0 +1,26 @@
+.success-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 20px;
+  
+    .success-message {
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+      margin-bottom: 10px;
+    }
+  
+    .success-description {
+      font-size: 16px;
+      color: black;
+      text-align: center;
+    }
+  
+    .success-button {
+      margin-top: 20px;
+    }
+  }
+  
