@@ -6,7 +6,8 @@
            
         </section>
         <section class="card_information">
-            <h2 class="card_information--title">{{ recipe.recipe_name }}</h2>
+            <h2 class="card_information--title">{{ converter.getFormattedRecipeName(recipe.recipe_name) }}</h2>
+
             <div class="card_information--price-duree">
                 <p>{{converter.getPriceSymbol(recipe.price)}}</p>
                 <p>{{converter.calculateTotalTime(recipe)}}</p>

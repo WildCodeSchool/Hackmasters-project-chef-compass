@@ -29,7 +29,7 @@ export class RecipesService {
     
     this.loadRecipes();
   }
-  private recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
+   recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
 
   getRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(this.recipesUrl);
