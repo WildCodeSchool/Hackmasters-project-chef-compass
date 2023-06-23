@@ -39,5 +39,13 @@
     flex-direction: column;
   }
 
+  ////////////// Responive design
+
+  @media (max-width: 768px) {
+    footer {
+      display: none;
+    }
+  }
+
 
   
