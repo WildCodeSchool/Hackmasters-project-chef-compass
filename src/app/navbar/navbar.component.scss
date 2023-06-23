@@ -128,13 +128,8 @@ header {
 @media (max-width: 768px) {
   
   header {
-    height: 90px
-  }
-
-  .nav-logo {
-    position: absolute;
-    top: 0;
-    margin-bottom: 50px;
+    height: 90px;
+    justify-content: flex-start;
   }
 
   .slogan {
@@ -143,10 +138,10 @@ header {
 
   .links-menu ul {
     display: flex;
-    position: relative;
-    justify-content: center; 
+ 
+
     right: 0;
-    margin-left: 50px;
+
     width: 100%;
     bottom: 5px;
   }
