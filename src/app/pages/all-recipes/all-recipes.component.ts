@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, ElementRef, OnInit,} from '@angular/core';
 import { Recipes } from 'src/app/models/recipes.model';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
@@ -13,10 +13,11 @@ recipes!:Recipes;
 
   constructor( private recipesService: RecipesService, ) {}
   
-  ngOnInit(): void {this.recipes = this.recipesService.recipes;}
+  ngOnInit(): void {
+    this.recipesService.recipesSubject.subscribe((updatedRecipes: Recipes) => {
+      this.recipes = updatedRecipes;
 
-
-
-  
+    });
+  }
 }
 

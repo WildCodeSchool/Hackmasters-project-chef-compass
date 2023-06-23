@@ -30,7 +30,7 @@ export class RecipesService {
   constructor(private http: HttpClient) {
     this.loadRecipes();
   }
-  private recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
+   recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
 
   private modalOpenSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSubject.asObservable();

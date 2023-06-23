@@ -19,4 +19,5 @@ export class CardRecipesComponent {
   faStar = faStar;
   faStarSolid = faStarSolid;
 
+
   }
