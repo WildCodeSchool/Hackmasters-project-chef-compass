@@ -6,6 +6,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'favourites/:name', component: SingleRecipeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'favourites', component: FavoritesComponent },
+  { path: 'add-recipe', component: RecipeFormComponent },
 ];
 
 @NgModule({

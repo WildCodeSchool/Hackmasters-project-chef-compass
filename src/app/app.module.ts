@@ -21,7 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 import { SuccessModalComponent } from './success-modal/success-modal.component';
 import { ErrorModalComponent } from './error-modal/error-modal.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,16 @@ import { ErrorModalComponent } from './error-modal/error-modal.component';
     ErrorModalComponent,
     SuccessModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, FontAwesomeModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
