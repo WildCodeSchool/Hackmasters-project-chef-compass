@@ -13,10 +13,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Fredoka', sans-serif; /*Title Font*/ 
+    font-family: 'Fredoka', sans-serif; /*Title Font*/
      }
 *{
-    font-family: 'Darker Grotesque', sans-serif; /*Text Font*/ 
+    font-family: 'Darker Grotesque', sans-serif; /*Text Font*/
 }
 p, li ,textarea{
     font-size: 1.2rem;
@@ -26,18 +26,6 @@ a{
     text-decoration: none;
     color: black;
 }
-
-
-// @media (max-width: 768px) {
-//     header {
-//         order: 1;
-//     }
-
-//     main {
-//         order: 2;
-//     }
-
-// }
 
 span{
     font-size: 1.2rem;
