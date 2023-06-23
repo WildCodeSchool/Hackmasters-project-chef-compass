@@ -1,15 +1,14 @@
+
+<div class="wrapper">
 <section class="pages">
   <ng-container *ngIf="isNavbarAbove">
   <app-navbar></app-navbar>
 </ng-container>
-
   <main>
     <router-outlet></router-outlet>
   </main>
-
   <ng-container *ngIf="!isNavbarAbove">
     <app-navbar></app-navbar>
   </ng-container>
-
   <app-footer></app-footer>
-</section>
+</div>

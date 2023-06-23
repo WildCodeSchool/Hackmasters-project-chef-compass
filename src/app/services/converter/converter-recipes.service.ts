@@ -48,4 +48,7 @@ export class ConverterRecipesService {
       return '€€€€';
     } 
   }
+  getFormattedRecipeName(recipe:string) {
+    return recipe.replace(/-/g, ' ');
+  }
 }
