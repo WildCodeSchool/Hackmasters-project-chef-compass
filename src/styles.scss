@@ -18,7 +18,7 @@ h1,h2,h3,h4,h5,h6 {
 *{
     font-family: 'Darker Grotesque', sans-serif; /*Text Font*/ 
 }
-p{
+p, li ,textarea{
     font-size: 1.2rem;
 }
 
@@ -26,6 +26,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
 
 // @media (max-width: 768px) {
 //     header {
@@ -37,3 +38,8 @@ a{
 //     }
 
 // }
+
+span{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
