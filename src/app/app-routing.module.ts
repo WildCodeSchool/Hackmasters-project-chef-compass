@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 import { AboutComponent } from './pages/about/about.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
