@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Recipes } from 'src/app/models/recipes.model';
+
 
 @Component({
   selector: 'app-recipesdisplay',
@@ -11,9 +12,9 @@ import { Recipes } from 'src/app/models/recipes.model';
   styleUrls: ['./recipes-display.component.scss']
 })
 export class RecipesdisplayComponent implements OnInit{
-  @Input() recipes!: Recipes; 
+  @Input() recipes!: Recipes;
   haveFavorites = this.userService.favoriteRecipes.length > 0;
-  
+
 
   translateValueDesserts = 0;
   translateValueMainDishes = 0;
@@ -25,12 +26,12 @@ export class RecipesdisplayComponent implements OnInit{
   constructor(private http: HttpClient,
               private recipesService :RecipesService,
               private route :ActivatedRoute,
-              private userService: UsersService ) { } 
+              private userService: UsersService ) { }
 
   ngOnInit(): void { }
               moveLeft(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts += 300; 
+                  this.translateValueDesserts += 300;
                 } else if (recipe === 'mainDishes') {
                   this.translateValueMainDishes += 300;
                 } else if (recipe === 'appetizers') {
@@ -41,10 +42,10 @@ export class RecipesdisplayComponent implements OnInit{
                   this.translateValueSideDishes += 200;
                 }
               }
-              
+
               moveRight(recipe: string) {
                 if (recipe === 'desserts') {
-                  this.translateValueDesserts -= 300; 
+                  this.translateValueDesserts -= 300;
                 } else if (recipe === 'mainDishes') {
                   this.translateValueMainDishes -= 300;
                 } else if (recipe === 'appetizers') {
@@ -55,6 +56,6 @@ export class RecipesdisplayComponent implements OnInit{
                   this.translateValueSideDishes -= 300;
                 }
               }
-     
-  
+
+
 }

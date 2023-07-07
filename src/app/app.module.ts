@@ -9,18 +9,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { CardRecipesComponent } from './component/card-recipes/card-recipes.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './component/footer/footer.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipesdisplayComponent } from './component/recipes-display/recipes-display.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
-import { SuccessModalComponent } from './success-modal/success-modal.component';
-import { ErrorModalComponent } from './error-modal/error-modal.component';
+import { SuccessModalComponent } from './component/success-modal/success-modal.component';
+import { ErrorModalComponent } from './component/error-modal/error-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({

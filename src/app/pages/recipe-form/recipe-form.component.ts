@@ -6,8 +6,8 @@ import * as countries from 'countries-list';
 import { Subject } from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { take } from 'rxjs/operators';
-import { ErrorModalComponent } from 'src/app/error-modal/error-modal.component';
-import { SuccessModalComponent } from 'src/app/success-modal/success-modal.component';
+import { ErrorModalComponent } from 'src/app/component/error-modal/error-modal.component';
+import { SuccessModalComponent } from 'src/app/component/success-modal/success-modal.component';
 import { Recipe } from 'src/app/models/recipe.form.model';
 @Component({
   selector: 'app-recipe-form',

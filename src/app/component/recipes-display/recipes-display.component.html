@@ -1,6 +1,6 @@
   <ng-container *ngIf="!haveFavorites && currentRoute === 'favourites'">
     <h2>You haven't added any recipes to your favorites.</h2>
-</ng-container> 
+</ng-container>
 <div class="allrecipes" *ngIf="recipes">
   <section *ngIf="recipes.appetizers.length > 0">
     <h2 class="allrecipes--title">appetizers</h2>
@@ -10,12 +10,12 @@
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
-            <button class="allrecipes_container--buttons--left  button_selection" (click)="moveLeft('appetizers')"><img src="../../../assets/right.png" width="50px" alt=""></button>
-            <button class="allrecipes_container--buttons--right  button_selection" (click)="moveRight('appetizers')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+            <button *ngIf="translateValueAppetizers" class="allrecipes_container--buttons--left  button_selection" (click)="moveLeft('appetizers')"><img src="/assets/icon/recipeDisplay/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right  button_selection" (click)="moveRight('appetizers')"><img src="/assets/icon/recipeDisplay/left.png" width="50px" alt=""></button>
           </div>
       </div>
   </section>
-      
+
   <section *ngIf="recipes.breakfasts.length > 0">
     <h2 class="allrecipes--title" >breakfasts</h2>
         <div class="allrecipes_container">
@@ -24,8 +24,8 @@
                 </app-card-recipes>
                 </div>
                  <div class="allrecipes_container--card--buttons">
-                <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('breakfasts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
-                <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('breakfasts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                <button *ngIf="translateValueBreakfasts" class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('breakfasts')"><img src="/assets/icon/recipeDisplay/right.png" width="50px" alt=""></button>
+                <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('breakfasts')"><img src="/assets/icon/recipeDisplay/left.png" width="50px" alt=""></button>
               </div>
             </div>
   </section>
@@ -38,8 +38,8 @@
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
-            <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
-            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+            <button *ngIf="translateValueMainDishes" class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="/assets/icon/recipeDisplay/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="/assets/icon/recipeDisplay/left.png" width="50px" alt=""></button>
           </div>
 
         </div>
@@ -53,8 +53,8 @@
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
-            <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('sideDishes')"><img src="../../../assets/right.png" width="50px" alt=""></button>
-            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('sideDishes')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+            <button *ngIf="translateValueSideDishes" class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('sideDishes')"><img src="/assets/icon/recipeDisplay/right.png" width="50px" alt=""></button>
+            <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('sideDishes')"><img src="/assets/icon/recipeDisplay/left.png" width="50px" alt=""></button>
           </div>
         </div>
   </section>
@@ -67,10 +67,10 @@
                               </app-card-recipes>
                               </div>
                                <div class="allrecipes_container--card--buttons">
-                              <button class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="../../../assets/right.png" width="50px" alt=""></button>
-                              <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="../../../assets/left.png" width="50px" alt=""></button>
+                              <button *ngIf="translateValueDesserts" class="allrecipes_container--buttons--left button_selection" (click)="moveLeft('desserts')"><img src="/assets/icon/recipeDisplay/right.png" width="50px" alt=""></button>
+                              <button class="allrecipes_container--buttons--right button_selection" (click)="moveRight('desserts')"><img src="/assets/icon/recipeDisplay/left.png" width="50px" alt=""></button>
                             </div>
-                
+
                           </div>
    </section>
 </div>
