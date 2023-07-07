@@ -1,5 +1,7 @@
+@use '../../style/variables' as *;
+
 header {
-  background-color: var(--primary-color);
+  background-color: $secondaryColor;
   height: 90px;
   width: 100%;
   display: flex;
@@ -27,121 +29,104 @@ header {
 }
 
 .slogan {
-  color: var(--secondardy-text-color);
+  color: $primaryColor;
   position: relative;
   right: 20px;
 }
 
 // Search --------------------------------
 
-.search-module {
-  position: relative;
-  display: flex;
-  align-items: center;
+.search {
+  align-self: center;
+    &_module {
+      position: relative;
+      display: flex;
+      align-items: center;
+      & input {
+        padding: 13px;
+        border: 2px solid #ccc;
+        border-radius: 25px;
+        font-size: 16px;
+        width: 250px;
+        transition: border-color 0.3s ease;
+        &:focus {
+          border-color: #007bff;
+        }
+      }
+      &-button{
+        position: relative;
+        background-color: $secondaryColor;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        right: 34px;
+        &-icon {
+          position: relative;
+          right: 5px;
+          color: gray;
+        }
+        &:hover {
+          background-color: gray;
+        }
+      }
+    }
+  &_burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    right: 13px;
+    color: grey;
+      }
 }
 
-.search-module input[type='text'] {
-  padding: 13px;
-  border: 2px solid #ccc;
-  border-radius: 25px;
-  font-size: 16px;
-  width: 250px;
-  transition: border-color 0.3s ease;
-}
-
-.search-module input[type='text']:focus {
-  border-color: #007bff;
-}
-
-.search-module button[type='submit'] {
-  position: relative;
-  padding: 0px;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  right: 34px;
-}
-
-.search-module button[type='submit']:hover {
-  background-color: gray;
-}
-
-.mini-burger {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  right: 13px;
-}
-
-.line {
-  width: 23px;
-  height: 3px;
-  background-color: gray;
-}
 
 // Button menu
-
 .links-menu ul {
   display: flex;
   position: relative;
-  right: 0px;
   bottom: 5px;
   align-items: baseline;
   padding-right: 10px;
   gap: 30px;
   list-style: none;
 }
-
 .links-menu link {
-  background-color: var(--primary-color);
+  background-color: $secondaryColor;
   border: none;
 }
-
 .links-menu img {
   position: relative;
   left: 24px;
 }
-
 .links-menu li:nth-child(2) img {
   width: 35px;
   position: relative;
   top: 2px;
   left: 18px;
 }
-
 .links-menu li:nth-child(3) img {
   width: 40px;
   position: relative;
   top: 10px;
 }
-
 .links-menu p {
   margin-top: 0;
 }
-
 ////////////// Responive design
 
 @media (max-width: 768px) {
-  
   header {
     height: 90px;
     justify-content: flex-start;
   }
-
   .slogan {
     display: none;
   }
-
   .links-menu ul {
     display: flex;
- 
-
     right: 0;
-
     width: 100%;
     bottom: 5px;
   }

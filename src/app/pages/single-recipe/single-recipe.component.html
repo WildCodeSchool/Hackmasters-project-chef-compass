@@ -1,13 +1,13 @@
 
     <div class="recipe">
          <h1 class="title">{{ converter.getFormattedRecipeName(recipe.recipe_name) }}</h1>
-        <article class="recipe_information" >
+        <article class="recipe_information back" >
             <section class="recipe_information--ingredient">
                 <h2>Ingredients:</h2>
                 <ul>
                     <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
                 </ul>
-            
+
             </section>
             <section class="recipe_information--time">
                 <h2>time :</h2>
@@ -22,20 +22,20 @@
             </section>
              <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img">
         </article>
-       
-      <article class="recipe_details">
+
+      <article class="recipe_details back">
         <section class="recipe_details--steps">
             <h3>Steps:</h3>
         <ol>
           <li *ngFor="let step of recipe.steps">{{ step }}</li>
         </ol>
         </section>
-        <section class="recipe_details--origin " >
+        <section class="recipe_details--origin back" >
             <h4> {{ recipe.recipe_type }}</h4>
             <h4>Country: {{ recipe.country_of_origin }}</h4>
             </section>
     </article>
-    <article class="recipe_comments">  
+    <article class="recipe_comments">
         <section class="recipe_comments--send">
             <div class="recipe_comments--rating">
                 <form method="post">
@@ -49,7 +49,7 @@
                     <input type="radio" name="rating" value="star4.2" id="star4.2" class="radio-btn butn">
                     <label for="star4.2">☆</label>
                     <input type="radio" name="rating" value="star5.2" id="star5.2" class="radio-btn butn">
-                    <label for="star5.2">☆</label>  
+                    <label for="star5.2">☆</label>
                 </div>
             </form></div>
             <div class="recipe_comments--send--flex">
@@ -63,14 +63,13 @@
               {{ comment }}
             </p>
           </section>
-          
+
           <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length === 0">No comments</span>
         </article>
-  
+
     <button [ngClass]="{'recipe_fav--active':userService.isActive(recipe.recipe_id)}  " class="recipe_fav" (click)="userService.addFavorite(recipe.recipe_id)">
         <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
         <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
     </button>
     </div>
 
-  

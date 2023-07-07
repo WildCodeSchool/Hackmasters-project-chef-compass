@@ -8,14 +8,14 @@
 
   <!-- Search module display: none; until able to search, waiting to be implemented -->
 
-  <div style="display: none">
-    <div class="search-module">
+  <div class="search">
+    <div class="search_module">
       <input type="text" placeholder="Dishes..." />
-      <button type="submit"><img src="/assets/icon/NavBar/mag-glass.png" /></button>
-      <div class="mini-burger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+      <button class="search_module-button" type="submit">
+        <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
+      </button>
+      <div class="search_burger">
+        <fa-icon  [icon]="faBars"></fa-icon>
       </div>
     </div>
   </div>

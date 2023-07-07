@@ -6,7 +6,7 @@
     <h2 class="allrecipes--title">appetizers</h2>
     <div class="allrecipes_container">
         <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueAppetizers + 'px)'">
-            <app-card-recipes  *ngFor="let recipe of recipes.appetizers" [recipe]="recipe">
+            <app-card-recipes  *ngFor="let recipe of recipes.appetizers let i = index" [recipe]="recipe" [ngClass]="'card_animation--' + (i + 1)">
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
@@ -20,7 +20,7 @@
     <h2 class="allrecipes--title" >breakfasts</h2>
         <div class="allrecipes_container">
             <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueBreakfasts + 'px)'">
-                <app-card-recipes  *ngFor="let recipe of recipes.breakfasts" [recipe]="recipe">
+                <app-card-recipes  *ngFor="let recipe of recipes.breakfasts let i = index" [recipe]="recipe" [ngClass]="'card_animation--' + (i + 1)">
                 </app-card-recipes>
                 </div>
                  <div class="allrecipes_container--card--buttons">
@@ -34,7 +34,7 @@
     <h2 class="allrecipes--title" >mainDishes</h2>
     <div class="allrecipes_container">
         <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueDesserts + 'px)'">
-            <app-card-recipes  *ngFor="let recipe of recipes.mainDishes" [recipe]="recipe">
+            <app-card-recipes  *ngFor="let recipe of recipes.mainDishes let i = index" [recipe]="recipe" [ngClass]="'card_animation--' + (i + 1)">
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
@@ -49,7 +49,7 @@
     <h2 class="allrecipes--title">side dishes</h2>
     <div class="allrecipes_container">
         <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueSideDishes + 'px)'">
-            <app-card-recipes  *ngFor="let recipe of recipes.sideDishes" [recipe]="recipe">
+            <app-card-recipes  *ngFor="let recipe of recipes.sideDishes let i = index" [recipe]="recipe" [ngClass]="'card_animation--' + (i + 1)">
             </app-card-recipes>
             </div>
              <div class="allrecipes_container--card--buttons">
@@ -63,7 +63,7 @@
                       <h2 class="allrecipes--title" >desserts</h2>
                       <div class="allrecipes_container">
                           <div class="allrecipes_container--card" [style.transform]="'translateX(' + translateValueDesserts + 'px)'">
-                              <app-card-recipes  *ngFor="let recipe of recipes.desserts" [recipe]="recipe">
+                              <app-card-recipes  *ngFor="let recipe of recipes.desserts let i = index" [recipe]="recipe" [ngClass]="'card_animation--' + (i + 1)">
                               </app-card-recipes>
                               </div>
                                <div class="allrecipes_container--card--buttons">

@@ -11,10 +11,7 @@
     align-items: center;
     background-color: whitesmoke;
     justify-items: center;
-
   }
-
-
   .about {
     grid-area: 1 / 3 / 2 / 4;
     padding-left: 10px;
@@ -40,9 +37,7 @@
     align-items: center;
     flex-direction: column;
   }
-
   ////////////// Responive design
-
   @media (max-width: 768px) {
     footer {
       display: none;
