@@ -20,29 +20,29 @@
     </div>
   </div>
 
-  <nav class="links-menu">
+  <nav class="links_menu">
     <ul>
       <li>
         <a>
-          <img src="/assets/icon/NavBar/community-button.png" alt="nav-logo" />
+          <lucide-icon class="links_menu-icon" name="chef-hat" [size]="35" [strokeWidth]="2.5"></lucide-icon>
           <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <img src="/assets/icon/NavBar/favorite-button.png" alt="nav-logo" />
+          <lucide-icon class="links_menu-icon" name="star" [size]="35" [strokeWidth]="2.5"></lucide-icon>
           <p>Favourites</p>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link" class="logo">
-          <img src="/assets/icon/NavBar/add-button.png" alt="nav-logo" />
+          <lucide-icon class="links_menu-icon" name="plus" [size]="35" [strokeWidth]="4"></lucide-icon>
           <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <img src="/assets/icon/NavBar/recipes-button.png" alt="nav-logo" />
+          <lucide-icon class="links_menu-icon" name="utensils" [size]="35" [strokeWidth]="2.5"></lucide-icon>
           <p>All Recipes</p>
         </a>
       </li>

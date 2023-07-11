@@ -3,16 +3,16 @@
 @use '../../style/animation' as *;
 .allrecipes{
     margin-right:1vh ;
-    padding:$marginPage ;
+    padding:$paddingPageRoute ;
     &_container{
         position: relative;
         &--card{
         display: flex;
-        position: relative;
         gap: 2%;
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.5s cubic-bezier(.25,.1,.16,1.46);
 
-    }
+        }
+
     &--buttons{
     &--right{
         position: absolute;
@@ -52,13 +52,21 @@
 
 }
 .card_animation {
-  @for $i from 1 through 10 {
+
+  @for $i from 1 through 12 {
     &--#{$i} {
 
       animation: translate 1s ease-in-out both;
+
       animation-delay: $i * 0.1s;
     }
+
+
+
   }
+
+
 }
+
 
 
