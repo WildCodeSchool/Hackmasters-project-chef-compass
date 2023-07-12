@@ -26,7 +26,7 @@ import { ErrorModalComponent } from './component/error-modal/error-modal.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angular';
-import { FirstWordDirective } from './Directive/first-word-directive.directive';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { FirstWordDirective } from './Directive/first-word-directive.directive';
     RecipeFormComponent,
     ErrorModalComponent,
     SuccessModalComponent,
-    FirstWordDirective,
   ],
   imports: [
     BrowserModule,
