@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
@@ -16,11 +16,16 @@ export class RecipesdisplayComponent implements OnInit {
   haveFavorites = this.userService.favoriteRecipes.length > 0;
 
 
-  translateValueDesserts = -275;
-  translateValueMainDishes = -275;
-  translateValueAppetizers = -275;
-  translateValueBreakfasts = -275;
-  translateValueSideDishes = -275;
+  translateValueDesserts= 0;
+  translateValueDessertsReverse = 0;
+  translateValueMainDishes=0 ;
+  translateValueMainDishesReverse = 0;
+  translateValueAppetizers = 0;
+  translateValueAppetizersReverse = 0 ;
+  translateValueBreakfasts = 0;
+  translateValueBreakfastsReverse = 0;
+  translateValueSideDishes = 0  ;
+  translateValueSideDishesReverse = 0;
   currentRoute = this.route.snapshot.routeConfig!.path;
 
   constructor(private http: HttpClient,
@@ -30,11 +35,26 @@ export class RecipesdisplayComponent implements OnInit {
   }
   isPageLoaded = false;
 
+
   ngOnInit(): void {
+    this.onResize({event: null});
     setTimeout(() => {
       this.isPageLoaded = true;
     },2000);
+    this.translateValueSideDishes =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueAppetizers =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueBreakfasts =this.recipes.breakfasts.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueMainDishes =this.recipes.mainDishes.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueDesserts =this.recipes.desserts.length*275 > this.screenWidth ? -275 : 0;
+
   }
+
+  screenWidth!: number;
+  @HostListener('window:resize', ['$event'])
+  onResize({event}: { event: any }) {
+    this.screenWidth = window.innerWidth;
+  }
+
 
   async move(recipe: string, direction: number) {
     let translateValue = 0;
@@ -69,19 +89,31 @@ export class RecipesdisplayComponent implements OnInit {
     }
 
   }
-  changeValue(recipe:String,translateValue:number){
+  changeValue(recipe:String,translateValue:number) {
     if (recipe === 'desserts') {
-      this.translateValueDesserts += translateValue;
-    } else if (recipe === 'mainDishes') {
-      this.translateValueMainDishes += translateValue;
+        this.translateValueDesserts += translateValue;
+        this.translateValueDessertsReverse = (this.translateValueDesserts + 275) * -1;
+    }else if (recipe === 'mainDishes') {
+        this.translateValueMainDishes += translateValue;
+        this.translateValueMainDishesReverse = (this.translateValueMainDishes + 275) * -1;
     } else if (recipe === 'appetizers') {
-      this.translateValueAppetizers += translateValue;
+        this.translateValueAppetizers += translateValue;
+        this.translateValueAppetizersReverse = (this.translateValueAppetizers + 275) * -1;
     } else if (recipe === 'breakfasts') {
-      this.translateValueBreakfasts += translateValue;
+        this.translateValueBreakfasts += translateValue;
+        this.translateValueBreakfastsReverse = (this.translateValueBreakfasts + 275) * -1;
     } else if (recipe === 'sideDishes') {
-      this.translateValueSideDishes += translateValue;
+        this.translateValueSideDishes += translateValue;
+        this.translateValueSideDishesReverse = (this.translateValueSideDishes + 275) * -1;
     }
+  }
 
+  addValue(translateValue:number,positive:boolean){
+
+    if(positive){
+      return translateValue + 'px';
+    }
+    return -translateValue + 'px';
   }
 
 }
