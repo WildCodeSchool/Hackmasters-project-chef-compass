@@ -1,8 +1,9 @@
 @use '../../style/variables' as *;
+@use '../../style/mixin' as *;
+@use '../../style/animation' as *;
 .card{
     gap: 10px;
     width: 245px;
-    position: relative;
     transform: scale(1);
     transition: transform 0.6s ease-in-out;
     &:hover{
@@ -11,6 +12,10 @@
       .card_img--img {
         transform: scale(1);
         transition: transform 1s ease-in-out;
+      }
+      .card_information--description, .card_information--price-duree{
+
+        animation: textTranslate 0.5s ease-in-out forwards ;
       }
     }
      &_fav{
@@ -27,8 +32,7 @@
             border: none ;
             &:hover , &--active {
                 opacity: 1;
-
-             color: $primaryColor;
+                color: $primaryColor;
             }
         }
     &_img{
@@ -48,17 +52,24 @@
         border-radius: 0px  0px 25px 25px ;
         padding: 1px;
         overflow: hidden;
-
+        text-overflow: ellipsis;
         height: 250px;
         flex-direction: column;
-        padding: .5vh .2vh;
+        padding: .5vh .2vh 1.5vh .2vh;
         &--title{
             margin :0;
             height: 60px;
+            overflow: hidden;
         }
         &--description{
-        text-overflow: ellipsis;
-        margin: 0;
+          overflow: hidden;
+          padding: 0 2.5vh;
+          margin: 0;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          text-align: justify;
+
     }
         &--price-duree{
             & p{
@@ -71,4 +82,6 @@
 
     }
 
+
 }
+

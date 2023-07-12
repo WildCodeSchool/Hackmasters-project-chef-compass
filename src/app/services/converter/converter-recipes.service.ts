@@ -10,10 +10,10 @@ export class ConverterRecipesService {
   calculateTotalTime(recipe: any): string {
     const prepTime = this.extractTimeInMinutes(recipe.prep_time);
     const cookTime = this.extractTimeInMinutes(recipe.cook_time);
-  
+
     let totalTime = prepTime + cookTime;
     let totalTimeDisplay = '';
-  
+
     if (totalTime >= 60) {
       const hours = Math.floor(totalTime / 60);
       const minutes = totalTime % 60;
@@ -25,10 +25,10 @@ export class ConverterRecipesService {
     } else {
       totalTimeDisplay = `${totalTime} minute(s)`;
     }
-  
+
     return totalTimeDisplay;
   }
-  
+
   extractTimeInMinutes(timeString: string): number {
     if (timeString.includes('hour')) {
       const hours = parseInt(timeString.split(' ')[0], 10);
@@ -46,7 +46,7 @@ export class ConverterRecipesService {
       return '€€€';
     } else  {
       return '€€€€';
-    } 
+    }
   }
   getFormattedRecipeName(recipe:string) {
     return recipe.replace(/-/g, ' ');

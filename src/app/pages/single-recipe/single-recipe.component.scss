@@ -17,25 +17,33 @@
   background-image: url("/assets/backgroundPage/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-  filter: opacity(0.2);
-
   z-index: -1;
 }
 
-
-
 .title {
     text-align: center;
-    padding: 5vh;
+    padding-bottom: 5vh;
     margin: 0;
-    color: $primaryColor;
+    white-space: nowrap;
+    &--Word{
+      color: $primaryColor;
+    }
+}
+b:hover{
+  color: $primaryColor;
+}
+.container{
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(11px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
-
 .recipe{
-    margin: 0vh 3vh;
-    position: relative;
-    z-index: 1;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  padding: $paddingPageRoute;
     &_fav{
         position: absolute;
         top: 2%;
@@ -50,69 +58,104 @@
         }
 
     }
+  &_origin{
+    display: flex;
+    margin: 30px;
+    padding-left: 50px;
+    gap: 15%;
+    &--back{
+      background: $colorGlass;
+      padding: 1vh 2vh ;
+      border-radius: 15px;
+    }
+  }
     &_information{
     display: flex;
-    align-items:flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
 
-    & h2{
-        margin: 0;
-    }
-    &--price ,&--time{
+    &--card{
+      display: flex;
+      flex-direction: column;
+      width: 550px;
+      background: $colorGlass;
+      border-radius: 15px;
+      padding: 3vh 2vh;
+      gap: 5%;
+      margin-right: 2vh;
+      &--time-price{
+        display: flex;
+        gap: 15%;
+        & h3{
+          margin: 0;
+        }
+      }
         & h2{
             margin-bottom: 16px;
         }
     }
     &--img{
-        max-width: 400px;
-        max-height: 300px;
-        aspect-ratio: 5/4;
+        width: 350px;
+        aspect-ratio: 16/9;
         object-fit: cover;
-        object-position: 50% 40%;
-        position: relative;
-        bottom: 1vh;
-        border-radius: 50px;
-
+        border-radius: 15px;
     }
-
     }
     &_details{
         display: flex;
-        justify-content: space-between;
-        margin-top:2vh ;
+        align-items: stretch;
+        margin:2vh 0;
+        justify-content: space-around;
 
-
-        &--origin{
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 30px;
-            gap: 10%;
-            align-items: flex-end;
-            flex-direction: column;
-        }
         & li{
             margin: 10px 0;
         }
+      &--steps{
+        width: 550px;
+        background: $colorGlass;
+        border-radius: 15px;
+        padding: 1vh 1vw;
+        margin-right: 2vh;
+      }
+      &--ingredients{
+        width: 350px;
+        background: $colorGlass;
+        border-radius: 15px;
+        & h2{
+         text-align: center;
+        }
+      }
     }
     &_comments{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2vh;
 
 
         &--send{
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
 
+          &--flex{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 550px;
+          }
         & textarea{
             resize: none;
-            border-radius:25px ;
-            border: 1px solid $primaryColor;
+            border-radius:15px ;
+            border: 3px solid transparent;
+            aspect-ratio: 15/9;
+            min-width: 300px;
+            background-color: $colorGlass;
+
             padding: 10px;
             &:focus{
-                background-color: lighten($color: $primaryColor, $amount: 10);
-                color: white;
-                outline: none;
+              outline: none;
+              border: 3px solid $primaryColor;
             }
 
         }
@@ -123,25 +166,15 @@
                 @include buttonHover;
               }
         }
-        &--flex{
 
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-
-        }
 
         }
         &--msg p {
-            max-width: 400px;
-            max-height: 350px;
+            max-width: 350px;
             padding: 18px;
             border: $primaryColor solid 1px;
-            border-radius: 0 40px 40px 40px;
-
-            background-color: #ffff;
-
+            border-radius: 15px;
+            background-color: $colorGlass;
         }
     }
 

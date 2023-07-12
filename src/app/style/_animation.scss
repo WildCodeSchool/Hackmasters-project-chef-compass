@@ -52,6 +52,17 @@
     transform-origin: 0 50%;
   }
 }
+@keyframes textTranslate {
+  0% {
+    -webkit-line-clamp: 4;
+  }
+  100% {
+    -webkit-line-clamp: 150;
+    overflow: visible;
+    transform: translateY(-10px);
+
+  }
+}
 
 
 

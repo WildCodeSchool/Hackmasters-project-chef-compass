@@ -25,7 +25,8 @@ import { SuccessModalComponent } from './component/success-modal/success-modal.c
 import { ErrorModalComponent } from './component/error-modal/error-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import {LucideAngularModule,Utensils,ChefHat,Star,Plus} from "lucide-angular";
+import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angular';
+import { FirstWordDirective } from './Directive/first-word-directive.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {LucideAngularModule,Utensils,ChefHat,Star,Plus} from "lucide-angular";
     RecipeFormComponent,
     ErrorModalComponent,
     SuccessModalComponent,
+    FirstWordDirective,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import {LucideAngularModule,Utensils,ChefHat,Star,Plus} from "lucide-angular";
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    LucideAngularModule.pick({Utensils,ChefHat,Star,Plus})
+    LucideAngularModule.pick({ Utensils, ChefHat, Star, Plus,})
   ],
   providers: [],
   bootstrap: [AppComponent],
