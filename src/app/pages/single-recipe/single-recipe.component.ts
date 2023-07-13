@@ -17,6 +17,7 @@ export class SingleRecipeComponent implements OnInit {
   recipe!: Recipe;
   routeSubscription!: Subscription;
   commentText: string = '';
+  isLoading = true;
 
   constructor(private recipesService: RecipesService,
     private route: ActivatedRoute ,
@@ -24,16 +25,19 @@ export class SingleRecipeComponent implements OnInit {
     public userService :UsersService)  {}
 
   ngOnInit(): void {
-
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeName = params.get('name');
-      this.recipesService.getRecipeByName(recipeName!).subscribe((recipe: any) => {
-        this.recipe = recipe;
-        console.log(this.recipe);
+      if (recipeName) {
+        this.recipesService.getRecipeByName(recipeName).subscribe((recipe: Recipe) => {
+          this.recipe = recipe;
+          console.log(this.recipe);
+          this.isLoading = false;
 
-      });
+        })
+      }
     });
   }
+
 
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
