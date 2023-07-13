@@ -108,13 +108,5 @@ export class RecipesdisplayComponent implements OnInit {
     }
   }
 
-  addValue(translateValue:number,positive:boolean){
-
-    if(positive){
-      return translateValue + 'px';
-    }
-    return -translateValue + 'px';
-  }
-
 }
 
