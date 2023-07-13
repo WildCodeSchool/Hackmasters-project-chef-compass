@@ -41,11 +41,11 @@ export class RecipesdisplayComponent implements OnInit {
     setTimeout(() => {
       this.isPageLoaded = true;
     },2000);
-    this.translateValueSideDishes =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueAppetizers =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueBreakfasts =this.recipes.breakfasts.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueMainDishes =this.recipes.mainDishes.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueDesserts =this.recipes.desserts.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueSideDishes =this.recipes?.appetizers?.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueAppetizers =this.recipes?.appetizers?.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueBreakfasts =this.recipes?.breakfasts?.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueMainDishes =this.recipes?.mainDishes?.length*275 > this.screenWidth ? -275 : 0;
+    this.translateValueDesserts =this.recipes?.desserts?.length*275 > this.screenWidth ? -275 : 0;
 
   }
 

@@ -17,7 +17,7 @@ const SIDE_DISH_CATEGORY = 'SideDish';
   providedIn: 'root',
 })
 export class RecipesService {
-  private recipesUrl = '../../assets/data/recipes.json';
+  private recipesUrl = 'http://localhost:8080/recipes';
 
   public recipes: Recipes = {
     desserts: [],
@@ -30,14 +30,15 @@ export class RecipesService {
   constructor(private http: HttpClient) {
     this.loadRecipes();
   }
-   recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
+  recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
 
   private modalOpenSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSubject.asObservable();
 
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl);
+    return this.http.get<Recipe[]>(this.recipesUrl).pipe(catchError(this.handleError));
   }
+
 
   getAllRecipes(): Observable<Recipe[]> {
     return this.getRecipes();
@@ -45,17 +46,17 @@ export class RecipesService {
 
   getRecipeByName(nameId: string): Observable<any> {
     return this.getAllRecipes().pipe(
-      map((recipes) => recipes.find((recipe) => recipe.recipe_name.toLowerCase() === nameId.toLowerCase()))
+      map((recipes) => recipes.find((recipe) => recipe.recipeName.toLowerCase() === nameId.toLowerCase()))
     );
   }
 
   getRecipeById(id: number): Observable<any> {
-    return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.recipe_id === id)));
+    return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.id === id)));
   }
 
   getRecipeByCategory(category: string): Observable<Recipe[]> {
     return this.getAllRecipes().pipe(
-      map((recipes) => recipes.filter((recipe) => recipe.recipe_type.toLowerCase() === category.toLowerCase()))
+      map((recipes) => recipes.filter((recipe) => recipe.category.categoryName.toLowerCase() === category.toLowerCase()))
     );
   }
 

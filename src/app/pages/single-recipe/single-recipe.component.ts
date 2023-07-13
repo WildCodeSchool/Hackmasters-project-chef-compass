@@ -29,6 +29,8 @@ export class SingleRecipeComponent implements OnInit {
       const recipeName = params.get('name');
       this.recipesService.getRecipeByName(recipeName!).subscribe((recipe: any) => {
         this.recipe = recipe;
+        console.log(this.recipe);
+
       });
     });
   }
