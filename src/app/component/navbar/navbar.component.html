@@ -11,7 +11,24 @@
       <input class="search_module--input" type="text" [(ngModel)]="searchQuery" (input)="searchRecipes()" placeholder="Dishes..." />
       <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
       <div class="search_burger">
-        <fa-icon [icon]="faBars"></fa-icon>
+        <button class="search_burger--button" (click)="('')">
+          <fa-icon class="search_burger--button-icon" [icon]="faBars"></fa-icon>
+        </button>
+        <div>
+          <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected()">
+            <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
+          </select>
+
+          <!-- Liste déroulante pour les allergènes -->
+          <select [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected()">
+            <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">{{ allergen.allergenName }}</option>
+          </select>
+
+          <!-- Liste déroulante pour les régimes -->
+          <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected()">
+            <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>

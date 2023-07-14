@@ -6,7 +6,7 @@ import { ConverterRecipesService } from 'src/app/services/converter/converter-re
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStarSolid , faPlusMinus } from '@fortawesome/free-solid-svg-icons';
 import { UsersService } from 'src/app/services/users/users.service';
-import { Recipe } from 'src/app/models/recipe.model';
+import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 
 @Component({
   selector: 'app-single-recipe',

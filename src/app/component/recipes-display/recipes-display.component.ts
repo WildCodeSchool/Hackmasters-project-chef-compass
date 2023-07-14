@@ -3,7 +3,7 @@ import { Component, Input, OnInit, HostListener, OnChanges } from '@angular/core
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
-import { Recipes } from 'src/app/models/recipes.model';
+import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 
 
 @Component({

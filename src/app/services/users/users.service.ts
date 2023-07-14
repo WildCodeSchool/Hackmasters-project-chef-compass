@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RecipesService } from '../recipies/recipes.service';
 import { Subject, Observable } from 'rxjs';
-import { Recipe } from 'src/app/models/recipe.model';
+import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({

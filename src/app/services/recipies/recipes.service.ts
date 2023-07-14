@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, forkJoin, tap, Subject } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { Recipe } from '../../models/recipe.model';
-import { Recipes } from '../../models/recipes.model';
+import { Recipe } from '../../models/modelRecipe/recipe.model';
+import { Recipes } from '../../models/modelRecipe/recipes.model';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
