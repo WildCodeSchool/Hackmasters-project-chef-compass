@@ -40,15 +40,16 @@ header {
       position: relative;
       display: flex;
       align-items: center;
-      & input {
+      &--input {
         padding: 13px;
-        border: 2px solid #ccc;
+        border: 2px solid gray;
         border-radius: 25px;
         font-size: 16px;
         width: 250px;
         transition: border-color 0.3s ease;
-        &:focus {
-          border-color: #007bff;
+        &:focus   {
+          border: 2px solid $primaryColor;
+          outline: none;
         }
       }
       &-button{
@@ -61,8 +62,8 @@ header {
         right: 34px;
         &-icon {
           position: relative;
-          right: 5px;
-          color: gray;
+          right: 25px;
+          color: grey;
         }
         &:hover {
           background-color: gray;

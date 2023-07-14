@@ -6,16 +6,12 @@
     </a>
   </div>
 
-  <!-- Search module display: none; until able to search, waiting to be implemented -->
-
   <div class="search">
     <div class="search_module">
-      <input type="text" placeholder="Dishes..." />
-      <button class="search_module-button" type="submit">
-        <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-      </button>
+      <input class="search_module--input" type="text" [(ngModel)]="searchQuery" (input)="searchRecipes()" placeholder="Dishes..." />
+      <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
       <div class="search_burger">
-        <fa-icon  [icon]="faBars"></fa-icon>
+        <fa-icon [icon]="faBars"></fa-icon>
       </div>
     </div>
   </div>
@@ -24,25 +20,25 @@
     <ul>
       <li>
         <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="chef-hat" size="35" strokeWidth="2.5"></lucide-icon>
           <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <lucide-icon class="links_menu-icon" name="star" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="star" size="35" strokeWidth="2.5"></lucide-icon>
           <p>Favourites</p>
         </a>
       </li>
       <li>
-        <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link" class="logo">
-          <lucide-icon class="links_menu-icon" name="plus" [size]="35" [strokeWidth]="4"></lucide-icon>
+        <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
+          <lucide-icon class="links_menu-icon" name="plus" size="35" strokeWidth="4"></lucide-icon>
           <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <lucide-icon class="links_menu-icon" name="utensils" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="utensils" size="35" strokeWidth="2.5"></lucide-icon>
           <p>All Recipes</p>
         </a>
       </li>
