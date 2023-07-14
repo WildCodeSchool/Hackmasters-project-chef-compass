@@ -69,14 +69,14 @@ export class RecipesService {
   closeModal() {
     this.modalOpenSubject.next(false);
   }
-  loadRecipes(recipeName = ''): void {
+  loadRecipes(query = '',param=''): void {
 
 
-    const dessertRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${DESSERT_CATEGORY}&recipeName=${recipeName}`);
-    const mainDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${MAIN_DISH_CATEGORY}&recipeName=${recipeName}`);
-    const appetizerRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${APPETIZER_CATEGORY}&recipeName=${recipeName}`);
-    const breakfastRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${BREAKFAST_CATEGORY}&recipeName=${recipeName}`);
-    const sideDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${SIDE_DISH_CATEGORY}&recipeName=${recipeName}`);
+    const dessertRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${DESSERT_CATEGORY}&query=${query}&${param}`);
+    const mainDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${MAIN_DISH_CATEGORY}&query=${query}&${param}`);
+    const appetizerRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${APPETIZER_CATEGORY}&query=${query}&${param}`);
+    const breakfastRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${BREAKFAST_CATEGORY}&query=${query}&${param}`);
+    const sideDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${SIDE_DISH_CATEGORY}&query=${query}&${param}`);
 
     forkJoin([dessertRecipes$, mainDishRecipes$, appetizerRecipes$, breakfastRecipes$, sideDishRecipes$])
       .pipe(
@@ -89,6 +89,7 @@ export class RecipesService {
         })
       )
       .subscribe();
+    console.log(param);
   }
 
   setSearchQuery(query: string): void {

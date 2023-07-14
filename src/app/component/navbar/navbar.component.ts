@@ -34,8 +34,9 @@ export class NavbarComponent implements OnInit {
   }
 
   searchRecipes(): void {
+    const url = `countryNames=${this.countriesList.join(',')}&allergenNames=${this.allergensList.join(',')}&dietNames=${this.dietsList.join(',')}`
     this.recipesService.setSearchQuery(this.searchQuery);
-    this.recipesService.loadRecipes(this.searchQuery);
+    this.recipesService.loadRecipes(this.searchQuery, url);
     this.router.navigate(['/recipes']);
   }
   ngOnInit(): void {
@@ -52,6 +53,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.countriesList.push(this.selectedCountries);
     }
+    this.searchRecipes();
     console.log(this.countriesList);
   }
 
@@ -63,6 +65,7 @@ export class NavbarComponent implements OnInit {
       this.allergensList.push(this.selectedAllergens);
     }
     console.log(this.allergensList);
+    this.searchRecipes();
   }
 
   dietsSelected() {
@@ -73,5 +76,6 @@ export class NavbarComponent implements OnInit {
       this.dietsList.push(this.selectedDiets);
     }
     console.log(this.dietsList);
+    this.searchRecipes();
   }
 }
