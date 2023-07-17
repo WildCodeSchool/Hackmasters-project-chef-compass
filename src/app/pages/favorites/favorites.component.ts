@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Subscription } from 'rxjs';
-import { Recipes } from 'src/app/models/recipes.model';
+import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 
 @Component({
   selector: 'app-favorites',
@@ -33,5 +33,5 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       console.error('Error loading favorite recipes:', error);
     });
   }
-  
+
 }

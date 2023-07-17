@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin, tap, Subject } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { Recipe } from '../../models/recipe.model';
-import { Recipes } from '../../models/recipes.model';
+import { Recipe } from '../../models/modelRecipe/recipe.model';
+import { Recipes } from '../../models/modelRecipe/recipes.model';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-const DESSERT_CATEGORY = 'Dessert';
-const MAIN_DISH_CATEGORY = 'MainDish';
-const APPETIZER_CATEGORY = 'Appetizer';
-const BREAKFAST_CATEGORY = 'Breakfast';
-const SIDE_DISH_CATEGORY = 'SideDish';
+const DESSERT_CATEGORY = 'Desserts';
+const MAIN_DISH_CATEGORY = 'MainDishes';
+const APPETIZER_CATEGORY = 'Appetizers';
+const BREAKFAST_CATEGORY = 'Breakfasts';
+const SIDE_DISH_CATEGORY = 'SideDishes';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipesService {
-  private recipesUrl = '../../assets/data/recipes.json';
+  private recipesUrl = 'http://localhost:8080/recipes';
 
   public recipes: Recipes = {
     desserts: [],
@@ -30,38 +30,31 @@ export class RecipesService {
   constructor(private http: HttpClient) {
     this.loadRecipes();
   }
-   recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
+  recipesSubject: BehaviorSubject<Recipes> = new BehaviorSubject<Recipes>(this.recipes);
 
   private modalOpenSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSubject.asObservable();
 
+  private searchQuerySubject: Subject<string> = new Subject<string>();
+  searchQuery$ = this.searchQuerySubject.asObservable();
+
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl);
+    return this.http.get<Recipe[]>(this.recipesUrl).pipe(catchError(this.handleError));
   }
 
   getAllRecipes(): Observable<Recipe[]> {
     return this.getRecipes();
   }
 
-  getRecipeByName(nameId: string): Observable<any> {
-    return this.getAllRecipes().pipe(
-      map((recipes) => recipes.find((recipe) => recipe.recipe_name.toLowerCase() === nameId.toLowerCase()))
-    );
+  getRecipeByName(name: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.recipesUrl}/${name}`).pipe(catchError(this.handleError));
   }
 
   getRecipeById(id: number): Observable<any> {
-    return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.recipe_id === id)));
-  }
-
-  getRecipeByCategory(category: string): Observable<Recipe[]> {
-    return this.getAllRecipes().pipe(
-      map((recipes) => recipes.filter((recipe) => recipe.recipe_type.toLowerCase() === category.toLowerCase()))
-    );
+    return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.id === id)));
   }
 
   saveRecipe(recipe: any): Observable<any> {
-    // TODO: Implement actual recipe saving logic here
-    // For now, let's return a dummy response
     return this.http.post<any>('url-to-save-recipe', recipe).pipe(catchError(this.handleError));
   }
 
@@ -76,25 +69,31 @@ export class RecipesService {
   closeModal() {
     this.modalOpenSubject.next(false);
   }
-  loadRecipes(): void {
-    const dessertRecipes$ = this.getRecipeByCategory(DESSERT_CATEGORY);
-    const mainDishRecipes$ = this.getRecipeByCategory(MAIN_DISH_CATEGORY);
-    const appetizerRecipes$ = this.getRecipeByCategory(APPETIZER_CATEGORY);
-    const breakfastRecipes$ = this.getRecipeByCategory(BREAKFAST_CATEGORY);
-    const sideDishRecipes$ = this.getRecipeByCategory(SIDE_DISH_CATEGORY);
+  loadRecipes(query = '',param=''): void {
 
-    forkJoin([dessertRecipes$, mainDishRecipes$, appetizerRecipes$, breakfastRecipes$, sideDishRecipes$]).subscribe(
-      ([desserts, mainDishes, appetizers, breakfasts, sideDishes]) => {
-        this.recipes.desserts = desserts;
-        this.recipes.mainDishes = mainDishes;
-        this.recipes.appetizers = appetizers;
-        this.recipes.breakfasts = breakfasts;
-        this.recipes.sideDishes = sideDishes;
-      }
-    );
+
+    const dessertRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${DESSERT_CATEGORY}&query=${query}&${param}`);
+    const mainDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${MAIN_DISH_CATEGORY}&query=${query}&${param}`);
+    const appetizerRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${APPETIZER_CATEGORY}&query=${query}&${param}`);
+    const breakfastRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${BREAKFAST_CATEGORY}&query=${query}&${param}`);
+    const sideDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${SIDE_DISH_CATEGORY}&query=${query}&${param}`);
+
+    forkJoin([dessertRecipes$, mainDishRecipes$, appetizerRecipes$, breakfastRecipes$, sideDishRecipes$])
+      .pipe(
+        tap(([desserts, mainDishes, appetizers, breakfasts, sideDishes]) => {
+          this.recipes.desserts = desserts;
+          this.recipes.mainDishes = mainDishes;
+          this.recipes.appetizers = appetizers;
+          this.recipes.breakfasts = breakfasts;
+          this.recipes.sideDishes = sideDishes;
+        })
+      )
+      .subscribe();
+    console.log(param);
   }
-  updateRecipes(updatedRecipes: Recipes): void {
-    this.recipes = updatedRecipes;
-    this.recipesSubject.next(this.recipes);
+
+  setSearchQuery(query: string): void {
+    this.searchQuerySubject.next(query);
   }
+
 }

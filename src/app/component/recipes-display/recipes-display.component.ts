@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, HostListener } from '@angular/core';
+import { Component, Input, OnInit, HostListener, OnChanges } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
-import { Recipes } from 'src/app/models/recipes.model';
+import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { Recipes } from 'src/app/models/recipes.model';
   templateUrl: './recipes-display.component.html',
   styleUrls: ['./recipes-display.component.scss']
 })
-export class RecipesdisplayComponent implements OnInit {
+export class RecipesdisplayComponent implements OnInit, OnChanges {
   @Input() recipes!: Recipes;
   haveFavorites = this.userService.favoriteRecipes.length > 0;
 
@@ -41,13 +41,33 @@ export class RecipesdisplayComponent implements OnInit {
     setTimeout(() => {
       this.isPageLoaded = true;
     },2000);
-    this.translateValueSideDishes =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueAppetizers =this.recipes.appetizers.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueBreakfasts =this.recipes.breakfasts.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueMainDishes =this.recipes.mainDishes.length*275 > this.screenWidth ? -275 : 0;
-    this.translateValueDesserts =this.recipes.desserts.length*275 > this.screenWidth ? -275 : 0;
+    this.updateTranslateValues();
+    this.recipesService.searchQuery$.subscribe(() => {
+      this.updateTranslateValues();console.log(this.recipes);
+    });
 
   }
+  ngOnChanges(): void {
+    this.updateTranslateValues();
+
+  }
+
+  updateTranslateValues(): void {
+    setTimeout(() => {
+
+      this.translateValueSideDishes = this.recipes?.sideDishes?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueSideDishesReverse = 0;
+      this.translateValueAppetizers = this.recipes?.appetizers?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueAppetizersReverse = 0;
+      this.translateValueBreakfasts = this.recipes?.breakfasts?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueBreakfastsReverse = 0;
+      this.translateValueMainDishes = this.recipes?.mainDishes?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueMainDishesReverse = 0;
+      this.translateValueDesserts = this.recipes?.desserts?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueDessertsReverse = 0;
+    }, 200);
+  }
+
 
   screenWidth!: number;
   @HostListener('window:resize', ['$event'])

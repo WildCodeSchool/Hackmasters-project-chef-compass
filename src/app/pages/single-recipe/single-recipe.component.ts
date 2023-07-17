@@ -6,7 +6,7 @@ import { ConverterRecipesService } from 'src/app/services/converter/converter-re
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as faStarSolid , faPlusMinus } from '@fortawesome/free-solid-svg-icons';
 import { UsersService } from 'src/app/services/users/users.service';
-import { Recipe } from 'src/app/models/recipe.model';
+import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 
 @Component({
   selector: 'app-single-recipe',
@@ -17,6 +17,7 @@ export class SingleRecipeComponent implements OnInit {
   recipe!: Recipe;
   routeSubscription!: Subscription;
   commentText: string = '';
+  isLoading = true;
 
   constructor(private recipesService: RecipesService,
     private route: ActivatedRoute ,
@@ -24,14 +25,19 @@ export class SingleRecipeComponent implements OnInit {
     public userService :UsersService)  {}
 
   ngOnInit(): void {
-
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeName = params.get('name');
-      this.recipesService.getRecipeByName(recipeName!).subscribe((recipe: any) => {
-        this.recipe = recipe;
-      });
+      if (recipeName) {
+        this.recipesService.getRecipeByName(recipeName).subscribe((recipe: Recipe) => {
+          this.recipe = recipe;
+          console.log(this.recipe);
+          this.isLoading = false;
+
+        })
+      }
     });
   }
+
 
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();

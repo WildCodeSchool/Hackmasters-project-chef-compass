@@ -1,42 +1,26 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConverterRecipesService {
-
-  constructor() { }
+  constructor() {}
 
   calculateTotalTime(recipe: any): string {
-    const prepTime = this.extractTimeInMinutes(recipe.prep_time);
-    const cookTime = this.extractTimeInMinutes(recipe.cook_time);
+    const totalTime = recipe.prepTime + recipe.cookTime;
+    return this.timeString(totalTime);
 
-    let totalTime = prepTime + cookTime;
-    let totalTimeDisplay = '';
-
-    if (totalTime >= 60) {
-      const hours = Math.floor(totalTime / 60);
-      const minutes = totalTime % 60;
-      if (minutes === 0) {
-        totalTimeDisplay = `${hours} hour(s)`;
-      } else {
-        totalTimeDisplay = `${hours} hour(s) ${minutes} minute(s)`;
-      }
-    } else {
-      totalTimeDisplay = `${totalTime} minute(s)`;
-    }
-
-    return totalTimeDisplay;
   }
-
-  extractTimeInMinutes(timeString: string): number {
-    if (timeString.includes('hour')) {
-      const hours = parseInt(timeString.split(' ')[0], 10);
-      return hours * 60;
+  timeString(time: number): string {
+    if (time < 60) {
+      return time + ' min';
     } else {
-      return parseInt(timeString.split(' ')[0], 10);
+      const hours = Math.floor(time / 60);
+      const minutes = time % 60;
+      return hours + 'h ' + minutes + ' min';
     }
   }
+
   getPriceSymbol(price: number): string {
     if (price <= 15) {
       return '€';
@@ -44,11 +28,11 @@ export class ConverterRecipesService {
       return '€€';
     } else if (price <= 35) {
       return '€€€';
-    } else  {
+    } else {
       return '€€€€';
     }
   }
-  getFormattedRecipeName(recipe:string) {
+  getFormattedRecipeName(recipe: string) {
     return recipe.replace(/-/g, ' ');
   }
 }

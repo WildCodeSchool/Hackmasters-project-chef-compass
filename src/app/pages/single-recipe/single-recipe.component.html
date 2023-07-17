@@ -1,10 +1,10 @@
 <div class="container">
   <div class="recipe">
-    <h1 class="title" appFirstWord>{{ converter.getFormattedRecipeName(recipe.recipe_name) }}</h1>
+    <h1 class="title" appFirstWord>{{ converter.getFormattedRecipeName(recipe.recipeName) }}</h1>
     <article class="recipe_information">
       <section class="recipe_information--card">
         <section class="recipe_information--card--time-price">
-          <p><span>Cook Time:</span> {{ recipe.cook_time }}</p>
+          <p><span>Cook Time:</span> {{ converter.timeString(recipe.cookTime)}}</p>
           <p><span>Total Time:</span> {{ converter.calculateTotalTime(recipe) }}</p>
           <p><fa-icon [icon]="faPlusMinus" size="sm"></fa-icon>: {{ recipe.price }}€</p>
         </section>
@@ -12,24 +12,24 @@
           <p>{{ recipe.description }}</p>
         </section>
       </section>
-      <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img" />
+      <img [src]="recipe.imageUrl" alt="Recipe Image" class="recipe_information--img" />
     </article>
     <section class="recipe_origin">
-      <h4 class="recipe_origin--back">{{ recipe.recipe_type }}</h4>
-      <h4 class="recipe_origin--back">Country: {{ recipe.country_of_origin }}</h4>
+      <h4 class="recipe_origin--back">{{ recipe.category.categoryName }}</h4>
+      <h4 class="recipe_origin--back">Country: {{ recipe.country.countryName }}</h4>
     </section>
 
     <article class="recipe_details">
       <section class="recipe_details--steps">
         <h2>Steps:</h2>
         <ol>
-          <li *ngFor="let step of recipe.steps">{{ step }}</li>
+          <li *ngFor="let step of recipe.steps">{{ step.stepDescription}}</li>
         </ol>
       </section>
       <section class="recipe_details--ingredients">
         <h2>Ingredients:</h2>
         <ul>
-          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+          <li *ngFor="let ingredient of recipe.ingredientRecipes">{{ ingredient.ingredient.ingredientName }} : {{ingredient.quantity}}</li>
         </ul>
       </section>
 
@@ -55,28 +55,28 @@
         <div class="recipe_comments--send--flex">
           <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText"></textarea>
           <br />
-          <button (click)="addComment(recipe.recipe_id, commentText)">Here We Go!</button>
+          <button (click)="addComment(recipe.id, commentText)">Here We Go!</button>
         </div>
       </section>
       <section
         class="recipe_comments--msg"
-        *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length > 0"
+        *ngIf="userService.getLatestCommentsByRecipeId(recipe.id, 2).length > 0"
       >
-        <p *ngFor="let comment of userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2)">
+        <p *ngFor="let comment of userService.getLatestCommentsByRecipeId(recipe.id, 2)">
           {{ comment }}
         </p>
       </section>
 
-      <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length === 0">No comments</span>
+      <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.id, 2).length === 0">No comments</span>
     </article>
 
     <button
-      [ngClass]="{ 'recipe_fav--active': userService.isActive(recipe.recipe_id) }"
+      [ngClass]="{ 'recipe_fav--active': userService.isActive(recipe.id) }"
       class="recipe_fav"
-      (click)="userService.addFavorite(recipe.recipe_id)"
+      (click)="userService.addFavorite(recipe.id)"
     >
-      <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
-      <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
+      <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.id)"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.id)"></fa-icon>
     </button>
   </div>
 </div>

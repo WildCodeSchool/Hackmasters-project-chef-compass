@@ -5,7 +5,7 @@ import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 import  { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
-import { Recipe } from 'src/app/models/recipe.model';
+import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 @Component({
   selector: 'app-card-recipes',
   templateUrl: './card-recipes.component.html',

@@ -6,16 +6,54 @@
     </a>
   </div>
 
-  <!-- Search module display: none; until able to search, waiting to be implemented -->
-
   <div class="search">
     <div class="search_module">
-      <input type="text" placeholder="Dishes..." />
-      <button class="search_module-button" type="submit">
-        <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-      </button>
-      <div class="search_burger">
-        <fa-icon  [icon]="faBars"></fa-icon>
+      <input
+        class="search_module--input"
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="searchRecipes()"
+        placeholder="Dishes,ingredients..."
+      />
+    </div>
+    <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
+    <div class="search_burger" [ngStyle]="{ 'height': showNav ? '50px' : '26px' }">
+      <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
+        <button class="search_burger--button" (click)="toggleNav()">
+          <fa-icon
+            [ngStyle]="{ color: showNav ? '#F96B11FF' : '' }"
+            class="search_burger--button-icon"
+            size="lg"
+            [icon]="faBars"
+          ></fa-icon>
+        </button>
+        <div class="search_burger--nav" *ngIf="showNav">
+          <div class="search_burger--selected">
+            <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
+              <option value="" disabled selected hidden>pays</option>
+              <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
+            </select>
+            <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
+              <option value="" disabled selected hidden>allergens</option>
+              <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
+                {{ allergen.allergenName }}
+              </option>
+            </select>
+            <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected(selectedDiets)">
+              <option value="" disabled selected hidden> diets</option>
+              <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
+            </select>
+          </div>
+          <div class="search_burger--unselected" >
+            <button (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
+              {{ countries }} <b>x</b>
+            </button>
+            <button (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
+              {{ allergens }} <b>x</b>
+            </button>
+            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">{{ diets }} <b>x</b></button>
+          </div>
+      </div>
       </div>
     </div>
   </div>
@@ -24,25 +62,25 @@
     <ul>
       <li>
         <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="chef-hat" size="35" strokeWidth="2.5"></lucide-icon>
           <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <lucide-icon class="links_menu-icon" name="star" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="star" size="35" strokeWidth="2.5"></lucide-icon>
           <p>Favourites</p>
         </a>
       </li>
       <li>
-        <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link" class="logo">
-          <lucide-icon class="links_menu-icon" name="plus" [size]="35" [strokeWidth]="4"></lucide-icon>
+        <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
+          <lucide-icon class="links_menu-icon" name="plus" size="35" strokeWidth="4"></lucide-icon>
           <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <lucide-icon class="links_menu-icon" name="utensils" [size]="35" [strokeWidth]="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="utensils" size="35" strokeWidth="2.5"></lucide-icon>
           <p>All Recipes</p>
         </a>
       </li>

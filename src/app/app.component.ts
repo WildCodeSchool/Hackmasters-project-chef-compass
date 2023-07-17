@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.updateNavbarPosition();
   }
+  searchQuery = '';
+
+  onSearchQueryChanged(query: string): void {
+    this.searchQuery = query;
+  }
 
   updateNavbarPosition() {
     this.isNavbarAbove = window.innerWidth > 768;
