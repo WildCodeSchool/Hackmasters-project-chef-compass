@@ -26,11 +26,15 @@ export class NavbarComponent implements OnInit {
   diets!: Diet[];
   dietsList: string[] = [];
   selectedDiets: string;
+  showNav = false;
 
   constructor(private recipesService: RecipesService, private searchService: SearchService, private router: Router) {
     this.selectedCountries = '';
     this.selectedAllergens = '';
     this.selectedDiets = '';
+  }
+  toggleNav() {
+    this.showNav = !this.showNav;
   }
 
   searchRecipes(): void {
@@ -46,34 +50,34 @@ export class NavbarComponent implements OnInit {
       this.diets = diet;
     });
   }
-  countriesSelected() {
-    const index = this.countriesList.indexOf(this.selectedCountries);
+  countriesSelected(countries: string) {
+    const index = this.countriesList.indexOf(countries);
     if (index !== -1) {
       this.countriesList.splice(index, 1);
     } else {
-      this.countriesList.push(this.selectedCountries);
+      this.countriesList.push(countries);
     }
     this.searchRecipes();
     console.log(this.countriesList);
   }
 
-  allergensSelected() {
-    const index = this.allergensList.indexOf(this.selectedAllergens);
+  allergensSelected(allergens:string) {
+    const index = this.allergensList.indexOf(allergens);
     if (index !== -1) {
       this.allergensList.splice(index, 1);
     } else {
-      this.allergensList.push(this.selectedAllergens);
+      this.allergensList.push(allergens);
     }
     console.log(this.allergensList);
     this.searchRecipes();
   }
 
-  dietsSelected() {
-    const index = this.dietsList.indexOf(this.selectedDiets);
+  dietsSelected(diet: string) {
+    const index = this.dietsList.indexOf(diet);
     if (index !== -1) {
       this.dietsList.splice(index, 1);
     } else {
-      this.dietsList.push(this.selectedDiets);
+      this.dietsList.push(diet);
     }
     console.log(this.dietsList);
     this.searchRecipes();
