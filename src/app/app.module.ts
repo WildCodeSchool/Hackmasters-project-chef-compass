@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule } from '@angular/forms';
 
 import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
@@ -13,6 +13,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { FooterComponent } from './component/footer/footer.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
@@ -23,6 +25,9 @@ import { SuccessModalComponent } from './component/success-modal/success-modal.c
 import { ErrorModalComponent } from './component/error-modal/error-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angular';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    LucideAngularModule.pick({ Utensils, ChefHat, Star, Plus,})
   ],
   providers: [],
   bootstrap: [AppComponent],

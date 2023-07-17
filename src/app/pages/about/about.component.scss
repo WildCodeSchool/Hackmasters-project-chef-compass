@@ -20,12 +20,17 @@ span {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+}
+.about-text{
+  max-width: 850px;
+  margin: 0 1vh;
 }
 
 .team {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
 
   &_member {
     border-radius: 50%;
@@ -39,8 +44,8 @@ span {
     max-width: 300px;
     &:hover {
       transform: translatex(-10px);
-      background-color: rgb(255, 136, 0);
-      color: #fff;
+      border: solid 2px rgb(255, 136, 0);
+
     }
     & img {
       width: 150px;
@@ -90,7 +95,6 @@ span {
 
 @media (max-width: 768px) {
   section.container {
-    margin-top: 40.5%;
-    margin-bottom: 300px;
+
   }
 }

@@ -5,12 +5,66 @@
         transform: scale(1);
         color: black;
         background-color: white ;
-        transform-origin: 20% 50% ;    
-    }   
+        transform-origin: 20% 50% ;
+    }
     100% {
         color: white;
         transform: scale(1.1);
         background-color: $primaryColor;
         rotate: -2deg;
-    }    
+    }
 }
+@keyframes logo {
+  0% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(360deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+
+}
+@keyframes translate {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide {
+  0% {
+
+    transform: scaleX(1);
+    transform-origin: 0 50%;
+  }
+  50% {
+
+    transform: scaleX(1.25);
+    transform-origin: 0 50%;
+  }
+  100% {
+    transform :scaleX(1);
+    transform-origin: 0 50%;
+  }
+}
+@keyframes textTranslate {
+  0% {
+    -webkit-line-clamp: 4;
+  }
+  100% {
+    -webkit-line-clamp: 150;
+    overflow: visible;
+    transform: translateY(-10px);
+
+  }
+}
+
+
+
+
+

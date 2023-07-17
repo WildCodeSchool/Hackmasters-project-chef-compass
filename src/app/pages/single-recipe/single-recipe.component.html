@@ -1,76 +1,82 @@
+<div class="container">
+  <div class="recipe">
+    <h1 class="title" appFirstWord>{{ converter.getFormattedRecipeName(recipe.recipe_name) }}</h1>
+    <article class="recipe_information">
+      <section class="recipe_information--card">
+        <section class="recipe_information--card--time-price">
+          <p><span>Cook Time:</span> {{ recipe.cook_time }}</p>
+          <p><span>Total Time:</span> {{ converter.calculateTotalTime(recipe) }}</p>
+          <p><fa-icon [icon]="faPlusMinus" size="sm"></fa-icon>: {{ recipe.price }}€</p>
+        </section>
+        <section class="recipe_information--card--description">
+          <p>{{ recipe.description }}</p>
+        </section>
+      </section>
+      <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img" />
+    </article>
+    <section class="recipe_origin">
+      <h4 class="recipe_origin--back">{{ recipe.recipe_type }}</h4>
+      <h4 class="recipe_origin--back">Country: {{ recipe.country_of_origin }}</h4>
+    </section>
 
-    <div class="recipe">
-         <h1 class="title">{{ converter.getFormattedRecipeName(recipe.recipe_name) }}</h1>
-        <article class="recipe_information" >
-            <section class="recipe_information--ingredient">
-                <h2>Ingredients:</h2>
-                <ul>
-                    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
-                </ul>
-            
-            </section>
-            <section class="recipe_information--time">
-                <h2>time :</h2>
-                <p>Prep Time: {{ recipe.prep_time }}</p>
-                <p>Cook Time: {{ recipe.cook_time }}</p>
-                <p>Total Time: {{ converter.calculateTotalTime(recipe) }}</p>
-            </section>
-            <section class="recipe_information--price">
-                <h2>Budget:</h2>
-                <p>{{converter.getPriceSymbol(recipe.price)}}</p>
-                <p>price: {{recipe.price}} €</p>
-            </section>
-             <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img">
-        </article>
-       
-      <article class="recipe_details">
-        <section class="recipe_details--steps">
-            <h3>Steps:</h3>
+    <article class="recipe_details">
+      <section class="recipe_details--steps">
+        <h2>Steps:</h2>
         <ol>
           <li *ngFor="let step of recipe.steps">{{ step }}</li>
         </ol>
-        </section>
-        <section class="recipe_details--origin " >
-            <h4> {{ recipe.recipe_type }}</h4>
-            <h4>Country: {{ recipe.country_of_origin }}</h4>
-            </section>
-    </article>
-    <article class="recipe_comments">  
-        <section class="recipe_comments--send">
-            <div class="recipe_comments--rating">
-                <form method="post">
-                <div class="rating">
-                    <input type="radio" name="rating" value="star1.2" id="star1.2" class="radio-btn butn">
-                    <label for="star1.2">☆</label>
-                    <input type="radio" name="rating" value="star2.2" id="star2.2" class="radio-btn butn">
-                    <label for="star2.2">☆</label>
-                    <input type="radio" name="rating" value="star3.2" id="star3.2" class="radio-btn butn">
-                    <label for="star3.2">☆</label>
-                    <input type="radio" name="rating" value="star4.2" id="star4.2" class="radio-btn butn">
-                    <label for="star4.2">☆</label>
-                    <input type="radio" name="rating" value="star5.2" id="star5.2" class="radio-btn butn">
-                    <label for="star5.2">☆</label>  
-                </div>
-            </form></div>
-            <div class="recipe_comments--send--flex">
-                <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText"></textarea>
-                <br>
-                <button (click)="addComment(recipe.recipe_id, commentText)">Here We Go!</button>
-              </div>
-        </section>
-        <section class="recipe_comments--msg" *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length > 0">
-            <p *ngFor="let comment of userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2)">
-              {{ comment }}
-            </p>
-          </section>
-          
-          <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length === 0">No comments</span>
-        </article>
-  
-    <button [ngClass]="{'recipe_fav--active':userService.isActive(recipe.recipe_id)}  " class="recipe_fav" (click)="userService.addFavorite(recipe.recipe_id)">
-        <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
-        <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
-    </button>
-    </div>
+      </section>
+      <section class="recipe_details--ingredients">
+        <h2>Ingredients:</h2>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+        </ul>
+      </section>
 
-  
+    </article>
+    <article class="recipe_comments">
+      <section class="recipe_comments--send">
+        <div class="recipe_comments--rating">
+          <form method="post">
+            <div class="rating">
+              <input type="radio" name="rating" value="star1.2" id="star1.2" class="radio-btn butn" />
+              <label for="star1.2">☆</label>
+              <input type="radio" name="rating" value="star2.2" id="star2.2" class="radio-btn butn" />
+              <label for="star2.2">☆</label>
+              <input type="radio" name="rating" value="star3.2" id="star3.2" class="radio-btn butn" />
+              <label for="star3.2">☆</label>
+              <input type="radio" name="rating" value="star4.2" id="star4.2" class="radio-btn butn" />
+              <label for="star4.2">☆</label>
+              <input type="radio" name="rating" value="star5.2" id="star5.2" class="radio-btn butn" />
+              <label for="star5.2">☆</label>
+            </div>
+          </form>
+        </div>
+        <div class="recipe_comments--send--flex">
+          <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText"></textarea>
+          <br />
+          <button (click)="addComment(recipe.recipe_id, commentText)">Here We Go!</button>
+        </div>
+      </section>
+      <section
+        class="recipe_comments--msg"
+        *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length > 0"
+      >
+        <p *ngFor="let comment of userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2)">
+          {{ comment }}
+        </p>
+      </section>
+
+      <span *ngIf="userService.getLatestCommentsByRecipeId(recipe.recipe_id, 2).length === 0">No comments</span>
+    </article>
+
+    <button
+      [ngClass]="{ 'recipe_fav--active': userService.isActive(recipe.recipe_id) }"
+      class="recipe_fav"
+      (click)="userService.addFavorite(recipe.recipe_id)"
+    >
+      <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.recipe_id)"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.recipe_id)"></fa-icon>
+    </button>
+  </div>
+</div>

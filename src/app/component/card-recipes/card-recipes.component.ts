@@ -18,6 +18,4 @@ export class CardRecipesComponent {
     , public recipeService :RecipesService) {}
   faStar = faStar;
   faStarSolid = faStarSolid;
-
-
-  }
+}

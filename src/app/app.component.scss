@@ -3,18 +3,16 @@ html, body {
     margin: 0;
     padding: 0;
   }
-  
+
   .wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
   }
-  
+
   .pages {
     flex: 1;
-    overflow: hidden; 
+    overflow: hidden;
+    position: relative;
   }
-  
-  .app-footer {
-    margin-top: auto;
-  }
+

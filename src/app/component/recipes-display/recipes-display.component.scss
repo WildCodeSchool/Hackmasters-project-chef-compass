@@ -1,32 +1,34 @@
 @use '../../style/variables' as *;
 @use '../../style/mixin' as *;
+@use '../../style/animation' as *;
 .allrecipes{
     margin-right:1vh ;
-    padding:$marginPage ;
+    padding:$paddingPageRoute ;
     &_container{
         position: relative;
         &--card{
         display: flex;
-        position: relative;
         gap: 2%;
-        transition: transform 0.3s ease-in-out;
- 
-    }
+        transition: transform 0.5s cubic-bezier(.25,.1,.16,1.46);
+
+        }
+
     &--buttons{
     &--right{
         position: absolute;
-        top:0%;
+        background-color: wihte;
+        top:40%;
         right: 0%;
-        height: 98%;
-       
-     
+        height: 20%;
+
+
     }
     &--left{
-        position: absolute;
-        top:0%;
-        height: 98%;
-        
-    
+      position: absolute;
+      background-color: wihte;
+      top:40%;
+      height: 20%;
+
     }
 }
 
@@ -36,13 +38,34 @@
 .button_selection{
     @include button;
     border: none;
-    opacity: 0.9;
+    opacity: 0.8;
+
     &:hover{
         @include buttonHover;
-        opacity: 0.5;
+        opacity: 0.8;
         img{
-            filter: brightness(50);        
-        
+            filter: brightness(50);
+
         }
     }
+
 }
+.card_animation {
+
+  @for $i from 1 through 12 {
+    &--#{$i} {
+
+      animation: translate 1s ease-in-out both;
+
+      animation-delay: $i * 0.1s;
+    }
+
+
+
+  }
+
+
+}
+
+
+
