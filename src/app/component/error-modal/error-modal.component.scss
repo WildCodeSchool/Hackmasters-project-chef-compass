@@ -1,23 +1,26 @@
+@use '../../style/animation' as *;
+
 .error-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: white;
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  animation: wrong 1.7s ease-in-out both ;
   }
-  
+
   .error-modal-message {
     font-size: 18px;
     font-weight: bold;
     color: red;
     margin-bottom: 20px;
   }
-  
+
   .error-modal-button {
     background-color: #f44336;
     color: white;
@@ -28,8 +31,7 @@
     font-weight: bold;
     transition: background-color 0.3s ease;
   }
-  
+
   .error-modal-button:hover {
     background-color: #d32f2f;
   }
-  

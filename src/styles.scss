@@ -12,7 +12,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-h1,h2,h3,h4,h5,h6,b {
+h1,h2,h3,h4,h5,h6,b ,label{
     font-family: 'Fredoka', sans-serif; /*Title Font*/
      }
 *{
@@ -21,7 +21,7 @@ h1,h2,h3,h4,h5,h6,b {
 b{
   color: $primaryColor;
 }
-p, li ,textarea{
+p, li ,textarea, input, select, option, button{
     font-size: 1.2rem;
   margin: 0;
 }

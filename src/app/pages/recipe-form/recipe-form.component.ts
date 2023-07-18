@@ -157,7 +157,12 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
     try {
       await this.addRecipeService.createRecipe(this.recipeForm.value);
       this.isFormSubmitted = false;
-      this.dialog.open(SuccessModalComponent);
+      const dialogRef = this.dialog.open(SuccessModalComponent);
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      dialogRef.close();
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       this.router.navigate([`/recipes/${this.recipeForm.value.names}`]);
     } catch (error) {
       console.error('POST request error:', error);
