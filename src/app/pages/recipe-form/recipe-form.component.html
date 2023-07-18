@@ -1,61 +1,139 @@
-<div
-  class="container2"
-  [class.disabled]="(isFormSubmitted && recipeForm.invalid) || (recipeService.modalOpen$ | async)"
->
-  <div class="container">
-    <div class="video-container">
-      <video src="assets/video/video-add-recipe.mp4" autoplay loop muted></video>
-      <div class="video-overlay">
-        <h2 class="video-title">Get Ready to Spice Things Up!</h2>
-        <h3 class="video-subtitle">Add Your Recipe to Chef's Compass!</h3>
+<div class="container">
+  <div class="video-container">
+    <video src="assets/video/video-add-recipe.mp4" autoplay loop muted></video>
+    <div class="video-overlay">
+      <h2 class="video-title">Get Ready to Spice Things Up!</h2>
+      <h3 class="video-subtitle">Add Your Recipe to Chef's Compass!</h3>
+    </div>
+  </div>
+  <div class="form-container">
+    <h2 class="form-title">Add Recipe</h2>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">
+      <label for="names">Name</label>
+      <input formControlName="names" type="text" id="names" name="names" required />
+      <div *ngIf="recipeForm.controls['names'].touched && recipeForm.controls['names'].invalid">
+        Name is required and must be at least 3 characters.
       </div>
-    </div>
-    <div class="form-container">
-      <h2 class="form-title">Add Recipe</h2>
-      <form [formGroup]="recipeForm" (submit)="onSubmit()" class="recipe-form">
-        <label for="typeOfDish">Type of Dish</label>
-        <select id="typeOfDish" name="typeOfDish" formControlName="typeOfDish" required>
-          <option value="" disabled>Select a type</option>
-          <option value="dish">Dish</option>
-          <option value="dessert">Dessert</option>
-          <option value="starter">Starter</option>
-          <option value="aperitif">Aperitif</option>
+      <div *ngIf="recipeForm.controls['names'].touched && recipeForm.controls['names'].errors?.['forbiddenCharacters']">
+        Name must not contain special characters.
+      </div>
+
+      <label for="categories">Category</label>
+      <select id="categories" formControlName="categories" required>
+        <option value="" disabled>Select a type</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName }}</option>
+      </select>
+      <div *ngIf="recipeForm.controls['categories'].touched && recipeForm.controls['categories'].invalid">
+        Category is required.
+      </div>
+
+      <label for="country">Country</label>
+      <select id="country" formControlName="country" required>
+        <option value="" disabled>Select a country</option>
+        <option *ngFor="let country of countries" [value]="country.id">{{ country.countryName }}</option>
+      </select>
+      <div *ngIf="recipeForm.controls['country'].touched && recipeForm.controls['country'].invalid">
+        Country is required.
+      </div>
+
+      <label for="prepTime">Preparation Time (minutes)</label>
+      <input type="number" id="prepTime" formControlName="prepTime" />
+
+      <label for="cookTime">Cooking Time (minutes)</label>
+      <input type="number" id="cookTime" formControlName="cookTime" />
+
+      <label for="budget">budget</label>
+      <input type="number" id="budget" formControlName="budget" />
+
+      <label for="allergens">Allergens</label>
+      <div formArrayName="allergens">
+        <select #newAllergen (change)="addAllergen(+newAllergen.value); newAllergen.value = ''">
+          <option value="" disabled>Add allergen</option>
+          <option *ngFor="let allergen of allergensData" [value]="allergen.id">{{ allergen.allergenName }}</option>
         </select>
-        <label for="name">Name</label>
-        <input formControlName="name" type="text" id="name" name="name" />
-        <div *ngIf="isFieldInvalid('name')" class="error-message">Name is required.</div>
 
-        <label for="country">Country</label>
-        <select id="country" formControlName="country" required>
-          <option value="" disabled>Select a country</option>
-          <option *ngFor="let country of countriesList" [value]="country.name">{{ country.name }}</option>
+        <div *ngFor="let allergenControl of allergens.controls; let i = index">
+          <button type="button" (click)="removeAllergen(i)">
+            {{ allergensData[allergenControl.value - 1].allergenName }}
+            <b>X</b>
+          </button>
+        </div>
+      </div>
+
+      <label for="diets">Diets</label>
+      <div formArrayName="diets">
+        <select #newDiet (change)="addDiet(+newDiet.value); newDiet.value = ''">
+          <option value="" disabled>Add diet</option>
+          <option *ngFor="let diet of dietsData" [value]="diet.id">{{ diet.dietName }}</option>
         </select>
 
-        <label for="prepTime">Preparation Time (minutes)</label>
-        <input type="number" id="prepTime" name="prepTime" formControlName="prepTime" required />
+        <div *ngFor="let dietControl of diets.controls; let i = index">
+          <button type="button" (click)="removeDiet(i)">
+            {{ dietsData[dietControl.value - 1].dietName }}
+            <b>X</b>
+          </button>
+        </div>
+      </div>
 
-        <label for="cookTime">Cooking Time (minutes)</label>
-        <input type="number" id="cookTime" name="cookTime" formControlName="cookTime" required />
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="recipeForm.controls['description'].touched && recipeForm.controls['description'].invalid">
+        Description is required and must be at least 50 characters.
+      </div>
+      <label for="ingredients">Ingredients</label>
+      <div formArrayName="ingredients">
+        <input #newIngredient type="text" placeholder="Ingredient" [(ngModel)]="newIngredientValue" />
+        <input #newQuantity type="text" placeholder="Quantity" [(ngModel)]="newQuantityValue" />
+        <button
+          type="button"
+          [disabled]="newIngredient.value === '' || newQuantity.value === ''"
+          (click)="
+            addIngredient(newIngredient.value, newQuantity.value); newIngredient.value = ''; newQuantity.value = ''
+          "
+        >
+          Add Ingredient
+        </button>
 
-        <label for="allergens">Allergens</label>
-        <div *ngIf="isFieldInvalid('allergens')" class="error-message">Allergens is required.</div>
-        <input type="text" id="allergens" name="allergens" formControlName="allergens" required />
+        <div *ngFor="let ingredientGroup of ingredients.controls; let i = index">
+          <button type="button" (click)="removeIngredient(i)">
+            {{ ingredientGroup.value.ingredient }}:{{ ingredientGroup.value.quantity }}
+            <b>X</b>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="recipeForm.controls['steps'].touched && recipeForm.controls['steps'].errors?.['minArrayLength']">
+        You must have at least 3 ingredients.
+      </div>
+      <div *ngIf="ingredients?.get('ingredient')?.invalid && ingredients?.get('ingredient')?.touched">
+        Ingredient is required.
+      </div>
 
-        <label for="diet">Diet</label>
-        <div *ngIf="isFieldInvalid('diet')" class="error-message">Diet is required</div>
-        <input type="text" id="diet" name="diet" formControlName="diet" required />
+      <div *ngIf="ingredients?.get('quantity')?.invalid && ingredients?.get('quantity')?.touched">
+        Quantity is required.
+      </div>
 
-        <label for="steps">Steps</label>
-        <div *ngIf="isFieldInvalid('steps')" class="error-message">Steps is required.</div>
-        <textarea id="steps" name="steps" formControlName="steps" required></textarea>
+      <label for="steps">Steps</label>
+      <div formArrayName="steps">
+        <input #newStep type="text" />
+        <button type="button" (click)="addStep(newStep.value); newStep.value = ''">Add Step</button>
+        <div *ngFor="let step of steps.controls; let i = index">
+          <button type="button" (click)="removeStep(i)">
+            Step: {{ i + 1 }}:{{ step.value }}
+            <b>X</b>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="recipeForm.controls['steps'].touched && recipeForm.controls['steps'].errors?.['minArrayLength']">
+        You must have at least 3 steps.
+      </div>
 
-        <!-- Rest of the form fields -->
-        <label for="recipeFile">Recipe File</label>
-        <input type="file" id="recipeFile" name="recipeFile" (change)="onFileChange($event)" />
-
-        <button class="form-button" type="submit">Add Recipe</button>
-        <button class="form-button" type="button" (click)="onCancel()">Cancel</button>
-      </form>
-    </div>
+      <label for="picture">Recipe picture</label>
+      <input type="text" id="picture" formControlName="picture" />
+      <div *ngIf="recipeForm.controls['picture'].errors && recipeForm.controls['picture'].touched">
+        {{ recipeForm.controls['picture'].errors?.['img']?.rules }}
+      </div>
+      <button class="form-button" type="submit">Add Recipe</button>
+      <button class="form-button" type="button" (click)="onCancel()">Cancel</button>
+    </form>
   </div>
 </div>
