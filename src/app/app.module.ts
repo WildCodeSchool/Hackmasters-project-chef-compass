@@ -26,6 +26,7 @@ import { ErrorModalComponent } from './component/error-modal/error-modal.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angular';
+import { WarningModalComponent } from './component/warning-modal/warning-modal.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angul
     RecipeFormComponent,
     ErrorModalComponent,
     SuccessModalComponent,
+    WarningModalComponent,
   ],
   imports: [
     BrowserModule,

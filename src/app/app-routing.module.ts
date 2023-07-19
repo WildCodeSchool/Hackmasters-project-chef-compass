@@ -8,7 +8,6 @@ import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 
-
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'recipes', component: AllRecipesComponent },
@@ -20,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {

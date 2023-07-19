@@ -46,17 +46,14 @@ export class RecipesService {
     return this.getRecipes();
   }
 
-  getRecipeByName(name: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.recipesUrl}/${name}`).pipe(catchError(this.handleError));
+  getRecipeBySlug(slug: string): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.recipesUrl}/${slug}`).pipe(catchError(this.handleError));
   }
 
   getRecipeById(id: number): Observable<any> {
     return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.id === id)));
   }
 
-  saveRecipe(recipe: any): Observable<any> {
-    return this.http.post<any>('url-to-save-recipe', recipe).pipe(catchError(this.handleError));
-  }
 
   private handleError(error: any): Observable<never> {
     console.error('Erreur de requête POST:', error);
