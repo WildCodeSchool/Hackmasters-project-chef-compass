@@ -15,7 +15,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { FooterComponent } from './component/footer/footer.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipesdisplayComponent } from './component/recipes-display/recipes-display.component';
@@ -27,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LucideAngularModule, Utensils, ChefHat, Star, Plus } from 'lucide-angular';
 import { WarningModalComponent } from './component/warning-modal/warning-modal.component';
-
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +44,7 @@ import { WarningModalComponent } from './component/warning-modal/warning-modal.c
     ErrorModalComponent,
     SuccessModalComponent,
     WarningModalComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,7 @@ import { WarningModalComponent } from './component/warning-modal/warning-modal.c
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    LucideAngularModule.pick({ Utensils, ChefHat, Star, Plus,})
+    LucideAngularModule.pick({ Utensils, ChefHat, Star, Plus }),
   ],
   providers: [],
   bootstrap: [AppComponent],
