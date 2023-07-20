@@ -1,0 +1,52 @@
+@use '../../style/mixin' as *;
+@use '../../style/animation' as *;
+@use '../../style/variables' as *;
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.title {
+  font-size: 9rem;
+
+  &_sub {
+    position: relative;
+    bottom: 8rem;
+    font-size: 2.5rem;
+  }
+}
+
+:host::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/backgroundPage/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+}
+.button {
+  position: relative;
+  bottom: 7rem;
+  padding: 1.5rem 1rem;
+  @include button;
+  &:hover {
+    @include buttonHover;
+  }
+}

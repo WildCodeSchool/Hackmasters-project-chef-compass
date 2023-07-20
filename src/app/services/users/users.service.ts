@@ -9,27 +9,27 @@ import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 })
 export class UsersService {
   favoriteRecipes: number[] = [];
-
+  createRecipe: number[] = [];
   comments = [
     {
       recipe: 1,
       comment: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum',
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
       ],
     },
     {
       recipe: 2,
       comment: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt',
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
       ],
     },
     {
       recipe: 3,
       comment: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem',
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
+        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
       ],
     },
   ];
@@ -40,15 +40,16 @@ export class UsersService {
 
   constructor(private recipeService: RecipesService) {}
 
-  getLatestCommentsByRecipeId(recipeId: number, count: number): string[] {
+  getCommentsByRecipeId(recipeId: number) {
     const commentsByRecipe = this.comments.find((c) => c.recipe === recipeId);
     if (commentsByRecipe) {
-      const latestComments = commentsByRecipe.comment.slice(0, count);
-      return latestComments;
+      return commentsByRecipe.comment;
     } else {
       return [];
     }
   }
+
+
   addFavorite(id: number): void {
     const index = this.favoriteRecipes.indexOf(id);
     if (index === -1) {
@@ -59,15 +60,31 @@ export class UsersService {
     this.favoriteUpdateSubject.next();
   }
 
+  createRecipeId(id: number): void {
+    const index = this.createRecipe.indexOf(id);
+    if (index === -1) {
+      this.createRecipe.push(id);
+    } else {
+      this.createRecipe.splice(index, 1);
+    }
+    console.log(this.createRecipe);
+    this.favoriteUpdateSubject.next();
+  }
+
+  isCreateRecipe(id: number): boolean {
+    return this.createRecipe.indexOf(id) !== -1;
+  }
+
   isActive(id: number): boolean {
     return this.favoriteRecipes.indexOf(id) !== -1;
   }
-  addComment(recipeId: number, comment: string): void {
+
+  addComment(recipeId: number, comment: string ,rating:number): void {
     const recipeComments = this.comments.find((c) => c.recipe === recipeId);
     if (recipeComments) {
-      recipeComments.comment.unshift(comment); // Ajoute le commentaire au début du tableau
+      recipeComments.comment.unshift({ content: comment, score: rating });
     } else {
-      this.comments.push({ recipe: recipeId, comment: [comment] });
+      this.comments.push({ recipe: recipeId, comment: [{ content: comment, score: rating}] });
     }
   }
 
