@@ -8,6 +8,7 @@ import { Country } from './Country.model';
 export interface Recipe {
   id: number;
   recipeName: string;
+  recipeSlug: string;
   category: Category;
   country: Country;
   prepTime: number;

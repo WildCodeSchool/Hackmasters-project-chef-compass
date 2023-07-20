@@ -150,20 +150,20 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
     this.recipeForm.value.cookTime = Number(this.recipeForm.value.cookTime) || 0;
     this.recipeForm.value.prepTime = Number(this.recipeForm.value.prepTime) || 0;
     this.recipeForm.value.budget = Number(this.recipeForm.value.budget) || 0;
-    this.recipeForm.value.names = this.recipeForm.value.names.trim().replace(/\s/g, '-');
-    console.log(this.recipeForm.value);
     this.isFormSubmitted = true;
 
     try {
       await this.addRecipeService.createRecipe(this.recipeForm.value);
       this.isFormSubmitted = false;
-      const dialogRef = this.dialog.open(SuccessModalComponent);
+      const dialogRef = this.dialog.open(SuccessModalComponent, {
+        data: { message: ' has been successfully saved !' }
+      });
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       dialogRef.close();
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
-      this.router.navigate([`/recipes/${this.recipeForm.value.names}`]);
+      this.router.navigate([`/recipes/${this.recipeForm.value.names.toLowerCase().replace(/\s/g, '-')}`]);
     } catch (error) {
       console.error('POST request error:', error);
       const errorMessage = 'An error occurred while saving the recipe.';

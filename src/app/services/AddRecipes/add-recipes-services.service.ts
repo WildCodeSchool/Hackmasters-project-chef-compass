@@ -5,12 +5,14 @@ import { Country } from '../../models/modelRecipe/Country.model';
 import { Allergen } from '../../models/modelRecipe/Allergen.model';
 import { Diet } from '../../models/modelRecipe/Diet.model';
 import { RecipeResponse } from '../../models/modelRecipe/RecipeReponse.model';
+import {UsersService} from "../users/users.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddRecipesServicesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private userService : UsersService) {}
 
   searchUrl = 'http://localhost:8080';
 
@@ -27,6 +29,7 @@ export class AddRecipesServicesService {
       const recipeResponse = await this.http
         .post<RecipeResponse>(`${this.searchUrl}/recipes`, {
           recipeName: recipeFormValue.names,
+          recipeSlug: recipeFormValue.names.toLowerCase().replace(/ /g, '-'),
           category: { id: Number(recipeFormValue.categories) },
           country: { id: Number(recipeFormValue.country) },
           prepTime: recipeFormValue.prepTime,
@@ -93,7 +96,7 @@ export class AddRecipesServicesService {
             .toPromise();
         }
       }
-
+      this.userService.createRecipeId(recipeId);
       return true;
 
     } catch (error) {

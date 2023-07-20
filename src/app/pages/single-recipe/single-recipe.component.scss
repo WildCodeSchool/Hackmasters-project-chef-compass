@@ -58,6 +58,19 @@ b:hover{
         }
 
     }
+  &_delete{
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    background-color:transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor:pointer;
+    &:hover , &--active {
+
+    color: $primaryColor;
+    }
+  }
   &_origin{
     display: flex;
     margin: 30px;
@@ -131,7 +144,17 @@ b:hover{
         justify-content: space-around;
         align-items: center;
         margin-bottom: 2vh;
-
+      &--ratings{
+        color: $primaryColor;
+        font-size: 1.4rem;
+        margin-bottom: 1vh;
+        padding-bottom: 1vh;
+      }
+      &--star {
+        &:hover {
+          font-size: 1.5rem;
+           }
+         }
 
         &--send{
             display: flex;
@@ -144,6 +167,7 @@ b:hover{
             align-items: center;
             max-width: 550px;
           }
+
         & textarea{
             resize: none;
             border-radius:15px ;
@@ -169,41 +193,39 @@ b:hover{
 
 
         }
-        &--msg p {
+        &--msg {
+          max-height: 245px;
+          overflow-y: auto;
+          padding-right: 10px;
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: $primaryColor;
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: darken($primaryColor,20%);
+          }
+          &  p {
             max-width: 350px;
             padding: 18px;
             border: $primaryColor solid 1px;
             border-radius: 15px;
             background-color: $colorGlass;
             margin-bottom: 2vh;
+          }
+
+        }
+        &--score{
+          font-size: 1.2rem;
         }
     }
 
-}
-.butn{display: none;}
-.rating > label{ position: relative;}
-
-.rating > label:hover,
-.rating > label:hover ~ label,
-.rating > input.radio-btn:checked ~ label
-{color:transparent ;}
-
-.rating > label:hover::before,
-.rating > label:hover ~ label:before,
-.rating > input.radio-btn:checked ~ label::before {
-    content: "\2605";
-    position: absolute;
-    left: 0;
-    color: $primaryColor;
-}
-.rating{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    color: $primaryColor;
-    font-size: 2rem;
-}
-.rating > label:hover{
-    transform: scale(1.4);
 }
 
