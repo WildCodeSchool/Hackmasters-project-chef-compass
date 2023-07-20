@@ -1,6 +1,4 @@
-/* modal-login.component.scss */
 .modal {
-    /* Styles to create a backdrop overlay (you can customize this) */
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +10,6 @@
     align-items: center;
   
     .modal-content {
-      /* Styles for the modal content */
       background-color: #fff;
       padding: 20px;
       border-radius: 4px;

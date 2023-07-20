@@ -15,27 +15,19 @@ export class LoginModalComponent implements OnInit {
 
   @Output() loginSuccess: EventEmitter<User> = new EventEmitter<User>();
 
-  // Constructeur avec le service AuthUserService
   constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
 
   ngOnInit(): void {
-    // Check if the user is already logged in
     this.isLoggedIn = this.authUserService.isLoggedIn();
   }
 
-  // Méthode pour gérer la soumission du formulaire de connexion
   onSubmit(): void {
-    // Appelez la méthode login du service AuthUserService pour gérer le processus de connexion
     this.authUserService.login(this.email, this.password).subscribe(
       (user: User) => {
-        // Gérez le succès de la connexion ici, par exemple, en émettant l'événement loginSuccess
         this.loginSuccess.emit(user);
-
-        // Fermez la fenêtre modale après la connexion réussie
         this.bsModalRef.hide();
       },
       (error) => {
-        // Gérer l'erreur de connexion ici
         console.error('Login failed:', error);
       }
     );

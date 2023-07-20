@@ -15,9 +15,7 @@ export class UserLoginComponent implements OnInit {
 
   constructor(public authUserService: AuthUserService, private tokenService: TokenService) {}
 
-  ngOnInit(): void {
-    // Initialization
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     this.authUserService.login(this.email, this.password).subscribe(

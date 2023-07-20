@@ -53,9 +53,7 @@ export class NavbarComponent implements OnInit {
   }
   showLoginModal(): void {
     this.modalService.show(LoginModalComponent, {
-      initialState: {
-        // Add any data you want to pass to the login modal here
-      },
+      initialState: {},
       ignoreBackdropClick: true,
     });
   }
@@ -72,17 +70,10 @@ export class NavbarComponent implements OnInit {
   }
 
   openLoginModal() {
-    // Utilisez le service BsModalService pour ouvrir la fenêtre modale
     this.bsModalRef = this.modalService.show(LoginModalComponent, { class: 'modal-lg' });
 
-    // Vérifier si modalRef.content est défini avant de souscrire
     if (this.bsModalRef.content) {
-      // Souscrire à l'événement loginSuccess
       this.bsModalRef.content.loginSuccess.subscribe((user: User) => {
-        // Vous pouvez gérer le succès de la connexion ici et effectuer des actions supplémentaires si nécessaire,
-        // par exemple, mettre à jour l'interface utilisateur pour indiquer que l'utilisateur est connecté.
-
-        // Émettre l'événement loginSuccess pour informer d'autres composants que l'utilisateur s'est connecté avec succès
         this.loginSuccess.emit(user);
       });
     }
