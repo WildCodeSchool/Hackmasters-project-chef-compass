@@ -1,6 +1,9 @@
 @use '../../style/variables' as *;
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   background-color: $secondaryColor;
   height: 75px;
   display: flex;
@@ -8,6 +11,7 @@ header {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: $paddingPagesBar ;
+
 }
 
 // Brand --------------------------------
@@ -139,6 +143,27 @@ header {
 
 }
 
+.login-button {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: #555;
+
+    .login-icon {
+      font-size: 24px;
+      margin-right: 5px;
+    }
+  }
+}
 
 // Button menu
 .links_menu {
@@ -149,8 +174,15 @@ header {
   gap: 30px;
   text-align: center;
   list-style: none;
+  padding: 40px;
     white-space: nowrap;
     margin: 0;
+  }
+  & .links_menu-icon{
+    font-size: 30px;
+  }
+  &  p {
+    font-size: 20px;
   }
   & li {
     background-color: $secondaryColor;
@@ -158,6 +190,7 @@ header {
     &:hover {
       .links_menu-icon {
         color: lighten($primaryColor, 10%);
+        
       }
     }
   }
@@ -172,17 +205,39 @@ header {
 
 @media (max-width: 768px) {
   header {
-    height: 90px;
-    justify-content: flex-start;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: $secondaryColor;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: $paddingPagesBar;
+  
+  }
+  header .search {
+    display: none;
+  }
+  header .nav-logo {
+    display: none;
   }
   .slogan {
     display: none;
   }
   .links_menu ul {
     display: flex;
-    right: 0;
-    width: 100%;
     bottom: 5px;
+    justify-content: space-around;
 
+ 
+  }
+  .links_menu p {
+    display: none; 
+  }
+  .links_menu-icon {
+    font-size: 50px; 
   }
 }
+

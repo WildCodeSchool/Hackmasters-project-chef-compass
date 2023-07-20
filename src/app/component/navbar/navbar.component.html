@@ -17,7 +17,7 @@
       />
     </div>
     <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-    <div class="search_burger" [ngStyle]="{ 'height': showNav ? '50px' : '26px' }">
+    <div class="search_burger" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
       <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
         <button class="search_burger--button" (click)="toggleNav()">
           <fa-icon
@@ -40,47 +40,56 @@
               </option>
             </select>
             <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected(selectedDiets)">
-              <option value="" disabled selected hidden> diets</option>
+              <option value="" disabled selected hidden>diets</option>
               <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
             </select>
           </div>
-          <div class="search_burger--unselected" >
+          <div class="search_burger--unselected">
             <button (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
-              {{ countries }} <b>x</b>
+              {{ countries }}
+              <b>x</b>
             </button>
             <button (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
-              {{ allergens }} <b>x</b>
+              {{ allergens }}
+              <b>x</b>
             </button>
-            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">{{ diets }} <b>x</b></button>
+            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
+              {{ diets }}
+              <b>x</b>
+            </button>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
 
   <nav class="links_menu">
     <ul>
+      <button (click)="openLoginModal()">
+        <lucide-icon name="chef-hat" class="login-icon"></lucide-icon>
+        <p>Login</p>
+      </button>
       <li>
         <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat" size="35" strokeWidth="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="chef-hat"></lucide-icon>
           <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <lucide-icon class="links_menu-icon" name="star" size="35" strokeWidth="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="star"></lucide-icon>
           <p>Favourites</p>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
-          <lucide-icon class="links_menu-icon" name="plus" size="35" strokeWidth="4"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="plus"></lucide-icon>
           <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <lucide-icon class="links_menu-icon" name="utensils" size="35" strokeWidth="2.5"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="utensils"></lucide-icon>
           <p>All Recipes</p>
         </a>
       </li>
