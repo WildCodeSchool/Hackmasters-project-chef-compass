@@ -1,1 +1,7 @@
-<p>user-login works!</p>
+<!-- user-login.component.html -->
+<div *ngIf="authUserService.isLoggedIn()">
+  <button (click)="logout()">Logout</button>
+</div>
+<div *ngIf="!authUserService.isLoggedIn()">
+  <!-- Your login form or login button here -->
+</div>

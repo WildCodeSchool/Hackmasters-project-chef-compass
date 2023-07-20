@@ -51,6 +51,22 @@ export class NavbarComponent implements OnInit {
       this.diets = diet;
     });
   }
+  showLoginModal(): void {
+    this.modalService.show(LoginModalComponent, {
+      initialState: {
+        // Add any data you want to pass to the login modal here
+      },
+      ignoreBackdropClick: true,
+    });
+  }
+  isLoggedIn(): boolean {
+    return this.authUserService.isLoggedIn();
+  }
+  // Logout method
+  logout(): void {
+    this.authUserService.logout();
+  }
+
   onLoginSuccess(user: User) {
     console.log('User logged in:', user);
   }

@@ -11,28 +11,26 @@ import { Token, TokenService } from 'src/app/services/token/token.service';
 export class UserLoginComponent implements OnInit {
   email = '';
   password = '';
-  @Output() loginSuccess: EventEmitter<User> = new EventEmitter<User>(); // Modifiez le type de retour pour émettre un objet User
+  @Output() loginSuccess: EventEmitter<User> = new EventEmitter<User>();
 
-  // Constructeur avec les services AuthUserService et TokenService
-  constructor(private authUserService: AuthUserService, private tokenService: TokenService) {}
+  constructor(public authUserService: AuthUserService, private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    // Initialisation
+    // Initialization
   }
 
-  // Méthode pour gérer la soumission du formulaire de connexion
   onSubmit(): void {
-    // Appelez la méthode login du service AuthUserService pour gérer le processus de connexion
     this.authUserService.login(this.email, this.password).subscribe(
       (user: User) => {
-        // Gérez le succès de la connexion ici, par exemple, en émettant l'événement loginSuccess
         this.loginSuccess.emit(user);
       },
       (error) => {
-        // Gérer l'erreur de connexion ici
         console.error('Login failed:', error);
       }
     );
   }
-  // Autres méthodes...
+
+  logout(): void {
+    this.authUserService.logout();
+  }
 }

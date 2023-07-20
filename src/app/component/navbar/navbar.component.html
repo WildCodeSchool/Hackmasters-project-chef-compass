@@ -32,7 +32,8 @@
             <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
               <option value="" disabled selected hidden>pays</option>
               <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
-            </select>0
+            </select>
+            0
             <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
               <option value="" disabled selected hidden>allergens</option>
               <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
@@ -65,6 +66,13 @@
 
   <nav class="links_menu">
     <ul>
+      <div *ngIf="isLoggedIn(); else loginButton">
+        <button (click)="logout()">Logout</button>
+      </div>
+      <ng-template #loginButton>
+        <button (click)="showLoginModal()">Login</button>
+      </ng-template>
+
       <button (click)="openLoginModal()">
         <lucide-icon name="chef-hat" class="login-icon"></lucide-icon>
         <p>Login</p>

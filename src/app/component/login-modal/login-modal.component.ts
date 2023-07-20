@@ -11,12 +11,17 @@ import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 export class LoginModalComponent implements OnInit {
   email = '';
   password = '';
+  isLoggedIn = false;
+
   @Output() loginSuccess: EventEmitter<User> = new EventEmitter<User>();
 
   // Constructeur avec le service AuthUserService
   constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Check if the user is already logged in
+    this.isLoggedIn = this.authUserService.isLoggedIn();
+  }
 
   // Méthode pour gérer la soumission du formulaire de connexion
   onSubmit(): void {

@@ -8,7 +8,6 @@ import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 
-
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'recipes', component: AllRecipesComponent },
@@ -17,12 +16,12 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'favourites', component: FavoritesComponent },
   { path: 'add-recipe', component: RecipeFormComponent },
+  // Add a new route to handle logout and redirect to the homepage
+  { path: 'logout', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-  ROUTES = routes;
-}
+export class AppRoutingModule {}
