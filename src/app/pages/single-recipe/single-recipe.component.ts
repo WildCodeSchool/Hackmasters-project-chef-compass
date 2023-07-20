@@ -41,15 +41,26 @@ export class SingleRecipeComponent implements OnInit {
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeSlug = params.get('name');
       if (recipeSlug) {
-        this.recipesService.getRecipeBySlug(recipeSlug).subscribe((recipe: Recipe) => {
-          this.recipe = recipe;
-          console.log(this.recipe);
-          this.isLoading = false;
-          this.isUserCreateRecipe = this.userService.isCreateRecipe(this.recipe.id);
-        });
+        this.recipesService.getRecipeBySlug(recipeSlug).subscribe(
+          (recipe: Recipe) => {
+            if (recipe) {
+              this.recipe = recipe;
+              this.isLoading = false;
+              this.isUserCreateRecipe = this.userService.isCreateRecipe(this.recipe.id);
+            } else {
+              this.router.navigate(['/404']);
+            }
+          },
+          () => {
+            this.router.navigate(['/404']);
+          }
+        );
+      } else {
+        this.router.navigate(['/404']);
       }
     });
   }
+
 
   setTempRating(rating: number, event: any): void {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
