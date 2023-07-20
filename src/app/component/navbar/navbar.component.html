@@ -32,7 +32,7 @@
             <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
               <option value="" disabled selected hidden>pays</option>
               <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
-            </select>
+            </select>0
             <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
               <option value="" disabled selected hidden>allergens</option>
               <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
