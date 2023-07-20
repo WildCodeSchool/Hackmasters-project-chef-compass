@@ -40,7 +40,7 @@ export class UsersService {
 
   constructor(private recipeService: RecipesService) {}
 
-  getCommentsByRecipeId(recipeId: number): any[] {
+  getCommentsByRecipeId(recipeId: number) {
     const commentsByRecipe = this.comments.find((c) => c.recipe === recipeId);
     if (commentsByRecipe) {
       return commentsByRecipe.comment;

@@ -64,7 +64,7 @@ export class SingleRecipeComponent implements OnInit {
 
   setRating(rating: number, event: any): void {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
-    const x = event.clientX - rect.left; // x position within the element
+    const x = event.clientX - rect.left;
     const width = rect.right - rect.left;
     this.rating = x > width / 2 ? rating : rating - 0.5;
     this.tempRating = this.rating;
