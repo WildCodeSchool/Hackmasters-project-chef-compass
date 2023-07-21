@@ -1,0 +1,185 @@
+@use '../../style/variables' as *;
+
+@use '../../style/mixin' as *;
+
+header {
+  background-color: $secondaryColor;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: $paddingPagesBar ;
+}
+
+// Brand --------------------------------
+
+.chefs-compass {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.compass-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.nav-logo {
+  height: 50px;
+}
+
+.slogan {
+  color: $primaryColor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+// Search --------------------------------
+
+.search {
+  align-self: center;
+  display: flex;
+  align-items: center;
+
+
+    &_module {
+      position: relative;
+      display: flex;
+      align-items: center;
+      &--input {
+        padding: 13px;
+        border: 2px solid gray;
+        border-radius: 25px;
+        font-size: 16px;
+        max-width: 250px;
+        transition: border-color 0.3s ease;
+        &:focus   {
+          border: 2px solid $primaryColor;
+          outline: none;
+        }
+      }
+      &-button{
+        position: relative;
+        background-color: withe;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        right: 34px;
+        &-icon {
+          position: relative;
+          right: 25px;
+
+        }
+        &:hover {
+          background-color: gray;
+        }
+      }
+    }
+  &_burger {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0px;
+    position: relative;
+    height: 20px;
+    right: 14px;
+    &--selected{
+      display: flex;
+      margin-bottom: 5px;
+      & select{
+        font-size: 1.1rem;
+      }
+    }
+    &--unselected{
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 5px;
+
+          & button{
+            @include buttonUnselected;
+          }
+        }
+    &--size {
+      max-height: 300px;
+       max-width: 340px;
+      display: flex;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      align-items: flex-start;
+      background: white;
+      padding: 4px 5px ;
+    }
+   &--button{
+
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    background: white;
+
+    &-icon {
+      color: grey;
+
+    &:hover {
+      color: $primaryColor;
+
+    }
+   }
+   }
+  }
+
+}
+
+
+// Button menu
+.links_menu {
+  text-wrap: nowrap;
+  & ul {
+  display: flex;
+  align-items: baseline;
+  gap: 30px;
+  text-align: center;
+  list-style: none;
+    white-space: nowrap;
+    margin: 0;
+  }
+  & li {
+    background-color: $secondaryColor;
+    border: none;
+    &:hover {
+      .links_menu-icon {
+        color: lighten($primaryColor, 10%);
+      }
+    }
+  }
+  &-icon {
+    color: grey;
+
+
+  }
+
+}
+////////////// Responive design
+
+@media (max-width: 768px) {
+  header {
+    height: 90px;
+    justify-content: flex-start;
+  }
+  .slogan {
+    display: none;
+  }
+  .links_menu ul {
+    display: flex;
+    right: 0;
+    width: 100%;
+    bottom: 5px;
+
+  }
+}

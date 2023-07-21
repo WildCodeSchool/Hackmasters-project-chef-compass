@@ -1,71 +1,103 @@
+<div class="container">
+  <div class="recipe">
+    <button *ngIf="isUserCreateRecipe" class="recipe_delete" (click)="openWarningModal()">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+    <h1 class="title" appFirstWord>{{ converter.getFormattedRecipeName(recipe.recipeName) }}</h1>
+    <article class="recipe_information">
+      <section class="recipe_information--card">
+        <section class="recipe_information--card--time-price">
+          <p>
+            <span>Cook Time:</span>
+            {{ converter.timeString(recipe.cookTime) }}
+          </p>
+          <p>
+            <span>Total Time:</span>
+            {{ converter.calculateTotalTime(recipe) }}
+          </p>
+          <p>
+            <fa-icon [icon]="faPlusMinus" size="sm"></fa-icon>
+            : {{ recipe.price }}€
+          </p>
+        </section>
+        <section class="recipe_information--card--description">
+          <p>{{ recipe.description }}</p>
+        </section>
+      </section>
+      <img [src]="recipe.imageUrl" alt="Recipe Image" class="recipe_information--img" />
+    </article>
+    <section class="recipe_origin">
+      <h4 class="recipe_origin--back">{{ recipe.category.categoryName }}</h4>
+      <h4 class="recipe_origin--back">Country: {{ recipe.country.countryName }}</h4>
+    </section>
 
-    <div class="recipe">
-         <h1 class="title">{{ recipe.recipe_name }}</h1>
-        <article class="recipe_information" >
-            <section class="recipe_information--ingredient">
-                <h2>Ingredients:</h2>
-                <ul>
-                    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
-                </ul>
-            
-            </section>
-            <section class="recipe_information--time">
-                <h2>time :</h2>
-                <p>Prep Time: {{ recipe.prep_time }}</p>
-                <p>Cook Time: {{ recipe.cook_time }}</p>
-                <p>Total Time: {{ calculateTotalTime(recipe) }}</p>
-            </section>
-            <section class="recipe_information--price">
-                <h2>Budget:</h2>
-                <p>{{getPriceSymbol(recipe.price)}}</p>
-                <p>price: {{recipe.price}} €</p>
-            </section>
-             <img [src]="recipe.imgUrl" alt="Recipe Image" class="recipe_information--img">
-        </article>
-       
-      <article class="recipe_details">
-        <section class="recipe_details--steps">
-            <h3>Steps:</h3>
+    <article class="recipe_details">
+      <section class="recipe_details--steps">
+        <h2>Steps:</h2>
         <ol>
-          <li *ngFor="let step of recipe.steps">{{ step }}</li>
+          <li *ngFor="let step of recipe.steps">{{ step.stepDescription }}</li>
         </ol>
-        </section>
-        <section class="recipe_details--origin " >
-            <h4> {{ recipe.recipe_type }}</h4>
-            <h4>Country: {{ recipe.country_of_origin }}</h4>
-            </section>
+      </section>
+      <section class="recipe_details--ingredients">
+        <h2>Ingredients:</h2>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredientRecipes">
+            {{ ingredient.ingredient.ingredientName }} : {{ ingredient.quantity }}
+          </li>
+        </ul>
+      </section>
     </article>
-    <article class="recipe_comments">  
-        <section class="recipe_comments--send">
-            <div class="recipe_comments--rating">
-                <form method="post">
-                <div class="rating">
-                    <input type="radio" name="rating" value="star1.2" id="star1.2" class="radio-btn butn">
-                    <label for="star1.2">☆</label>
-                    <input type="radio" name="rating" value="star2.2" id="star2.2" class="radio-btn butn">
-                    <label for="star2.2">☆</label>
-                    <input type="radio" name="rating" value="star3.2" id="star3.2" class="radio-btn butn">
-                    <label for="star3.2">☆</label>
-                    <input type="radio" name="rating" value="star4.2" id="star4.2" class="radio-btn butn">
-                    <label for="star4.2">☆</label>
-                    <input type="radio" name="rating" value="star5.2" id="star5.2" class="radio-btn butn">
-                    <label for="star5.2">☆</label>  
-                </div>
-            </form></div>
-            <div class="recipe_comments--send--flex">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-                <br>
-                <button>Here We Go !</button>
-            </div>
-        </section>
-        <section class="recipe_comments--msg">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Enim nunc faucibus "</p>
-            <p>Elementum integer enim neque volutpate massa placerat duis ultricies. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Eget mi proin sed libero
-            </p>
-        </section>
-    </article>
-    </div>
+    <article class="recipe_comments">
+      <section class="recipe_comments--send">
+        <div class="recipe_comments--ratings">
+          <fa-icon
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+            (mousemove)="setTempRating(i + 1, $event)"
+            (mouseleave)="resetTempRating()"
+            (click)="setRating(i + 1, $event)"
+            [icon]="getStarType(i + 1)"
+            class="recipe_comments--star"
+          ></fa-icon>
+        </div>
 
-  
+        <div class="recipe_comments--send--flex">
+          <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText" (input)="isCommentTooShort = false" ></textarea>
+          <br />
+          <button (click)="addComment(recipe.id, commentText)">Here We Go!</button>
+          <div *ngIf="isCommentTooShort" class="error-message">
+            Your comment must be at least 5 characters long.
+          </div>
+        </div>
+      </section>
+      <section class="recipe_comments--msg" *ngIf="recipe.reviews.length > 0">
+        <div *ngFor="let comment of recipe.reviews">
+          <div>
+            <div class="recipe_comments--ratings">
+              <fa-icon
+                *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                [icon]="getStarTypeForComment(i + 1, comment.rating)"
+                class="recipe_comments--score"
+              ></fa-icon>
+              <p class="recipe_comments--user">{{ comment.user.firstname}}</p>
+            </div>
+          </div>
+          <p class="recipe_comments--text">
+            {{ comment.comment }}
+          </p>
+        </div>
+      </section>
+
+      <span *ngIf="recipe.reviews.length === 0">No comments</span>
+    </article>
+
+    <button
+      [ngClass]="{ 'recipe_fav--active': userService.isActive(recipe.id) }"
+      class="recipe_fav"
+      (click)="userService.addFavorite(recipe.id)"
+    >
+      <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.id)"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="userService.isActive(recipe.id)"></fa-icon>
+    </button>
+
+  </div>
+</div>

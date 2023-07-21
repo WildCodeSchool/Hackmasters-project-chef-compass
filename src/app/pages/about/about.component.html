@@ -1,30 +1,32 @@
 <section class="container">
-    <h1>About The <span>Team</span></h1>
-    <p>
-        Chef’s Compass is a recipe finding app for you, the user. It helps you find a recipe based on your
-        hunger-tackling desires and any ingredients stocked in your kitchen. Not sure how to use them effectively? Let
-        Chef’s Compass show you the way.
-      </p>
+  <h1>
+    About The
+    <b>Team</b>
+  </h1>
+  <p class="about-text">
+    Chef’s Compass is a recipe finding app for you, the user. It helps you find a recipe based on your hunger-tackling
+    desires and any ingredients stocked in your kitchen. Not sure how to use them effectively? Let Chef’s Compass show
+    you the way.
+  </p>
 
-<ul class="team">
-    <li class="team_member" *ngFor="let team of teams" >
-        <div class="team_member--image">
-            <img [src]="team.getImage()" [alt]="team.getName">
-        </div>
-        <div class="team_member--info">
-            <h2>{{team.getName()}}</h2>
-            <h3>Web Developer</h3>
-            <a [href]="team.getGithub()">
-                <p>Github</p>
-                <img src="../../../assets/icon/github.png" alt="">
-                </a>
-    
-            <a [href]="team.getLinkedin()">
-                <p>Linkedin</p>
-                <img src="../../../assets/icon/linkedin.png" alt="">
-            </a>
-        </div>
+  <ul class="team">
+    <li class="team_member" *ngFor="let team of teams">
+      <div class="team_member--image">
+        <img [src]="team.getImage()" [alt]="team.getName" />
+      </div>
+      <div class="team_member--info">
+        <h2>{{ team.getName() }}</h2>
+        <h3>Web Developer</h3>
+        <a [href]="team.getGithub()">
+          <p>Github</p>
+          <fa-icon [icon]="faGithub"></fa-icon>
+        </a>
+
+        <a [href]="team.getLinkedin()">
+          <p>Linkedin</p>
+          <fa-icon [icon]="faLinkedin"></fa-icon>
+        </a>
+      </div>
     </li>
-</ul>
-
+  </ul>
 </section>

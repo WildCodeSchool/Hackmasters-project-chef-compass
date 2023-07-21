@@ -1,0 +1,71 @@
+@use '../../style/variables' as *;
+@use '../../style/mixin' as *;
+@use '../../style/animation' as *;
+.allrecipes{
+    margin-right:1vh ;
+    padding:$paddingPageRoute ;
+    &_container{
+        position: relative;
+        &--card{
+        display: flex;
+        gap: 2%;
+        transition: transform 0.5s cubic-bezier(.25,.1,.16,1.46);
+
+        }
+
+    &--buttons{
+    &--right{
+        position: absolute;
+        background-color: wihte;
+        top:40%;
+        right: 0%;
+        height: 20%;
+
+
+    }
+    &--left{
+      position: absolute;
+      background-color: wihte;
+      top:40%;
+      height: 20%;
+
+    }
+}
+
+    }
+}
+
+.button_selection{
+    @include button;
+    border: none;
+    opacity: 0.8;
+
+    &:hover{
+        @include buttonHover;
+        opacity: 0.8;
+        img{
+            filter: brightness(50);
+
+        }
+    }
+
+}
+.card_animation {
+
+  @for $i from 1 through 12 {
+    &--#{$i} {
+
+      animation: translate 1s ease-in-out both;
+
+      animation-delay: $i * 0.1s;
+    }
+
+
+
+  }
+
+
+}
+
+
+

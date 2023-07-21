@@ -1,0 +1,162 @@
+
+@use '../../style/mixin' as *;
+
+.container2.disabled {
+    pointer-events: none;
+    opacity: 0.10;
+  }
+  .video-overlay {
+      text-align: center;
+      display: flex;
+     flex-direction: column;
+      align-items: center;
+      flex: 1;
+      z-index: 2;
+      position: sticky;
+      top: 32vh;
+      margin-top: 40vh;
+    }
+
+    .video-title {
+      font-size: 40px;
+      max-width: 450px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-subtitle {
+      font-size: 24px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+  .container {
+    position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column;
+      @media (min-width: 769px) {
+        flex-direction: row;
+      }
+    }
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  overflow: hidden;
+
+  video {
+    min-width: 100%;
+    object-fit: cover;
+    object-position: -282px 0px;
+    opacity: 0.7;
+  }
+}
+
+    .form-container {
+      background-color: #f2f2f2;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      margin: 60px 40px; /* Ajout de la marge de chaque côté */
+
+      @media (max-width: 768px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .recipe-form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-top: 1vh;
+      }
+
+      .form-button {
+          background-color: white;
+          color: #333;
+          border: none;
+          padding: 10px 20px;
+          margin-top: 10px;
+          font-size: 16px;
+          border-radius: 4px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+    }
+.form {
+  display: flex;
+  flex-direction: column;
+  &_error{
+    text-decoration: underline 2px red;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1vh 0vh;
+  }
+  &_select{
+    width: 100%;
+    margin: 1vh 0vh;
+  }
+  &_input{
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    gap: 1%;
+    margin: 1vh 0vh;
+    &--ingredient{
+     flex:1 1;
+    }
+  }
+  &_textarea{
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+  }
+  &_button{
+    &--add{
+      margin: 1vh 0vh;
+      width: 120px;
+    }
+    &--all{
+      display: flex;
+      gap: 1%;
+      flex-wrap: wrap;
+
+    }
+    &--single{
+      & button{
+        @include buttonUnselected;
+        background-color: white;
+      }
+    }
+  }
+
+}

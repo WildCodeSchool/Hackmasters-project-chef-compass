@@ -8,10 +8,10 @@ export class TeamService {
 
   private Teams: Teams[]
 
-  constructor() { 
+  constructor() {
     this.Teams=[
       new Teams(
-        'https://avatars.githubusercontent.com/u/48420322?s=48&v=4',
+        '/assets/arturo.jpg',
         'Arturo',
         'https://github.com/ArPimentel',
         'https://www.linkedin.com/in/arturo-pimentel-developpeur-web/'
@@ -27,13 +27,6 @@ export class TeamService {
         'Rémy',
         'https://github.com/remy-rm',
         'https://www.linkedin.com/in/remy-marquis-38b114278/'
-        ),
-      
-      new Teams(
-        'https://placehold.it/150x150',
-        'Daniel',
-        'Undefined',
-        'https://www.linkedin.com/in/daniel-ndoumbe-235aa5154'
         )
 
 
