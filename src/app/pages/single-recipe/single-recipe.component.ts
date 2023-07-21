@@ -38,6 +38,9 @@ export class SingleRecipeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.refresh();
+  }
+  refresh(): void {
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeSlug = params.get('name');
       if (recipeSlug) {
@@ -46,7 +49,15 @@ export class SingleRecipeComponent implements OnInit {
             if (recipe) {
               this.recipe = recipe;
               this.isLoading = false;
-              this.isUserCreateRecipe = this.userService.isCreateRecipe(this.recipe.id);
+              this.userService.isCreateRecipe(recipe.id).subscribe(
+                (isCreated: boolean) => {
+                  this.isUserCreateRecipe = isCreated;
+                  console.log(this.isUserCreateRecipe);
+                },
+                (error) => {
+                  console.error(error);
+                }
+              );
             } else {
               this.router.navigate(['/404']);
             }
@@ -101,9 +112,8 @@ export class SingleRecipeComponent implements OnInit {
   }
 
   deleteRecipe(id: number): void {
+    this.deleteService.deleteAdditionalById(id).subscribe();
     this.deleteService.deleteById(id).subscribe(() => {
-      this.userService.createRecipeId(id);
-      this.recipesService
       this.router.navigate(['/recipes']).then(() => {
         this.openConfirmationModal();
       });
@@ -132,12 +142,21 @@ export class SingleRecipeComponent implements OnInit {
     if (comment.length < 5) {
       this.isCommentTooShort = true;
     } else {
-      this.userService.addComment(recipeId, comment, this.rating);
-      this.commentText = '';
-      this.rating = 0;
-      this.tempRating = 0;
+      this.userService.addComment(recipeId, comment, this.rating).subscribe(
+        (response) => {
+          this.commentText = '';
+          this.rating = 0;
+          this.tempRating = 0;
+          this.isCommentTooShort = false;
+          this.refresh();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
+
   openWarningModal(): void {
 
     const dialogRef = this.dialog.open(WarningModalComponent, {

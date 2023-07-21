@@ -9,7 +9,10 @@ export class DeleteRecipeService {
 
   url = 'http://localhost:8080';
 
-  deleteById(id: number) {
+   deleteById(id: number) {
     return this.http.delete(`${this.url}/recipes/${id}`);
+  }
+  deleteAdditionalById(id: number) {
+    return this.http.delete(`${this.url}/recipes/additional/${id}`);
   }
 }

@@ -150,11 +150,22 @@ b:hover{
         margin-bottom: 1vh;
         padding-bottom: 1vh;
       }
+      &--text {
+        max-width: 350px;
+        padding: 18px;
+        border: $primaryColor solid 1px;
+        border-radius: 15px;
+        background-color: $colorGlass;
+        margin-bottom: 2vh;
+      }
       &--star {
         &:hover {
           font-size: 1.5rem;
            }
          }
+      & p{
+        color: black;
+      }
 
         &--send{
             display: flex;
@@ -212,14 +223,7 @@ b:hover{
           &::-webkit-scrollbar-thumb:hover {
             background: darken($primaryColor,20%);
           }
-          &  p {
-            max-width: 350px;
-            padding: 18px;
-            border: $primaryColor solid 1px;
-            border-radius: 15px;
-            background-color: $colorGlass;
-            margin-bottom: 2vh;
-          }
+
 
         }
         &--score{
