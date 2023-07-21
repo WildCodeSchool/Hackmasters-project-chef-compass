@@ -12,45 +12,12 @@ export class UsersService {
   url = 'http://localhost:8080';
   user = 1;
   favoriteRecipes: number[] = [];
-  createRecipe: number[] = [];
-  comments = [
-    {
-      recipe: 1,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-      ],
-    },
-    {
-      recipe: 2,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-      ],
-    },
-    {
-      recipe: 3,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
-      ],
-    },
-  ];
 
-  // Create a subject to emit updates when favorites change
   private favoriteUpdateSubject = new Subject<void>();
   favoriteUpdate$: Observable<void> = this.favoriteUpdateSubject.asObservable();
 
   constructor(private recipeService: RecipesService, private http: HttpClient) {}
 
-  getCommentsByRecipeId(recipeId: number) {
-    const commentsByRecipe = this.comments.find((c) => c.recipe === recipeId);
-    if (commentsByRecipe) {
-      return commentsByRecipe.comment;
-    } else {
-      return [];
-    }
-  }
 
   addFavorite(id: number): void {
     const index = this.favoriteRecipes.indexOf(id);
