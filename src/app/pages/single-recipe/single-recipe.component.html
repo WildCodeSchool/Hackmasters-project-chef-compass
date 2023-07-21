@@ -96,7 +96,7 @@
       (click)="userService.addFavorite(recipe.id)"
     >
       <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.id)"></fa-icon>
-      <fa-icon [icon]="faStar" *ngIf="userService.isActive(recipe.id)"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.id)"></fa-icon>
     </button>
 
   </div>
