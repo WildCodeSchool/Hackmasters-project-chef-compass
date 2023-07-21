@@ -42,13 +42,9 @@ export class AddRecipesServicesService {
 
       if (!recipeResponse) {
         throw new Error('API returned undefined for recipeResponse');
-      }
-      console.log(recipeResponse);
+      };
       const recipeId = recipeResponse.id;
-
-      console.log(recipeId);
       for (const step of recipeFormValue.steps) {
-        console.log(step);
         await this.http
           .post(`${this.searchUrl}/steps`, [
             {
