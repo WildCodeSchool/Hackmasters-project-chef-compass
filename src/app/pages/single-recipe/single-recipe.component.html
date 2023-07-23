@@ -69,22 +69,25 @@
           </div>
         </div>
       </section>
-      <section class="recipe_comments--msg" *ngIf="userService.getCommentsByRecipeId(recipe.id).length > 0">
-        <div *ngFor="let comment of userService.getCommentsByRecipeId(recipe.id)">
-          <div class="recipe_comments--ratings">
-            <fa-icon
-              *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-              [icon]="getStarTypeForComment(i + 1, comment.score)"
-              class="recipe_comments--score"
-            ></fa-icon>
+      <section class="recipe_comments--msg" *ngIf="recipe.reviews.length > 0">
+        <div *ngFor="let comment of recipe.reviews">
+          <div>
+            <div class="recipe_comments--ratings">
+              <fa-icon
+                *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                [icon]="getStarTypeForComment(i + 1, comment.rating)"
+                class="recipe_comments--score"
+              ></fa-icon>
+              <p class="recipe_comments--user">{{ comment.user.firstname}}</p>
+            </div>
           </div>
-          <p>
-            {{ comment.content }}
+          <p class="recipe_comments--text">
+            {{ comment.comment }}
           </p>
         </div>
       </section>
 
-      <span *ngIf="userService.getCommentsByRecipeId(recipe.id).length === 0">No comments</span>
+      <span *ngIf="recipe.reviews.length === 0">No comments</span>
     </article>
 
     <button
@@ -93,7 +96,7 @@
       (click)="userService.addFavorite(recipe.id)"
     >
       <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.id)"></fa-icon>
-      <fa-icon [icon]="faStar" *ngIf="!userService.isActive(recipe.id)"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="userService.isActive(recipe.id)"></fa-icon>
     </button>
 
   </div>

@@ -4,6 +4,7 @@ import { Step } from './Step.model';
 import { IngredientRecipe } from './IngredientList.model';
 import { Category } from './Category.model';
 import { Country } from './Country.model';
+import { Review } from './reviews.models';
 
 export interface Recipe {
   id: number;
@@ -20,4 +21,5 @@ export interface Recipe {
   diets: Diet[];
   steps: Step[];
   ingredientRecipes: IngredientRecipe[];
+  reviews: Review[];
 }
