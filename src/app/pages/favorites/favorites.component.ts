@@ -7,7 +7,7 @@ import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
+  styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit, OnDestroy {
   favoriteRecipes!: Recipes;
@@ -22,16 +22,14 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.favoriteUpdateSubscription.unsubscribe();
-  }
+
 
   loadFavoriteRecipes(): void {
-    this.userService.loadFavoriteRecipes().then(() => {
-      this.favoriteRecipes = this.userService.getFavoriteRecipes();
-    }).catch((error) => {
-      console.error('Error loading favorite recipes:', error);
-    });
+    this.userService.loadFavoriteRecipes();
+    this.favoriteRecipes = this.userService.getFavoriteRecipes();
   }
-
+  ngOnDestroy(): void {
+    this.favoriteUpdateSubscription.unsubscribe();
+    this.recipesService.resetParam(); // reset param when component is destroyed
+  }
 }

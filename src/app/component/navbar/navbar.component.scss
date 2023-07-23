@@ -168,9 +168,16 @@ header {
 ////////////// Responive design
 
 @media (max-width: 768px) {
+  .chefs-compass {
+    display: none;
+  }
   header {
     height: 90px;
-    justify-content: flex-start;
+    padding: 0;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    justify-content: center;
   }
   .slogan {
     display: none;
@@ -180,6 +187,12 @@ header {
     right: 0;
     width: 100%;
     bottom: 5px;
+    padding: 1vh;
 
+  }
+  .search{
+    position: fixed;
+    bottom: 100px;
+    right: 0;
   }
 }

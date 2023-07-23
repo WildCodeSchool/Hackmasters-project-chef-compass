@@ -14,4 +14,9 @@ html, body {
     flex: 1;
     position: relative;
   }
+  @media (max-width: 768px) {
+    .pages {
+     margin-bottom:100px;
+    }
+  }
 

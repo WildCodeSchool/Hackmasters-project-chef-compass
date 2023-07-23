@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import {concat, Subscription} from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ConverterRecipesService } from 'src/app/services/converter/converter-recipes.service';
 import { faStar, faTrashCan } from '@fortawesome/free-regular-svg-icons';
@@ -17,7 +17,7 @@ import {SuccessModalComponent} from "../../component/success-modal/success-modal
   templateUrl: './single-recipe.component.html',
   styleUrls: ['./single-recipe.component.scss'],
 })
-export class SingleRecipeComponent implements OnInit {
+export class SingleRecipeComponent implements OnInit, OnDestroy {
   recipe!: Recipe;
   routeSubscription!: Subscription;
   commentText = '';
@@ -26,6 +26,8 @@ export class SingleRecipeComponent implements OnInit {
   rating = 0;
   tempRating = 0;
   isCommentTooShort = false;
+  favorite!: boolean;
+  private favoriteSubscription!: Subscription;
 
   constructor(
     private recipesService: RecipesService,
@@ -37,10 +39,19 @@ export class SingleRecipeComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
+  ngOnDestroy(): void {
+    this.favoriteSubscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+  }
   ngOnInit(): void {
     this.refresh();
   }
+  addFavorite(recipeId: number): void {
+    this.userService.addFavorite(recipeId)
+        this.favorite = !this.favorite;
+  }
   refresh(): void {
+
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeSlug = params.get('name');
       if (recipeSlug) {
@@ -49,10 +60,13 @@ export class SingleRecipeComponent implements OnInit {
             if (recipe) {
               this.recipe = recipe;
               this.isLoading = false;
+              this.favoriteSubscription = this.userService.isActive(this.recipe.id).subscribe((isActive) => {
+                this.favorite = isActive;
+                console.log(this.favorite);
+              });
               this.userService.isCreateRecipe(recipe.id).subscribe(
                 (isCreated: boolean) => {
                   this.isUserCreateRecipe = isCreated;
-                  console.log(this.isUserCreateRecipe);
                 },
                 (error) => {
                   console.error(error);
@@ -112,8 +126,10 @@ export class SingleRecipeComponent implements OnInit {
   }
 
   deleteRecipe(id: number): void {
-    this.deleteService.deleteAdditionalById(id).subscribe();
-    this.deleteService.deleteById(id).subscribe(() => {
+    const deleteAdditional$ = this.deleteService.deleteAdditionalById(id);
+    const deleteById$ = this.deleteService.deleteById(id);
+
+    concat(deleteAdditional$, deleteById$).subscribe(() => {
       this.router.navigate(['/recipes']).then(() => {
         this.openConfirmationModal();
       });
@@ -129,9 +145,7 @@ export class SingleRecipeComponent implements OnInit {
     }, 4000);
   }
 
-  ngOnDestroy(): void {
-    this.routeSubscription.unsubscribe();
-  }
+
   faStar = faStar;
   faStarSolid = faStarSolid;
   faPlusMinus = faPlusMinus;

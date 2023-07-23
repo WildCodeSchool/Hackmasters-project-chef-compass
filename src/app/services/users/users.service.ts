@@ -4,6 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Recipes } from '../../models/modelRecipe/recipes.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +19,9 @@ export class UsersService {
 
   constructor(private recipeService: RecipesService, private http: HttpClient) {}
 
-
   addFavorite(id: number): void {
-    const index = this.favoriteRecipes.indexOf(id);
-    if (index === -1) {
-      this.favoriteRecipes.push(id);
-    } else {
-      this.favoriteRecipes.splice(index, 1);
-    }
-    this.favoriteUpdateSubject.next();
+    const add = `${this.url}/favorite/create?userId=${this.user}&recipeId=${id}`;
+    this.http.post(add, {}).subscribe(() => this.favoriteUpdateSubject.next());
   }
 
   createRecipeId(id: number): void {
@@ -38,8 +33,9 @@ export class UsersService {
     const url = `${this.url}/createRecipe/isCreated?recipeId=${id}&userId=${this.user}`;
     return this.http.get<boolean>(url, {});
   }
-  isActive(id: number): boolean {
-    return this.favoriteRecipes.indexOf(id) !== -1;
+  isActive(recipeId: number): Observable<boolean> {
+    const url = `${this.url}/favorite/check?userId=${this.user}&recipeId=${recipeId}`
+    return this.http.get<boolean>(url, {});
   }
 
   addComment(recipeId: number, comment: string, rating: number) {
@@ -54,19 +50,13 @@ export class UsersService {
     return this.http.post(url, data);
   }
 
-  async loadFavoriteRecipes(): Promise<void> {
-    await this.recipeService.loadRecipes();
+  loadFavoriteRecipes() {
+    const param = `userId=${this.user}`;
+    this.recipeService.loadRecipes('', param);
   }
 
-  getFavoriteRecipes(): any {
-    const allRecipes = this.recipeService.recipes;
-    return {
-      desserts: this.getFilteredRecipes(allRecipes.desserts),
-      mainDishes: this.getFilteredRecipes(allRecipes.mainDishes),
-      appetizers: this.getFilteredRecipes(allRecipes.appetizers),
-      breakfasts: this.getFilteredRecipes(allRecipes.breakfasts),
-      sideDishes: this.getFilteredRecipes(allRecipes.sideDishes),
-    };
+  getFavoriteRecipes(): Recipes {
+    return this.recipeService.recipes; // Renvoie les recettes filtrées pour les favoris
   }
 
   private getFilteredRecipes(recipes: Recipe[]): Recipe[] {

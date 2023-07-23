@@ -160,3 +160,15 @@
   }
 
 }
+
+@media (max-width: 769px) {
+  .form-container{
+    margin: 0;
+  }
+  .video-container{
+  display: none;
+  }
+  .video-overlay{
+    display: none;
+  }
+}
