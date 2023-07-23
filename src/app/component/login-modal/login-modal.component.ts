@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { User } from 'src/app/models/modelRecipe/User.model';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 
 @Component({
@@ -9,11 +8,10 @@ import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
   styleUrls: ['./login-modal.component.scss'],
 })
 export class LoginModalComponent implements OnInit {
+  isLoggedIn = false;
   email = '';
   password = '';
-  isLoggedIn = false;
-
-  @Output() loginSuccess: EventEmitter<User> = new EventEmitter<User>();
+  errorMessage = '';
 
   constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
 
@@ -23,13 +21,22 @@ export class LoginModalComponent implements OnInit {
 
   onSubmit(): void {
     this.authUserService.login(this.email, this.password).subscribe(
-      (user: User) => {
-        this.loginSuccess.emit(user);
-        this.bsModalRef.hide();
+      (response: any) => {
+        console.log('Response object from backend:', response);
+        const authToken = response?.authToken;
+        if (authToken) {
+          this.authUserService.onLoginSuccess(response);
+          this.bsModalRef.hide();
+        }
       },
       (error) => {
         console.error('Login failed:', error);
+        this.errorMessage = 'An error occurred during login. Please try again.';
       }
     );
+  }
+
+  onClose(): void {
+    this.bsModalRef.hide();
   }
 }

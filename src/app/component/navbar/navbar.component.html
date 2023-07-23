@@ -1,7 +1,7 @@
 <header>
   <div class="chefs-compass">
     <a routerLink="/recipes" class="compass-link">
-      <img class="nav-logo" src="/assets/icon/NavBar/main-logo.svg" alt="home-link-picture" />
+      <img id="nav-logo" class="nav-logo" src="/assets/icon/NavBar/main-logo.svg" alt="home-link-picture" />
       <p class="slogan">Global flavours from your kitchen</p>
     </a>
   </div>
@@ -66,39 +66,42 @@
 
   <nav class="links_menu">
     <ul>
-      <div *ngIf="isLoggedIn(); else loginButton">
+      <div *ngIf="authUserService.isLoggedIn()">
         <button (click)="logout()">Logout</button>
+        <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
+        <div *ngIf="authUserService.isLoggedIn()">
+          Hello, Chef! {{ userFirstName }} Welcome to Chef's Compass. Explore flavors and inspiration at your fingertips
+        </div>
       </div>
       <ng-template #loginButton>
         <button (click)="showLoginModal()">Login</button>
       </ng-template>
-
-      <button (click)="openLoginModal()">
+      <button *ngIf="!authUserService.isLoggedIn()" (click)="showLoginModal()">
         <lucide-icon name="chef-hat" class="login-icon"></lucide-icon>
-        <h3>Login</h3>
+        <div>Login</div>
       </button>
       <li>
         <a>
           <lucide-icon class="links_menu-icon" name="chef-hat"></lucide-icon>
-          <h3>Community</h3>
+          <div>Community</div>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
           <lucide-icon class="links_menu-icon" name="star"></lucide-icon>
-          <h3>Favourites</h3>
+          <div>Favourites</div>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
           <lucide-icon class="links_menu-icon" name="plus"></lucide-icon>
-          <h3>Add Recipes</h3>
+          <div>Add Recipes</div>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
           <lucide-icon class="links_menu-icon" name="utensils"></lucide-icon>
-          <h3>All Recipes</h3>
+          <div>All Recipes</div>
         </a>
       </li>
     </ul>

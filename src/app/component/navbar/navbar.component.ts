@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { faMagnifyingGlass, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
@@ -7,17 +7,23 @@ import { Country } from '../../models/modelRecipe/Country.model';
 import { Allergen } from '../../models/modelRecipe/Allergen.model';
 import { Diet } from '../../models/modelRecipe/Diet.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { User } from 'src/app/models/modelRecipe/User.model';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { Users } from 'src/app/models/modelRecipe/Users.model'; // Import the User interface here
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
-  loginSuccess: EventEmitter<User> = new EventEmitter<User>(); // Ajoutez cette ligne
+export class NavbarComponent implements OnInit, OnDestroy {
+  isLoggedIn = false;
+  email = '';
+  password = '';
+
+  userFirstName!: string;
+  private loginSuccessSubscription: Subscription;
 
   faMagnifyingGlass = faMagnifyingGlass;
   faBars = faBars;
@@ -41,42 +47,44 @@ export class NavbarComponent implements OnInit {
     private searchService: SearchService,
     private router: Router,
     private modalService: BsModalService,
-    private authUserService: AuthUserService
-  ) {}
+    public authUserService: AuthUserService
+  ) {
+    this.loginSuccessSubscription = new Subscription();
+  }
 
   ngOnInit(): void {
     this.searchService.getMultipleSearch().subscribe(([country, allergen, diet]) => {
       this.countries = country;
       this.allergens = allergen;
       this.diets = diet;
+      this.updateUserFirstName();
+      this.loginSuccessSubscription = this.authUserService.loginSuccessEvent.subscribe((userFirstName: string) => {
+        this.userFirstName = userFirstName;
+      });
     });
   }
+
+  private updateUserFirstName(): void {
+    const userCredentials = this.authUserService.getUserCredentials();
+    this.userFirstName = userCredentials.userFirstName;
+  }
+
+  ngOnDestroy(): void {
+    this.loginSuccessSubscription.unsubscribe();
+  }
+
   showLoginModal(): void {
     this.modalService.show(LoginModalComponent, {
       initialState: {},
-      ignoreBackdropClick: true,
     });
   }
-  isLoggedIn(): boolean {
-    return this.authUserService.isLoggedIn();
+
+  onLoginSuccess(users: Users): void {
+    this.userFirstName = users.firstname;
   }
-  // Logout method
+
   logout(): void {
     this.authUserService.logout();
-  }
-
-  onLoginSuccess(user: User) {
-    console.log('User logged in:', user);
-  }
-
-  openLoginModal() {
-    this.bsModalRef = this.modalService.show(LoginModalComponent, { class: 'modal-lg' });
-
-    if (this.bsModalRef.content) {
-      this.bsModalRef.content.loginSuccess.subscribe((user: User) => {
-        this.loginSuccess.emit(user);
-      });
-    }
   }
 
   toggleNav() {

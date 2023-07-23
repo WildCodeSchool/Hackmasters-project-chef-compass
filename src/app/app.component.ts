@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { User } from 'src/app/models/modelRecipe/User.model';
-
+import { Users } from 'src/app/models/modelRecipe/Users.model';
+import { LoginModalComponent } from './component/login-modal/login-modal.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,12 +11,15 @@ export class AppComponent implements OnInit {
   isNavbarAbove = false;
   isLoginModalVisible = false;
 
+  constructor(private modalService: BsModalService) {}
+
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: Event) {
     this.updateNavbarPosition();
   }
 
   ngOnInit(): void {
+    this.updateNavbarPosition();
     this.updateNavbarPosition();
   }
 
@@ -25,12 +29,10 @@ export class AppComponent implements OnInit {
     this.searchQuery = query;
   }
 
-  onLoginSuccess(user: User) {
-    this.isLoginModalVisible = false;
-  }
-
-  showLoginModal() {
-    this.isLoginModalVisible = true;
+  showLoginModal(): void {
+    this.modalService.show(LoginModalComponent, {
+      initialState: {},
+    });
   }
 
   updateNavbarPosition() {

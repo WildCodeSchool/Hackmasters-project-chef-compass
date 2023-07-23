@@ -18,8 +18,7 @@ const routes: Routes = [
   { path: 'favourites', component: FavoritesComponent },
   { path: 'add-recipe', component: RecipeFormComponent },
   { path: 'logout', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', component: NotfoundComponent},
-
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
