@@ -30,15 +30,15 @@ export class LogoAndGreetingComponent implements AfterViewInit {
     countdownTimer.add({
       targets: '.countdown',
       opacity: 5,
-      duration: 1, // Instantly make the countdown visible
+      duration: 1,
       fill: '#f96b11',
     });
 
     countdownTimer.add({
       targets: '.countdown',
       opacity: 100,
-      duration: 6000, // Fade out the countdown in 1 second
-      delay: 300, // Wait for 2 seconds before fading out
+      duration: 6000,
+      delay: 300,
       fill: '#f96b11',
     });
 
@@ -169,7 +169,7 @@ export class LogoAndGreetingComponent implements AfterViewInit {
     timeline2.finished.then(() => {
       setTimeout(() => {
         this.router.navigate(['/recipes']);
-      }, 500); // Adjust the delay as needed
+      }, 500);
     });
   }
 }

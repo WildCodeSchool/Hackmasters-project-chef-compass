@@ -1,10 +1,9 @@
 @use '../../style/mixin' as *;
 @use '../../style/animation' as *;
 @use '../../style/variables' as *;
-/* Dans le fichier de style (par exemple, home-page.component.scss) */
 
 .page-container {
-  height: 100%; /* Assurez-vous que le body prend toute la hauteur de la fenêtre */
+  height: 100%; 
   margin: 0;
   max-width: 100%;
   display: flex;
@@ -20,8 +19,6 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-
-  /* Ajoutez la propriété text-align: center; pour centrer le contenu (y compris le bouton) */
   text-align: center;
 
   &_img {

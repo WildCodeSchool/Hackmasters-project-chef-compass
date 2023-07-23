@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Users } from 'src/app/models/modelRecipe/Users.model';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import jwt_decode from 'jwt-decode';
 import { TokenService } from '../token/token.service';
 
 @Injectable({
@@ -39,7 +38,7 @@ export class AuthUserService {
     const authToken = response?.authToken;
     if (authToken) {
       const userFirstName = response?.firstname;
-      this.loginSuccessEvent.emit(userFirstName); // Émettre l'événement avec le prénom de l'utilisateur
+      this.loginSuccessEvent.emit(userFirstName);
       this.tokenService.setToken(authToken);
       this.setLoggedInUserFirstName(userFirstName);
       this.saveUserCredentials(response.email, response.password, userFirstName);
@@ -57,14 +56,12 @@ export class AuthUserService {
   }
 
   saveUserCredentials(email: string, password: string, userFirstName: string): void {
-    // Save user email and password to local storage
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
     localStorage.setItem('userFirstName', userFirstName);
   }
 
   getUserCredentials(): { email: string; password: string; userFirstName: string } {
-    // Retrieve user email and password from local storage
     const email = localStorage.getItem('userEmail') || '';
     const password = localStorage.getItem('userPassword') || '';
     const userFirstName = localStorage.getItem('userFirstName') || '';
@@ -72,7 +69,6 @@ export class AuthUserService {
   }
 
   clearUserCredentials(): void {
-    // Clear user email and password from local storage
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userPassword');
   }

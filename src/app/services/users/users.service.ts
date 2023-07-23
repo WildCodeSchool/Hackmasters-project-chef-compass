@@ -34,7 +34,6 @@ export class UsersService {
     },
   ];
 
-  // Create a subject to emit updates when favorites change
   private favoriteUpdateSubject = new Subject<void>();
   favoriteUpdate$: Observable<void> = this.favoriteUpdateSubject.asObservable();
 
@@ -48,7 +47,6 @@ export class UsersService {
       return [];
     }
   }
-
 
   addFavorite(id: number): void {
     const index = this.favoriteRecipes.indexOf(id);
@@ -79,12 +77,12 @@ export class UsersService {
     return this.favoriteRecipes.indexOf(id) !== -1;
   }
 
-  addComment(recipeId: number, comment: string ,rating:number): void {
+  addComment(recipeId: number, comment: string, rating: number): void {
     const recipeComments = this.comments.find((c) => c.recipe === recipeId);
     if (recipeComments) {
       recipeComments.comment.unshift({ content: comment, score: rating });
     } else {
-      this.comments.push({ recipe: recipeId, comment: [{ content: comment, score: rating}] });
+      this.comments.push({ recipe: recipeId, comment: [{ content: comment, score: rating }] });
     }
   }
 

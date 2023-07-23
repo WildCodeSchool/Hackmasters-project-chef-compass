@@ -7,11 +7,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Récupérer le jeton d'accès
     const authToken = this.tokenService.getToken();
 
     if (authToken) {
-      // Ajouter le jeton d'accès à l'en-tête "Authorization"
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${authToken}`,
@@ -19,7 +17,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    // Continuer avec la requête modifiée
     return next.handle(request);
   }
 }
