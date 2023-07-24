@@ -1,6 +1,6 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Users } from 'src/app/models/modelRecipe/Users.model';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -10,6 +10,7 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class AuthUserService {
+  private users: any[] = [];
   private baseUrl = 'http://localhost:3000';
   private userFirstName = '';
 
@@ -19,6 +20,22 @@ export class AuthUserService {
     private modalService: BsModalService,
     private tokenService: TokenService
   ) {}
+
+  isCreateModalVisible = false;
+
+  showCreateModal(): void {
+    this.isCreateModalVisible = true;
+  }
+
+  createUser(email: string, password: string): Observable<any> {
+    const existingUser = this.users.find((user) => user.email === email);
+    if (existingUser) {
+      return of({ error: 'User with this email already exists.' });
+    }
+    const newUser = { email, password };
+    this.users.push(newUser);
+    return of(newUser);
+  }
 
   public getUserFirstName(): string {
     return this.userFirstName;

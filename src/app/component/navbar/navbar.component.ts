@@ -10,13 +10,12 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { Users } from 'src/app/models/modelRecipe/Users.model'; // Import the User interface here
-import { Subscription } from 'rxjs';
-
+import { CreateModalComponent } from '../create-modal/create-modal.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-})
+});
 export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   email = '';
@@ -75,6 +74,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   showLoginModal(): void {
     this.modalService.show(LoginModalComponent, {
+      initialState: {},
+    });
+  }
+
+  showCreateModal(): void {
+    this.modalService.show(CreateModalComponent, {
       initialState: {},
     });
   }

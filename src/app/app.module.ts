@@ -31,6 +31,7 @@ import { TokenService } from './services/token/token.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { LogoAndGreetingComponent } from './component/logo-and-greeting/logo-and-greeting.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateModalComponent } from './component/create-modal/create-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     WarningModalComponent,
     NotfoundComponent,
     LogoAndGreetingComponent,
+    CreateModalComponent,
   ],
   imports: [
     BrowserModule,

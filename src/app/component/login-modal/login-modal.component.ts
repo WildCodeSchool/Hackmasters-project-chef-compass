@@ -15,6 +15,10 @@ export class LoginModalComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
 
+  showCreateModal(): void {
+    this.authUserService.showCreateModal();
+  }
+
   ngOnInit(): void {
     this.isLoggedIn = this.authUserService.isLoggedIn();
   }
