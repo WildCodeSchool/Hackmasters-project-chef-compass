@@ -4,6 +4,7 @@ import { Subject, Observable } from 'rxjs';
 import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Recipes } from '../../models/modelRecipe/recipes.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,53 +13,15 @@ export class UsersService {
   url = 'http://localhost:8080';
   user = 1;
   favoriteRecipes: number[] = [];
-  createRecipe: number[] = [];
-  comments = [
-    {
-      recipe: 1,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-      ],
-    },
-    {
-      recipe: 2,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt', score: 0 },
-      ],
-    },
-    {
-      recipe: 3,
-      comment: [
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
-        { content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum tincidunt lorem', score: 0 },
-      ],
-    },
-  ];
 
   private favoriteUpdateSubject = new Subject<void>();
   favoriteUpdate$: Observable<void> = this.favoriteUpdateSubject.asObservable();
 
   constructor(private recipeService: RecipesService, private http: HttpClient) {}
 
-  getCommentsByRecipeId(recipeId: number) {
-    const commentsByRecipe = this.comments.find((c) => c.recipe === recipeId);
-    if (commentsByRecipe) {
-      return commentsByRecipe.comment;
-    } else {
-      return [];
-    }
-  }
-
   addFavorite(id: number): void {
-    const index = this.favoriteRecipes.indexOf(id);
-    if (index === -1) {
-      this.favoriteRecipes.push(id);
-    } else {
-      this.favoriteRecipes.splice(index, 1);
-    }
-    this.favoriteUpdateSubject.next();
+    const add = `${this.url}/favorite/create?userId=${this.user}&recipeId=${id}`;
+    this.http.post(add, {}).subscribe(() => this.favoriteUpdateSubject.next());
   }
 
   createRecipeId(id: number): void {
@@ -70,8 +33,9 @@ export class UsersService {
     const url = `${this.url}/createRecipe/isCreated?recipeId=${id}&userId=${this.user}`;
     return this.http.get<boolean>(url, {});
   }
-  isActive(id: number): boolean {
-    return this.favoriteRecipes.indexOf(id) !== -1;
+  isActive(recipeId: number): Observable<boolean> {
+    const url = `${this.url}/favorite/check?userId=${this.user}&recipeId=${recipeId}`
+    return this.http.get<boolean>(url, {});
   }
 
 
@@ -95,19 +59,13 @@ export class UsersService {
     return this.http.post(url, data);
   }
 
-  async loadFavoriteRecipes(): Promise<void> {
-    await this.recipeService.loadRecipes();
+  loadFavoriteRecipes() {
+    const param = `userId=${this.user}`;
+    this.recipeService.loadRecipes('', param);
   }
 
-  getFavoriteRecipes(): any {
-    const allRecipes = this.recipeService.recipes;
-    return {
-      desserts: this.getFilteredRecipes(allRecipes.desserts),
-      mainDishes: this.getFilteredRecipes(allRecipes.mainDishes),
-      appetizers: this.getFilteredRecipes(allRecipes.appetizers),
-      breakfasts: this.getFilteredRecipes(allRecipes.breakfasts),
-      sideDishes: this.getFilteredRecipes(allRecipes.sideDishes),
-    };
+  getFavoriteRecipes(): Recipes {
+    return this.recipeService.recipes; // Renvoie les recettes filtrées pour les favoris
   }
 
   private getFilteredRecipes(recipes: Recipe[]): Recipe[] {

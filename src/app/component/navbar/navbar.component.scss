@@ -210,6 +210,9 @@ header {
 ////////////// Responive design
 
 @media (max-width: 768px) {
+  .chefs-compass {
+    display: none;
+  }
   header {
     position: fixed;
     bottom: 0;
@@ -221,13 +224,15 @@ header {
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: $paddingPagesBar;
-  
-  }
-  header .search {
-    display: none;
   }
   header .nav-logo {
     display: none;
+    height: 90px;
+    padding: 0;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    justify-content: center;
   }
   .slogan {
     display: none;
@@ -235,15 +240,19 @@ header {
   .links_menu ul {
     display: flex;
     bottom: 5px;
-    justify-content: space-around;
+    padding: 1vh;
 
- 
   }
   .links_menu p {
     display: none; 
   }
   .links_menu-icon {
     font-size: 50px; 
+  }
+  .search{
+    position: fixed;
+    bottom: 100px;
+    right: 0;
   }
 }
 

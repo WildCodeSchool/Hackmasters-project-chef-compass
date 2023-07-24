@@ -100,4 +100,9 @@ export class RecipesService {
   setSearchQuery(query: string): void {
     this.searchQuerySubject.next(query);
   }
+
+  resetParam(): void {
+    this.loadRecipes();
+  }
+
 }

@@ -91,12 +91,12 @@
     </article>
 
     <button
-      [ngClass]="{ 'recipe_fav--active': userService.isActive(recipe.id) }"
+      [ngClass]="{ 'recipe_fav--active': favorite }"
       class="recipe_fav"
-      (click)="userService.addFavorite(recipe.id)"
+      (click)="addFavorite(recipe.id)"
     >
-      <fa-icon [icon]="faStarSolid" *ngIf="userService.isActive(recipe.id)"></fa-icon>
-      <fa-icon [icon]="faStar" *ngIf="userService.isActive(recipe.id)"></fa-icon>
+      <fa-icon [icon]="faStarSolid" *ngIf="favorite"></fa-icon>
+      <fa-icon [icon]="faStar" *ngIf="!favorite"></fa-icon>
     </button>
 
   </div>

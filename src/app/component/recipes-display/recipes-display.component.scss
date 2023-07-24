@@ -4,6 +4,7 @@
 .allrecipes{
     margin-right:1vh ;
     padding:$paddingPageRoute ;
+  overflow: hidden;
     &_container{
         position: relative;
         &--card{
@@ -65,6 +66,14 @@
   }
 
 
+}
+@media (max-width: 768px) {
+  .allrecipes {
+    padding: 1vh;
+    &--title{
+      text-align: center;
+    }
+  }
 }
 
 
