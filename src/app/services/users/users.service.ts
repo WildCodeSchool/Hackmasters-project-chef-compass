@@ -5,21 +5,30 @@ import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Recipes } from '../../models/modelRecipe/recipes.model';
+import { AuthUserService } from '../auth-user/auth-user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   url = 'http://localhost:8080';
-  user = 1;
+  user = this.authService.userId;
   favoriteRecipes: number[] = [];
 
   private favoriteUpdateSubject = new Subject<void>();
   favoriteUpdate$: Observable<void> = this.favoriteUpdateSubject.asObservable();
 
-  constructor(private recipeService: RecipesService, private http: HttpClient) {}
+  constructor(private recipeService: RecipesService, private http: HttpClient, private authService: AuthUserService) {
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      this.user = +storedUserId;
+    }
+  }
 
   addFavorite(id: number): void {
+    this.authService.userId$.subscribe((userId) => {
+      this.user = userId;
+    });
     const add = `${this.url}/favorite/create?userId=${this.user}&recipeId=${id}`;
     this.http.post(add, {}).subscribe(() => this.favoriteUpdateSubject.next());
   }
@@ -34,21 +43,18 @@ export class UsersService {
     return this.http.get<boolean>(url, {});
   }
   isActive(recipeId: number): Observable<boolean> {
-    const url = `${this.url}/favorite/check?userId=${this.user}&recipeId=${recipeId}`
+    this.authService.userId$.subscribe((userId) => {
+      this.user = userId;
+    });
+    const url = `${this.url}/favorite/check?userId=${this.user}&recipeId=${recipeId}`;
     return this.http.get<boolean>(url, {});
   }
 
-
-  addComment(recipeId: number, comment: string, rating: number): void {
-    const recipeComments = this.comments.find((c) => c.recipe === recipeId);
-    if (recipeComments) {
-      recipeComments.comment.unshift({ content: comment, score: rating });
-    } else {
-      this.comments.push({ recipe: recipeId, comment: [{ content: comment, score: rating }] });
-    }
-
   addComment(recipeId: number, comment: string, rating: number) {
     const url = `${this.url}/reviews`;
+    this.authService.userId$.subscribe((userId) => {
+      this.user = userId;
+    });
     const data = {
       user: { id: this.user },
       recipe: { id: recipeId },

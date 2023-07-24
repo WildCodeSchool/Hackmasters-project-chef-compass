@@ -156,7 +156,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
       await this.addRecipeService.createRecipe(this.recipeForm.value);
       this.isFormSubmitted = false;
       const dialogRef = this.dialog.open(SuccessModalComponent, {
-        data: { message: ' has been successfully saved !' }
+        data: { message: ' has been successfully saved !' },
       });
 
       await new Promise((resolve) => setTimeout(resolve, 2000));

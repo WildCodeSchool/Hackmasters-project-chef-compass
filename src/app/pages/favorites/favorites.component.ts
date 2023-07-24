@@ -22,8 +22,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
   loadFavoriteRecipes(): void {
     this.userService.loadFavoriteRecipes();
     this.favoriteRecipes = this.userService.getFavoriteRecipes();

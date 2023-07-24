@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './card-recipes.component.html',
   styleUrls: ['./card-recipes.component.scss'],
 })
-export class CardRecipesComponent implements OnInit, OnDestroy{
+export class CardRecipesComponent implements OnInit, OnDestroy {
   @Input() recipe!: Recipe;
   favorite!: boolean;
   private favoriteSubscription!: Subscription;
@@ -30,7 +30,7 @@ export class CardRecipesComponent implements OnInit, OnDestroy{
     });
   }
   addFavorite(recipeId: number): void {
-    this.userService.addFavorite(recipeId)
+    this.userService.addFavorite(recipeId);
     this.favorite = !this.favorite;
   }
 

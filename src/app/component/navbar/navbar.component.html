@@ -33,7 +33,6 @@
               <option value="" disabled selected hidden>pays</option>
               <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
             </select>
-            0
             <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
               <option value="" disabled selected hidden>allergens</option>
               <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
@@ -66,42 +65,45 @@
 
   <nav class="links_menu">
     <ul>
-      <div *ngIf="authUserService.isLoggedIn()">
-        <button (click)="logout()">Logout</button>
-        <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
-        <div *ngIf="authUserService.isLoggedIn()">
-          Hello, Chef! {{ userFirstName }} Welcome to Chef's Compass. Explore flavors and inspiration at your fingertips
-        </div>
+      <div class="links_menu--login" *ngIf="!authUserService.isLoggedIn()">
+        <lucide-icon class="login-icon" name="user"></lucide-icon>
+        <ng-template #loginButton>
+          <button (click)="showLoginModal()">Login</button>
+        </ng-template>
+        <button class="links_menu--login-button" (click)="showLoginModal()">
+          <p>Login</p>
+        </button>
       </div>
-      <ng-template #loginButton>
-        <button (click)="showLoginModal()">Login</button>
-      </ng-template>
-      <button *ngIf="!authUserService.isLoggedIn()" (click)="showLoginModal()">
-        <lucide-icon name="chef-hat" class="login-icon"></lucide-icon>
-        <div>Login</div>
-      </button>
+
+      <div class="links_menu--login" *ngIf="authUserService.isLoggedIn()">
+        <div>
+          <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
+          <button class="links_menu--login-button" (click)="logout()">Logout</button>
+        </div>
+        <p>Hello, Chef! {{ userFirstName }}</p>
+      </div>
       <li>
         <a>
           <lucide-icon class="links_menu-icon" name="chef-hat"></lucide-icon>
-          <div>Community</div>
+          <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
           <lucide-icon class="links_menu-icon" name="star"></lucide-icon>
-          <div>Favourites</div>
+          <p>Favourites</p>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
-          <lucide-icon class="links_menu-icon" name="plus"></lucide-icon>
-          <div>Add Recipes</div>
+          <lucide-icon class="links_menu-icon" name="plus" [size]="responsive"></lucide-icon>
+          <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
           <lucide-icon class="links_menu-icon" name="utensils"></lucide-icon>
-          <div>All Recipes</div>
+          <p>All Recipes</p>
         </a>
       </li>
     </ul>

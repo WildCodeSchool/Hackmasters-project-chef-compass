@@ -13,11 +13,7 @@
       <p class="card_information--description">{{ recipe.description }}</p>
     </section>
   </a>
-  <button
-    [ngClass]="{ 'card_fav--active': favorite }"
-    class="card_fav"
-    (click)="addFavorite(recipe.id)"
-  >
+  <button [ngClass]="{ 'card_fav--active': favorite }" class="card_fav" (click)="addFavorite(recipe.id)">
     <fa-icon [icon]="faStarSolid" *ngIf="favorite"></fa-icon>
     <fa-icon [icon]="faStar" *ngIf="!favorite"></fa-icon>
   </button>

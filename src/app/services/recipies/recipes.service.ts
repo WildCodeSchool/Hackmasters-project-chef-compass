@@ -17,7 +17,7 @@ const SIDE_DISH_CATEGORY = 'SideDishes';
   providedIn: 'root',
 })
 export class RecipesService {
-  private recipesUrl = 'http://localhost:3000/recipes';
+  private recipesUrl = 'http://localhost:8080/recipes';
 
   public recipes: Recipes = {
     desserts: [],
@@ -53,7 +53,6 @@ export class RecipesService {
   getRecipeById(id: number): Observable<any> {
     return this.getAllRecipes().pipe(map((recipes) => recipes.find((recipe) => recipe.id === id)));
   }
-
 
   private handleError(error: any): Observable<never> {
     console.error('Erreur de requête POST:', error);
@@ -104,5 +103,4 @@ export class RecipesService {
   resetParam(): void {
     this.loadRecipes();
   }
-
 }

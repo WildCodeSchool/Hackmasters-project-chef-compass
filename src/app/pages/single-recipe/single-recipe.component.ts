@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import {concat, Subscription} from 'rxjs';
+import { concat, Subscription } from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ConverterRecipesService } from 'src/app/services/converter/converter-recipes.service';
 import { faStar, faTrashCan } from '@fortawesome/free-regular-svg-icons';
@@ -9,8 +9,8 @@ import { faStar as faStarSolid, faPlusMinus, faStarHalfAlt } from '@fortawesome/
 import { UsersService } from 'src/app/services/users/users.service';
 import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { DeleteRecipeService } from '../../services/delete/delete-recipe.service';
-import {WarningModalComponent} from "../../component/warning-modal/warning-modal.component";
-import {SuccessModalComponent} from "../../component/success-modal/success-modal.component";
+import { WarningModalComponent } from '../../component/warning-modal/warning-modal.component';
+import { SuccessModalComponent } from '../../component/success-modal/success-modal.component';
 
 @Component({
   selector: 'app-single-recipe',
@@ -47,11 +47,10 @@ export class SingleRecipeComponent implements OnInit, OnDestroy {
     this.refresh();
   }
   addFavorite(recipeId: number): void {
-    this.userService.addFavorite(recipeId)
-        this.favorite = !this.favorite;
+    this.userService.addFavorite(recipeId);
+    this.favorite = !this.favorite;
   }
   refresh(): void {
-
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       const recipeSlug = params.get('name');
       if (recipeSlug) {
@@ -85,7 +84,6 @@ export class SingleRecipeComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 
   setTempRating(rating: number, event: any): void {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
@@ -138,13 +136,12 @@ export class SingleRecipeComponent implements OnInit, OnDestroy {
 
   openConfirmationModal(): void {
     const dialogRef = this.dialog.open(SuccessModalComponent, {
-      data: { message: 'deleted successfully.' }
+      data: { message: 'deleted successfully.' },
     });
     setTimeout(() => {
       dialogRef.close();
     }, 4000);
   }
-
 
   faStar = faStar;
   faStarSolid = faStarSolid;
@@ -172,15 +169,14 @@ export class SingleRecipeComponent implements OnInit, OnDestroy {
   }
 
   openWarningModal(): void {
-
     const dialogRef = this.dialog.open(WarningModalComponent, {
-      data: { message: 'Are you sure you want to delete this recipe ?' }
+      data: { message: 'Are you sure you want to delete this recipe ?' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.deleteRecipe(this.recipe.id);
       }
     });
-}
+  }
 }

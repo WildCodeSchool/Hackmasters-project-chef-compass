@@ -12,7 +12,7 @@ import { Diet } from '../../models/modelRecipe/Diet.model';
 export class SearchService {
   constructor(private http: HttpClient) {}
 
-  searchUrl = 'http://localhost:3000/recipes';
+  searchUrl = 'http://localhost:8080/recipes/';
 
   getMultipleSearch(): Observable<any[]> {
     const country = this.http.get<Country[]>(`${this.searchUrl}/countries`);

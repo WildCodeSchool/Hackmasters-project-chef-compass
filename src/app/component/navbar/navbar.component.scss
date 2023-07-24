@@ -1,7 +1,7 @@
 @use '../../style/variables' as *;
 
 @use '../../style/mixin' as *;
-// animation 
+// animation
 #nav-logo {
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -174,13 +174,18 @@ header {
 // Button menu
 .links_menu {
   text-wrap: nowrap;
+  &--login{
+    &-button{
+      @include button;
+    }
+  }
   & ul {
-  display: flex;
-  align-items: baseline;
-  gap: 30px;
-  text-align: center;
-  list-style: none;
-  padding: 40px;
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    list-style: none;
+    padding: 40px;
+    align-items: center;
     white-space: nowrap;
     margin: 0;
   }
@@ -196,7 +201,7 @@ header {
     &:hover {
       .links_menu-icon {
         color: lighten($primaryColor, 10%);
-        
+
       }
     }
   }
@@ -219,11 +224,12 @@ header {
     width: 100%;
     z-index: 1;
     background-color: $secondaryColor;
+    justify-content: center;
     height: 70px;
     display: flex;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: $paddingPagesBar;
+    padding: 0;
   }
   header .nav-logo {
     display: none;
@@ -237,22 +243,27 @@ header {
   .slogan {
     display: none;
   }
-  .links_menu ul {
-    display: flex;
-    bottom: 5px;
-    padding: 1vh;
+  .links_menu {
+    & ul {
+      display: flex;
+      bottom: 5px;
+      padding: 1vh;
 
+    }
+    & p {
+      display: none;
+    }
+    &-icon {
+      font-size: 50px;
+    }
   }
-  .links_menu p {
-    display: none; 
-  }
-  .links_menu-icon {
-    font-size: 50px; 
-  }
+
+
   .search{
     position: fixed;
     bottom: 100px;
     right: 0;
   }
+
 }
 

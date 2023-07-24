@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Output} from '@angular/core';
 import { faMagnifyingGlass, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   email = '';
   password = '';
+  responsive!: number;
 
   userFirstName!: string;
   private loginSuccessSubscription: Subscription;
@@ -41,6 +42,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dietsList: string[] = [];
   selectedDiets = '';
   showNav = false;
+  screenWidth!: number;
 
   constructor(
     private recipesService: RecipesService,
@@ -50,6 +52,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authUserService: AuthUserService
   ) {
     this.loginSuccessSubscription = new Subscription();
+
+    const userFirstName = localStorage.getItem('userFirstName');
+    if (userFirstName) {
+      this.userFirstName = userFirstName;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize({ event }: { event: any }) {
+    this.screenWidth = window.innerWidth;
   }
 
   ngOnInit(): void {
@@ -60,6 +72,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.updateUserFirstName();
       this.loginSuccessSubscription = this.authUserService.loginSuccessEvent.subscribe((userFirstName: string) => {
         this.userFirstName = userFirstName;
+        console.log('userFirstName', userFirstName);
+        if (this.screenWidth < 768) {
+          this.responsive = 40;
+        }
+        else {
+          this.responsive = 24;
+        }
       });
     });
   }

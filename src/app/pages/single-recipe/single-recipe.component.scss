@@ -35,6 +35,7 @@ b:hover{
 .container{
   background: rgba(255, 255, 255, 0.56);
   backdrop-filter: blur(11px);
+  margin-top: 75px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
@@ -232,6 +233,9 @@ b:hover{
     }
 }
 @media (max-width: 768px) {
+  .container{
+    margin-top: 0;
+  }
  .recipe{
    &_comments{
      flex-direction: column-reverse;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { faGear, faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
-import {faFacebook, faInstagram} from "@fortawesome/free-brands-svg-icons";
+import { faGear, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +8,8 @@ import {faFacebook, faInstagram} from "@fortawesome/free-brands-svg-icons";
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-
-    faGear = faGear;
-    faPeopleGroup = faPeopleGroup;
-    faFacebook = faFacebook;
-    faInstagram = faInstagram;
+  faGear = faGear;
+  faPeopleGroup = faPeopleGroup;
+  faFacebook = faFacebook;
+  faInstagram = faInstagram;
 }

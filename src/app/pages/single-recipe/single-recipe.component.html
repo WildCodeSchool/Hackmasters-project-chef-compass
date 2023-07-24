@@ -61,12 +61,17 @@
         </div>
 
         <div class="recipe_comments--send--flex">
-          <textarea name="comment" id="comment" cols="30" rows="10" [(ngModel)]="commentText" (input)="isCommentTooShort = false" ></textarea>
+          <textarea
+            name="comment"
+            id="comment"
+            cols="30"
+            rows="10"
+            [(ngModel)]="commentText"
+            (input)="isCommentTooShort = false"
+          ></textarea>
           <br />
           <button (click)="addComment(recipe.id, commentText)">Here We Go!</button>
-          <div *ngIf="isCommentTooShort" class="error-message">
-            Your comment must be at least 5 characters long.
-          </div>
+          <div *ngIf="isCommentTooShort" class="error-message">Your comment must be at least 5 characters long.</div>
         </div>
       </section>
       <section class="recipe_comments--msg" *ngIf="recipe.reviews.length > 0">
@@ -78,7 +83,7 @@
                 [icon]="getStarTypeForComment(i + 1, comment.rating)"
                 class="recipe_comments--score"
               ></fa-icon>
-              <p class="recipe_comments--user">{{ comment.user.firstname}}</p>
+              <p class="recipe_comments--user">{{ comment.user.firstname }}</p>
             </div>
           </div>
           <p class="recipe_comments--text">
@@ -90,14 +95,9 @@
       <span *ngIf="recipe.reviews.length === 0">No comments</span>
     </article>
 
-    <button
-      [ngClass]="{ 'recipe_fav--active': favorite }"
-      class="recipe_fav"
-      (click)="addFavorite(recipe.id)"
-    >
+    <button [ngClass]="{ 'recipe_fav--active': favorite }" class="recipe_fav" (click)="addFavorite(recipe.id)">
       <fa-icon [icon]="faStarSolid" *ngIf="favorite"></fa-icon>
       <fa-icon [icon]="faStar" *ngIf="!favorite"></fa-icon>
     </button>
-
   </div>
 </div>
