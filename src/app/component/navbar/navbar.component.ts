@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authUserService: AuthUserService
   ) {
     this.loginSuccessSubscription = new Subscription();
-
+    this.screenWidth = window.innerWidth
     const userFirstName = localStorage.getItem('userFirstName');
     if (userFirstName) {
       this.userFirstName = userFirstName;
@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onResize({ event }: { event: any }) {
-    this.screenWidth = window.innerWidth;
+    this.screenWidth = event.target.innerWidth;
   }
 
   ngOnInit(): void {
@@ -72,13 +72,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.updateUserFirstName();
       this.loginSuccessSubscription = this.authUserService.loginSuccessEvent.subscribe((userFirstName: string) => {
         this.userFirstName = userFirstName;
-        console.log('userFirstName', userFirstName);
-        if (this.screenWidth < 768) {
-          this.responsive = 40;
-        }
-        else {
-          this.responsive = 24;
-        }
       });
     });
   }

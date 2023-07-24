@@ -84,25 +84,25 @@
       </div>
       <li>
         <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="chef-hat" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>
           <p>Community</p>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <lucide-icon class="links_menu-icon" name="star"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="star" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>
           <p>Favourites</p>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
-          <lucide-icon class="links_menu-icon" name="plus" [size]="responsive"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="plus" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>
           <p>Add Recipes</p>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <lucide-icon class="links_menu-icon" name="utensils"></lucide-icon>
+          <lucide-icon class="links_menu-icon" name="utensils" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>
           <p>All Recipes</p>
         </a>
       </li>
