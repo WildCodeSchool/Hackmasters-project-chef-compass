@@ -38,6 +38,15 @@ export class UsersService {
     return this.http.get<boolean>(url, {});
   }
 
+
+  addComment(recipeId: number, comment: string, rating: number): void {
+    const recipeComments = this.comments.find((c) => c.recipe === recipeId);
+    if (recipeComments) {
+      recipeComments.comment.unshift({ content: comment, score: rating });
+    } else {
+      this.comments.push({ recipe: recipeId, comment: [{ content: comment, score: rating }] });
+    }
+
   addComment(recipeId: number, comment: string, rating: number) {
     const url = `${this.url}/reviews`;
     const data = {

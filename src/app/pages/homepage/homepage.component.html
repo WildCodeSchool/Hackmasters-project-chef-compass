@@ -1,6 +1,7 @@
 <div class="page-container">
   <div class="contents">
-    <img class="contents_img" src="/assets/logo/main-logo.png" alt="">
-    <a class="button" routerLink="recipes"> Welcome to Chef's Compass</a>
-</div>
+    <!--  <img class="contents_img" src="/assets/logo/main-logo.png" alt="" />-->
+    <app-logo-and-greeting (animationComplete)="onAnimationComplete()"></app-logo-and-greeting>
+    <a class="button" routerLink="recipes">Welcome to Chef's Compass</a>
+  </div>
 </div>

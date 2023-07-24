@@ -17,7 +17,7 @@ const SIDE_DISH_CATEGORY = 'SideDishes';
   providedIn: 'root',
 })
 export class RecipesService {
-  private recipesUrl = 'http://localhost:8080/recipes';
+  private recipesUrl = 'http://localhost:3000/recipes';
 
   public recipes: Recipes = {
     desserts: [],
@@ -66,14 +66,22 @@ export class RecipesService {
   closeModal() {
     this.modalOpenSubject.next(false);
   }
-  loadRecipes(query = '',param=''): void {
-
-
-    const dessertRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${DESSERT_CATEGORY}&query=${query}&${param}`);
-    const mainDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${MAIN_DISH_CATEGORY}&query=${query}&${param}`);
-    const appetizerRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${APPETIZER_CATEGORY}&query=${query}&${param}`);
-    const breakfastRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${BREAKFAST_CATEGORY}&query=${query}&${param}`);
-    const sideDishRecipes$ = this.http.get<Recipe[]>(`${this.recipesUrl}/search?categoryNames=${SIDE_DISH_CATEGORY}&query=${query}&${param}`);
+  loadRecipes(query = '', param = ''): void {
+    const dessertRecipes$ = this.http.get<Recipe[]>(
+      `${this.recipesUrl}/search?categoryNames=${DESSERT_CATEGORY}&query=${query}&${param}`
+    );
+    const mainDishRecipes$ = this.http.get<Recipe[]>(
+      `${this.recipesUrl}/search?categoryNames=${MAIN_DISH_CATEGORY}&query=${query}&${param}`
+    );
+    const appetizerRecipes$ = this.http.get<Recipe[]>(
+      `${this.recipesUrl}/search?categoryNames=${APPETIZER_CATEGORY}&query=${query}&${param}`
+    );
+    const breakfastRecipes$ = this.http.get<Recipe[]>(
+      `${this.recipesUrl}/search?categoryNames=${BREAKFAST_CATEGORY}&query=${query}&${param}`
+    );
+    const sideDishRecipes$ = this.http.get<Recipe[]>(
+      `${this.recipesUrl}/search?categoryNames=${SIDE_DISH_CATEGORY}&query=${query}&${param}`
+    );
 
     forkJoin([dessertRecipes$, mainDishRecipes$, appetizerRecipes$, breakfastRecipes$, sideDishRecipes$])
       .pipe(
@@ -92,7 +100,9 @@ export class RecipesService {
   setSearchQuery(query: string): void {
     this.searchQuerySubject.next(query);
   }
+
   resetParam(): void {
     this.loadRecipes();
   }
+
 }

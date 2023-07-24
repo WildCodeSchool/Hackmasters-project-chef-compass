@@ -17,13 +17,12 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'favourites', component: FavoritesComponent },
   { path: 'add-recipe', component: RecipeFormComponent },
-  { path: '**', component: NotfoundComponent},
+  { path: 'logout', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-  ROUTES = routes;
-}
+export class AppRoutingModule {}

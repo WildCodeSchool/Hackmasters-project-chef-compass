@@ -1,8 +1,20 @@
 @use '../../style/variables' as *;
 
 @use '../../style/mixin' as *;
+// animation 
+#nav-logo {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   background-color: $secondaryColor;
   height: 75px;
   display: flex;
@@ -10,6 +22,7 @@ header {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: $paddingPagesBar ;
+
 }
 
 // Brand --------------------------------
@@ -136,6 +149,27 @@ header {
 
 }
 
+.login-button {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: #555;
+
+    .login-icon {
+      font-size: 24px;
+      margin-right: 5px;
+    }
+  }
+}
 
 // Button menu
 .links_menu {
@@ -146,8 +180,15 @@ header {
   gap: 30px;
   text-align: center;
   list-style: none;
+  padding: 40px;
     white-space: nowrap;
     margin: 0;
+  }
+  & .links_menu-icon{
+    font-size: 30px;
+  }
+  &  p {
+    font-size: 20px;
   }
   & li {
     background-color: $secondaryColor;
@@ -155,6 +196,7 @@ header {
     &:hover {
       .links_menu-icon {
         color: lighten($primaryColor, 10%);
+        
       }
     }
   }
@@ -172,6 +214,19 @@ header {
     display: none;
   }
   header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: $secondaryColor;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: $paddingPagesBar;
+  }
+  header .nav-logo {
+    display: none;
     height: 90px;
     padding: 0;
     width: 100%;
@@ -184,11 +239,15 @@ header {
   }
   .links_menu ul {
     display: flex;
-    right: 0;
-    width: 100%;
     bottom: 5px;
     padding: 1vh;
 
+  }
+  .links_menu p {
+    display: none; 
+  }
+  .links_menu-icon {
+    font-size: 50px; 
   }
   .search{
     position: fixed;
@@ -196,3 +255,4 @@ header {
     right: 0;
   }
 }
+

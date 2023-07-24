@@ -1,7 +1,7 @@
 <header>
   <div class="chefs-compass">
     <a routerLink="/recipes" class="compass-link">
-      <img class="nav-logo" src="/assets/icon/NavBar/main-logo.svg" alt="home-link-picture" />
+      <img id="nav-logo" class="nav-logo" src="/assets/icon/NavBar/main-logo.svg" alt="home-link-picture" />
       <p class="slogan">Global flavours from your kitchen</p>
     </a>
   </div>
@@ -17,7 +17,7 @@
       />
     </div>
     <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-    <div class="search_burger" [ngStyle]="{ 'height': showNav ? '50px' : '26px' }">
+    <div class="search_burger" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
       <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
         <button class="search_burger--button" (click)="toggleNav()">
           <fa-icon
@@ -32,7 +32,8 @@
             <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
               <option value="" disabled selected hidden>pays</option>
               <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
-            </select>0
+            </select>
+            0
             <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
               <option value="" disabled selected hidden>allergens</option>
               <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
@@ -40,48 +41,67 @@
               </option>
             </select>
             <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected(selectedDiets)">
-              <option value="" disabled selected hidden> diets</option>
+              <option value="" disabled selected hidden>diets</option>
               <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
             </select>
           </div>
-          <div class="search_burger--unselected" >
+          <div class="search_burger--unselected">
             <button (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
-              {{ countries }} <b>x</b>
+              {{ countries }}
+              <b>x</b>
             </button>
             <button (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
-              {{ allergens }} <b>x</b>
+              {{ allergens }}
+              <b>x</b>
             </button>
-            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">{{ diets }} <b>x</b></button>
+            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
+              {{ diets }}
+              <b>x</b>
+            </button>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
 
   <nav class="links_menu">
     <ul>
+      <div *ngIf="authUserService.isLoggedIn()">
+        <button (click)="logout()">Logout</button>
+        <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
+        <div *ngIf="authUserService.isLoggedIn()">
+          Hello, Chef! {{ userFirstName }} Welcome to Chef's Compass. Explore flavors and inspiration at your fingertips
+        </div>
+      </div>
+      <ng-template #loginButton>
+        <button (click)="showLoginModal()">Login</button>
+      </ng-template>
+      <button *ngIf="!authUserService.isLoggedIn()" (click)="showLoginModal()">
+        <lucide-icon name="chef-hat" class="login-icon"></lucide-icon>
+        <div>Login</div>
+      </button>
       <li>
         <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat" size="35" strokeWidth="2.5"></lucide-icon>
-          <p>Community</p>
+          <lucide-icon class="links_menu-icon" name="chef-hat"></lucide-icon>
+          <div>Community</div>
         </a>
       </li>
       <li>
         <a routerLink="favourites">
-          <lucide-icon class="links_menu-icon" name="star" size="35" strokeWidth="2.5"></lucide-icon>
-          <p>Favourites</p>
+          <lucide-icon class="links_menu-icon" name="star"></lucide-icon>
+          <div>Favourites</div>
         </a>
       </li>
       <li>
         <a [routerLink]="['/add-recipe']" rel="noopener" title="About" class="about-link logo">
-          <lucide-icon class="links_menu-icon" name="plus" size="35" strokeWidth="4"></lucide-icon>
-          <p>Add Recipes</p>
+          <lucide-icon class="links_menu-icon" name="plus"></lucide-icon>
+          <div>Add Recipes</div>
         </a>
       </li>
       <li>
         <a routerLink="/recipes">
-          <lucide-icon class="links_menu-icon" name="utensils" size="35" strokeWidth="2.5"></lucide-icon>
-          <p>All Recipes</p>
+          <lucide-icon class="links_menu-icon" name="utensils"></lucide-icon>
+          <div>All Recipes</div>
         </a>
       </li>
     </ul>
