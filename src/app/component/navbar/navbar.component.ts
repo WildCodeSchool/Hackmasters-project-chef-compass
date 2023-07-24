@@ -1,5 +1,5 @@
 import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Output} from '@angular/core';
-import { faMagnifyingGlass, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass, faBars, faUser, faSearch} from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search/search.service';
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   email = '';
   password = '';
   responsive!: number;
+  faSearch = faSearch;
 
   userFirstName!: string;
   private loginSuccessSubscription: Subscription;
@@ -31,7 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   faUser = faUser;
   searchQuery = '';
   bsModalRef?: BsModalRef;
-
   countries!: Country[];
   countriesList: string[] = [];
   selectedCountries = '';
@@ -43,6 +43,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   selectedDiets = '';
   showNav = false;
   screenWidth!: number;
+  showSearch = false;
 
   constructor(
     private recipesService: RecipesService,
@@ -143,5 +144,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
     console.log(this.dietsList);
     this.searchRecipes();
+  }
+
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 }

@@ -55,15 +55,17 @@ header {
 // Search --------------------------------
 
 .search {
-  align-self: center;
-  display: flex;
-  align-items: center;
-
+    align-self: center;
+    flex-direction: row-reverse;
+    display: flex;
+    align-items: center;
+    flex:1;
 
     &_module {
       position: relative;
       display: flex;
       align-items: center;
+      left: 45px;
       &--input {
         padding: 13px;
         border: 2px solid gray;
@@ -78,19 +80,19 @@ header {
       }
       &-button{
         position: relative;
-        background-color: withe;
-        border: none;
-        border-radius: 4px;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 73px;
+        padding: 15px;
         font-size: 14px;
+        z-index: 1;
         cursor: pointer;
-        right: 34px;
+
         &-icon {
-          position: relative;
-          right: 25px;
 
         }
         &:hover {
-          background-color: gray;
+          background-color: lighten(gray,30%);
         }
       }
     }

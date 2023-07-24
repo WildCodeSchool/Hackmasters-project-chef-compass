@@ -7,7 +7,11 @@
   </div>
 
   <div class="search">
-    <div class="search_module">
+    <button class="search_module-button" (click)="toggleSearch()">
+      <fa-icon class="search_module-button-icon" [icon]="faSearch"></fa-icon>
+    </button>
+
+    <div *ngIf="showSearch" class="search_module">
       <input
         class="search_module--input"
         type="text"
@@ -16,8 +20,7 @@
         placeholder="Dishes,ingredients..."
       />
     </div>
-    <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-    <div class="search_burger" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
+    <div class="search_burger" *ngIf="showSearch" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
       <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
         <button class="search_burger--button" (click)="toggleNav()">
           <fa-icon
@@ -27,7 +30,7 @@
             [icon]="faBars"
           ></fa-icon>
         </button>
-        <div class="search_burger--nav" *ngIf="showNav">
+        <div class="search_burger--nav" *ngIf="showNav" >
           <div class="search_burger--selected">
             <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
               <option value="" disabled selected hidden>pays</option>
