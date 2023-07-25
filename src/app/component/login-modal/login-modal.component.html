@@ -1,7 +1,7 @@
 <div class="modal">
   <div class="modal-content">
     <h2>Login</h2>
-    <form>
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" [(ngModel)]="email" required />
@@ -13,12 +13,10 @@
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
+      <button type="submit">Login</button>
+      <form (ngSubmit)="onSubmit()"></form>
+      <button *ngIf="!authUserService.isCreatedIn()" (click)="createOpenUser()">Create</button>
+      <button (click)="onClose()">Close</button>
     </form>
-
-    <ng-template #loginButton>
-      <button (click)="createOpenUser()">Create</button>
-    </ng-template>
-    <button *ngIf="!authUserService.isCreatedIn()" (click)="showCreateModal()"></button>
-    <button (click)="onClose()">Fermer</button>
   </div>
 </div>

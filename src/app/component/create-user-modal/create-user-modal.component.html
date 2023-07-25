@@ -3,10 +3,10 @@
     <form class="form" *ngIf="!showRegisterForm">
       <h2>Create Profile</h2>
       <div class="form-group">
-        <div>
-          <label for="firstname">Firstname</label>
-          <input type="text" id="firstname" name="firstname" [(ngModel)]="userForm.firstname" required />
-        </div>
+        <label for="firstname">Firstname</label>
+        <input type="text" id="firstname" name="firstname" [(ngModel)]="userForm.firstname" required />
+      </div>
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" [(ngModel)]="userForm.email" required />
       </div>
