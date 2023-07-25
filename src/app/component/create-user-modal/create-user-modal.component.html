@@ -29,8 +29,7 @@
         {{ errorMessage }}
       </div>
       <button type="button" (click)="onRegisterSubmit()">Create Profile</button>
-      <!-- Modification ici -->
-      <button (click)="onClose()">Fermer</button>
+      <button (click)="onClose()">Close</button>
     </form>
     <div *ngIf="showRegisterForm">
       <button (click)="onForgotPassword()">Mot de passe oublié ?</button>
@@ -51,5 +50,4 @@
     <p>Votre demande de réinitialisation du mot de passe a été envoyée avec succès.</p>
     <p>Veuillez vérifier votre boîte de réception pour les instructions de réinitialisation du mot de passe.</p>
   </div>
-  <app-reset-password-form *ngIf="showResetPasswordForm"></app-reset-password-form>
 </form>
