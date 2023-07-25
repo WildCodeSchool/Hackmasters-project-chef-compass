@@ -66,12 +66,14 @@ header {
       display: flex;
       align-items: center;
       left: 46px;
+      flex-direction: row-reverse;
       &--input {
         padding: 13px;
         border: 2px solid gray;
         border-radius: 50px;
         font-size: 16px;
         max-width: 250px;
+        padding-left: 29px;
         transition: border-color 0.3s ease;
         animation: translateSearch 1s ease-in-out both;
         &.search_module-button{
@@ -106,8 +108,8 @@ header {
     align-items: flex-start;
     position: absolute;
     height: 20px;
-    left: 6%;
-    top: 95%;
+    left: 11%;
+    top: 87%;
     &--nav{
       display: flex;
     }
@@ -127,7 +129,7 @@ header {
         }
     &--size {
       max-height: 300px;
-       max-width: 340px;
+       max-width: 240px;
       display: flex;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -141,10 +143,10 @@ header {
      font-size: 14px;
      cursor: pointer;
      background: white;
-     position: absolute;
-     left: 9%;
-     top: 38%;
+     position: relative;
+     z-index: 1;
      animation: translateBurger 0.8s ease-in-out both;
+     transform: translateX(8px);
     &-icon {
       color: grey;
 
@@ -272,6 +274,11 @@ header {
     position: fixed;
     bottom: 100px;
     right: 0;
+    &_burger{
+      left: -19%;
+
+      top: 115%;
+    }
   }
 }
 ul{
