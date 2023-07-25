@@ -35,6 +35,7 @@ b:hover{
 .container{
   background: rgba(255, 255, 255, 0.56);
   backdrop-filter: blur(11px);
+  margin-top: 75px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
@@ -230,6 +231,69 @@ b:hover{
           font-size: 1.2rem;
         }
     }
+}
+@media (max-width: 768px) {
+  .container{
+    margin-top: 0;
+  }
+ .recipe{
+   &_comments{
+     flex-direction: column-reverse;
+     &--ratings{
+       text-align: center;
+     }
+     &--text{
+       width: 300px;
+       margin: 1vh 0;
+     }
+     &--send{
+       width: 100%;
+       margin: 1vh 0;
+       &--flex{
+         width: 100%;
+       }
+     }
+     &--msg{
+       width: 100%;
+       margin: 1vh 0;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+     }
+   }
+   &_details{
+     flex-direction: column-reverse;
+     align-items: center;
+        &--steps{
+          width: 100%;
+          margin: 1vh 0;
+          padding: 3vh 2vh;
+          & h2{
+            text-align: center;
+          }
+     }
+     &--ingredients{
+       width: 100%;
+       margin: 1vh 0;
+       padding: 3vh 2vh;
+     }
+   }
+   &_origin{
+     align-items: center;
+     justify-content: center;
+   }
+ &_information{
+   flex-direction: column-reverse;
+   &--card{
+     width: 100%;
+     margin: 1vh 0;
 
+   }
+    &--img{
+      width: 104%;
+      aspect-ratio: 20/7;
+    }
+ }
+}
 }
 

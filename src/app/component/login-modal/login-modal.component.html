@@ -1,0 +1,23 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required />
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit">Login</button>
+      <form (ngSubmit)="onSubmit()"></form>
+      <button (click)="onClose()">Close</button>
+    </form>
+  </div>
+</div>

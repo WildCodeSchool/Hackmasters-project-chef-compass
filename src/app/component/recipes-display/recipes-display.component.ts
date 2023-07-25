@@ -5,79 +5,82 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 
-
 @Component({
   selector: 'app-recipesdisplay',
   templateUrl: './recipes-display.component.html',
-  styleUrls: ['./recipes-display.component.scss']
+  styleUrls: ['./recipes-display.component.scss'],
 })
 export class RecipesdisplayComponent implements OnInit, OnChanges {
   @Input() recipes!: Recipes;
   haveFavorites = this.userService.favoriteRecipes.length > 0;
 
-
-  translateValueDesserts= 0;
+  translateValueDesserts = 0;
   translateValueDessertsReverse = 0;
-  translateValueMainDishes=0 ;
+  translateValueMainDishes = 0;
   translateValueMainDishesReverse = 0;
   translateValueAppetizers = 0;
-  translateValueAppetizersReverse = 0 ;
+  translateValueAppetizersReverse = 0;
   translateValueBreakfasts = 0;
   translateValueBreakfastsReverse = 0;
-  translateValueSideDishes = 0  ;
+  translateValueSideDishes = 0;
   translateValueSideDishesReverse = 0;
+  translateValue = 0;
   currentRoute = this.route.snapshot.routeConfig!.path;
 
-  constructor(private http: HttpClient,
-              private recipesService: RecipesService,
-              private route: ActivatedRoute,
-              private userService: UsersService) {
-  }
+  constructor(
+    private http: HttpClient,
+    private recipesService: RecipesService,
+    private route: ActivatedRoute,
+    private userService: UsersService
+  ) {}
   isPageLoaded = false;
 
-
   ngOnInit(): void {
-    this.onResize({event: null});
+    this.onResize({ event: null });
     setTimeout(() => {
       this.isPageLoaded = true;
-    },2000);
+    }, 2000);
+    if (this.screenWidth < 768) {
+      this.translateValue = -175;
+    } else {
+      this.translateValue = -275;
+    }
     this.updateTranslateValues();
     this.recipesService.searchQuery$.subscribe(() => {
-      this.updateTranslateValues();console.log(this.recipes);
+      this.updateTranslateValues();
     });
-
   }
   ngOnChanges(): void {
     this.updateTranslateValues();
-
   }
 
   updateTranslateValues(): void {
     setTimeout(() => {
-
-      this.translateValueSideDishes = this.recipes?.sideDishes?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueSideDishes =
+        this.recipes?.sideDishes?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueSideDishesReverse = 0;
-      this.translateValueAppetizers = this.recipes?.appetizers?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueAppetizers =
+        this.recipes?.appetizers?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueAppetizersReverse = 0;
-      this.translateValueBreakfasts = this.recipes?.breakfasts?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueBreakfasts =
+        this.recipes?.breakfasts?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueBreakfastsReverse = 0;
-      this.translateValueMainDishes = this.recipes?.mainDishes?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueMainDishes =
+        this.recipes?.mainDishes?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueMainDishesReverse = 0;
-      this.translateValueDesserts = this.recipes?.desserts?.length * 275 > this.screenWidth ? -275 : 0;
+      this.translateValueDesserts = this.recipes?.desserts?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueDessertsReverse = 0;
     }, 200);
   }
 
-
   screenWidth!: number;
   @HostListener('window:resize', ['$event'])
-  onResize({event}: { event: any }) {
+  onResize({ event }: { event: any }) {
     this.screenWidth = window.innerWidth;
   }
 
-
   async move(recipe: string, direction: number) {
-    let translateValue = 0;
+    const translateValue = 0;
     let recipeList;
 
     // Mapping the recipe categories to their respective variables
@@ -92,41 +95,38 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
     } else if (recipe === 'sideDishes') {
       recipeList = this.recipes.sideDishes;
     } else {
-      console.error("Invalid recipe category");
-      return;
+      return
     }
 
     if (direction > 0) {
       const lastCard = recipeList[recipeList.length - 1];
       recipeList.pop();
-      this.changeValue(recipe, -275);
+      this.changeValue(recipe, this.translateValue);
       recipeList.unshift(lastCard);
-    } else { // Scroll left
+    } else {
+
       const firstCard = recipeList[0];
       recipeList.shift();
-      this.changeValue(recipe, 275);
+      this.changeValue(recipe, this.translateValue * -1);
       recipeList.push(firstCard);
     }
-
   }
-  changeValue(recipe:String,translateValue:number) {
+  changeValue(recipe: string, translateValue: number) {
     if (recipe === 'desserts') {
-        this.translateValueDesserts += translateValue;
-        this.translateValueDessertsReverse = (this.translateValueDesserts + 275) * -1;
-    }else if (recipe === 'mainDishes') {
-        this.translateValueMainDishes += translateValue;
-        this.translateValueMainDishesReverse = (this.translateValueMainDishes + 275) * -1;
+      this.translateValueDesserts += translateValue;
+      this.translateValueDessertsReverse = (this.translateValueDesserts + this.translateValue * -1) * -1;
+    } else if (recipe === 'mainDishes') {
+      this.translateValueMainDishes += translateValue;
+      this.translateValueMainDishesReverse = (this.translateValueMainDishes + this.translateValue * -1) * -1;
     } else if (recipe === 'appetizers') {
-        this.translateValueAppetizers += translateValue;
-        this.translateValueAppetizersReverse = (this.translateValueAppetizers + 275) * -1;
+      this.translateValueAppetizers += translateValue;
+      this.translateValueAppetizersReverse = (this.translateValueAppetizers + this.translateValue * -1) * -1;
     } else if (recipe === 'breakfasts') {
-        this.translateValueBreakfasts += translateValue;
-        this.translateValueBreakfastsReverse = (this.translateValueBreakfasts + 275) * -1;
+      this.translateValueBreakfasts += translateValue;
+      this.translateValueBreakfastsReverse = (this.translateValueBreakfasts + this.translateValue * -1) * -1;
     } else if (recipe === 'sideDishes') {
-        this.translateValueSideDishes += translateValue;
-        this.translateValueSideDishesReverse = (this.translateValueSideDishes + 275) * -1;
+      this.translateValueSideDishes += translateValue;
+      this.translateValueSideDishesReverse = (this.translateValueSideDishes + this.translateValue * -1) * -1;
     }
   }
-
 }
-

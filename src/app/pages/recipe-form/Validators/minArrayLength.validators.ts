@@ -1,11 +1,11 @@
-import {AbstractControl, ValidatorFn} from "@angular/forms";
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function minArrayLength(min: number): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
     if (control.value.length >= min) {
       return null;
     } else {
-      return { 'minArrayLength': { value: control.value } };
+      return { minArrayLength: { value: control.value } };
     }
   };
 }

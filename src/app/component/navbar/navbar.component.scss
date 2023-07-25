@@ -1,8 +1,20 @@
 @use '../../style/variables' as *;
 
 @use '../../style/mixin' as *;
+// animation
+#nav-logo {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
 
 header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   background-color: $secondaryColor;
   height: 75px;
   display: flex;
@@ -10,6 +22,7 @@ header {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: $paddingPagesBar ;
+
 }
 
 // Brand --------------------------------
@@ -136,18 +149,51 @@ header {
 
 }
 
+.login-button {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    color: #555;
+
+    .login-icon {
+      font-size: 24px;
+      margin-right: 5px;
+    }
+  }
+}
 
 // Button menu
 .links_menu {
   text-wrap: nowrap;
+  &--login{
+    &-button{
+      @include button;
+    }
+  }
   & ul {
-  display: flex;
-  align-items: baseline;
-  gap: 30px;
-  text-align: center;
-  list-style: none;
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    list-style: none;
+    padding: 40px;
+    align-items: center;
     white-space: nowrap;
     margin: 0;
+  }
+  & .links_menu-icon{
+    font-size: 30px;
+  }
+  &  p {
+    font-size: 20px;
   }
   & li {
     background-color: $secondaryColor;
@@ -155,6 +201,7 @@ header {
     &:hover {
       .links_menu-icon {
         color: lighten($primaryColor, 10%);
+
       }
     }
   }
@@ -168,18 +215,55 @@ header {
 ////////////// Responive design
 
 @media (max-width: 768px) {
+  .chefs-compass {
+    display: none;
+  }
   header {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: $secondaryColor;
+    justify-content: center;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 0;
+  }
+  header .nav-logo {
+    display: none;
     height: 90px;
-    justify-content: flex-start;
+    padding: 0;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    justify-content: center;
   }
   .slogan {
     display: none;
   }
-  .links_menu ul {
-    display: flex;
-    right: 0;
-    width: 100%;
-    bottom: 5px;
+  .links_menu {
+    & ul {
+      display: flex;
+      bottom: 5px;
+      padding: 1vh;
 
+    }
+    & p {
+      display: none;
+    }
+    &-icon {
+      font-size: 50px;
+    }
   }
+
+
+  .search{
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+  }
+
 }
+

@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.2.0",
+    "@angular/animations": "^15.2.9",
     "@angular/cdk": "~15.2.9",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
@@ -27,8 +27,11 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "animejs": "^3.2.1",
     "countries-list": "^2.6.1",
+    "jwt-decode": "^3.1.2",
     "lucide-angular": "^0.259.0",
+    "ngx-bootstrap": "^10.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -42,6 +45,7 @@
     "@angular-eslint/template-parser": "15.2.1",
     "@angular/cli": "~15.2.8",
     "@angular/compiler-cli": "^15.2.0",
+    "@types/animejs": "^3.1.7",
     "@types/jasmine": "~4.3.0",
     "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.2",
@@ -61,6 +65,7 @@
     "node-sass": "^8.0.0",
     "prettier": "^2.8.8",
     "sass": "^1.63.4",
+    "sass-loader": "^13.3.2",
     "typescript": "~4.9.4"
   }
 }

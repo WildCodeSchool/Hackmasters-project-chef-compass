@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 
-
 @Component({
   selector: 'app-all-recipes',
   templateUrl: './all-recipes.component.html',

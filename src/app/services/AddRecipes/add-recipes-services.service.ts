@@ -5,14 +5,13 @@ import { Country } from '../../models/modelRecipe/Country.model';
 import { Allergen } from '../../models/modelRecipe/Allergen.model';
 import { Diet } from '../../models/modelRecipe/Diet.model';
 import { RecipeResponse } from '../../models/modelRecipe/RecipeReponse.model';
-import {UsersService} from "../users/users.service";
+import { UsersService } from '../users/users.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddRecipesServicesService {
-  constructor(private http: HttpClient,
-              private userService : UsersService) {}
+  constructor(private http: HttpClient, private userService: UsersService) {}
 
   searchUrl = 'http://localhost:8080';
 
@@ -42,7 +41,7 @@ export class AddRecipesServicesService {
 
       if (!recipeResponse) {
         throw new Error('API returned undefined for recipeResponse');
-      };
+      }
       const recipeId = recipeResponse.id;
       for (const step of recipeFormValue.steps) {
         await this.http
@@ -94,7 +93,6 @@ export class AddRecipesServicesService {
       }
       this.userService.createRecipeId(recipeId);
       return true;
-
     } catch (error) {
       return false;
     }

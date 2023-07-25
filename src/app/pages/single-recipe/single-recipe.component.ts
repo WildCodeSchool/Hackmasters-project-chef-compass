@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { concat, Subscription } from 'rxjs';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
 import { ConverterRecipesService } from 'src/app/services/converter/converter-recipes.service';
 import { faStar, faTrashCan } from '@fortawesome/free-regular-svg-icons';
@@ -9,15 +9,15 @@ import { faStar as faStarSolid, faPlusMinus, faStarHalfAlt } from '@fortawesome/
 import { UsersService } from 'src/app/services/users/users.service';
 import { Recipe } from 'src/app/models/modelRecipe/recipe.model';
 import { DeleteRecipeService } from '../../services/delete/delete-recipe.service';
-import {WarningModalComponent} from "../../component/warning-modal/warning-modal.component";
-import {SuccessModalComponent} from "../../component/success-modal/success-modal.component";
+import { WarningModalComponent } from '../../component/warning-modal/warning-modal.component';
+import { SuccessModalComponent } from '../../component/success-modal/success-modal.component';
 
 @Component({
   selector: 'app-single-recipe',
   templateUrl: './single-recipe.component.html',
   styleUrls: ['./single-recipe.component.scss'],
 })
-export class SingleRecipeComponent implements OnInit {
+export class SingleRecipeComponent implements OnInit, OnDestroy {
   recipe!: Recipe;
   routeSubscription!: Subscription;
   commentText = '';
@@ -26,6 +26,8 @@ export class SingleRecipeComponent implements OnInit {
   rating = 0;
   tempRating = 0;
   isCommentTooShort = false;
+  favorite!: boolean;
+  private favoriteSubscription!: Subscription;
 
   constructor(
     private recipesService: RecipesService,
@@ -37,8 +39,16 @@ export class SingleRecipeComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
+  ngOnDestroy(): void {
+    this.favoriteSubscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+  }
   ngOnInit(): void {
     this.refresh();
+  }
+  addFavorite(recipeId: number): void {
+    this.userService.addFavorite(recipeId);
+    this.favorite = !this.favorite;
   }
   refresh(): void {
     this.routeSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
@@ -49,10 +59,13 @@ export class SingleRecipeComponent implements OnInit {
             if (recipe) {
               this.recipe = recipe;
               this.isLoading = false;
+              this.favoriteSubscription = this.userService.isActive(this.recipe.id).subscribe((isActive) => {
+                this.favorite = isActive;
+                console.log(this.favorite);
+              });
               this.userService.isCreateRecipe(recipe.id).subscribe(
                 (isCreated: boolean) => {
                   this.isUserCreateRecipe = isCreated;
-                  console.log(this.isUserCreateRecipe);
                 },
                 (error) => {
                   console.error(error);
@@ -71,7 +84,6 @@ export class SingleRecipeComponent implements OnInit {
       }
     });
   }
-
 
   setTempRating(rating: number, event: any): void {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
@@ -112,8 +124,10 @@ export class SingleRecipeComponent implements OnInit {
   }
 
   deleteRecipe(id: number): void {
-    this.deleteService.deleteAdditionalById(id).subscribe();
-    this.deleteService.deleteById(id).subscribe(() => {
+    const deleteAdditional$ = this.deleteService.deleteAdditionalById(id);
+    const deleteById$ = this.deleteService.deleteById(id);
+
+    concat(deleteAdditional$, deleteById$).subscribe(() => {
       this.router.navigate(['/recipes']).then(() => {
         this.openConfirmationModal();
       });
@@ -122,16 +136,13 @@ export class SingleRecipeComponent implements OnInit {
 
   openConfirmationModal(): void {
     const dialogRef = this.dialog.open(SuccessModalComponent, {
-      data: { message: 'deleted successfully.' }
+      data: { message: 'deleted successfully.' },
     });
     setTimeout(() => {
       dialogRef.close();
     }, 4000);
   }
 
-  ngOnDestroy(): void {
-    this.routeSubscription.unsubscribe();
-  }
   faStar = faStar;
   faStarSolid = faStarSolid;
   faPlusMinus = faPlusMinus;
@@ -158,15 +169,14 @@ export class SingleRecipeComponent implements OnInit {
   }
 
   openWarningModal(): void {
-
     const dialogRef = this.dialog.open(WarningModalComponent, {
-      data: { message: 'Are you sure you want to delete this recipe ?' }
+      data: { message: 'Are you sure you want to delete this recipe ?' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.deleteRecipe(this.recipe.id);
       }
     });
-}
+  }
 }
