@@ -20,6 +20,36 @@ export class AuthUserService {
     private tokenService: TokenService
   ) {}
 
+  isCreateModalVisible = false;
+  showLoginModal(): void {
+    this.isCreateModalVisible = true;
+  }
+
+  // Define the showResetPasswordForm method
+  showResetPasswordForm(): void {
+    // Implementation here...
+  }
+
+  showCreateModal(): void {
+    this.isCreateModalVisible = true;
+  }
+
+  registerUser(email: string, password: string, firstname: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users/register`, { email, password, firstname });
+  }
+
+  sendPasswordResetEmail(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  resetPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  login(email: string, password: string): Observable<Users> {
+    return this.http.post<Users>(`${this.baseUrl}/auth/login`, { email, password });
+  }
+
   public getUserFirstName(): string {
     return this.userFirstName;
   }
@@ -28,12 +58,7 @@ export class AuthUserService {
     this.userFirstName = firstname;
   }
 
-  login(email: string, password: string): Observable<Users> {
-    return this.http.post<Users>(`${this.baseUrl}/auth/login`, { email, password });
-  }
-
   loginSuccessEvent: EventEmitter<string> = new EventEmitter<string>();
-
   onLoginSuccess(response: any) {
     const authToken = response?.authToken;
     if (authToken) {

@@ -15,6 +15,14 @@ export class LoginModalComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
 
+  someFunction() {
+    // Use the showResetPasswordForm method
+    this.authUserService.showResetPasswordForm();
+  }
+  showCreateModal(): void {
+    this.authUserService.showCreateModal();
+  }
+
   ngOnInit(): void {
     this.isLoggedIn = this.authUserService.isLoggedIn();
   }
@@ -29,7 +37,7 @@ export class LoginModalComponent implements OnInit {
           this.bsModalRef.hide();
         }
       },
-      (error) => {
+      (error: any) => {
         console.error('Login failed:', error);
         this.errorMessage = 'An error occurred during login. Please try again.';
       }
@@ -38,5 +46,12 @@ export class LoginModalComponent implements OnInit {
 
   onClose(): void {
     this.bsModalRef.hide();
+  }
+
+  onForgotPassword(): void {
+    // You can handle the forgot password functionality here
+    console.log('Forgot password clicked.');
+    // Show the reset password form
+    this.authUserService.showResetPasswordForm();
   }
 }

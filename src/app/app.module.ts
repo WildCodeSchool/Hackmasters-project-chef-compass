@@ -31,6 +31,8 @@ import { TokenService } from './services/token/token.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { LogoAndGreetingComponent } from './component/logo-and-greeting/logo-and-greeting.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateUserModalComponent } from './component/create-user-modal/create-user-modal.component';
+import { ResetPasswordFormComponent } from './component/reset-password-form/reset-password-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     WarningModalComponent,
     NotfoundComponent,
     LogoAndGreetingComponent,
+    CreateUserModalComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     BrowserModule,

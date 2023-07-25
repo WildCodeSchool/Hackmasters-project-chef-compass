@@ -1,0 +1,17 @@
+<div class="modal" *ngIf="isCreateModalVisible">
+  <div class="modal-content">
+    <h2>Create Profile</h2>
+    <form *ngIf="!showRegisterForm">
+      <!-- Form fields for user registration ... -->
+      <button type="button" (click)="onRegisterSubmit()">Create Profile</button>
+      <!-- Modification ici -->
+      <button (click)="onClose()">Fermer</button>
+    </form>
+    <div *ngIf="showRegisterForm">
+      <button (click)="onForgotPassword()">Mot de passe oublié ?</button>
+    </div>
+  </div>
+
+  <!-- Formulaire de réinitialisation du mot de passe -->
+  <app-reset-password-form *ngIf="showResetPasswordForm"></app-reset-password-form>
+</div>
