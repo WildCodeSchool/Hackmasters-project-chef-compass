@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { faMagnifyingGlass, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authUserService: AuthUserService
   ) {
     this.loginSuccessSubscription = new Subscription();
-    this.screenWidth = window.innerWidth
+    this.screenWidth = window.innerWidth;
     const userFirstName = localStorage.getItem('userFirstName');
     if (userFirstName) {
       this.userFirstName = userFirstName;
@@ -63,10 +63,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onResize({ event }: { event: any }) {
     this.screenWidth = event.target.innerWidth;
   }
-  ngOnDestroy(): void {
-    this.loginSuccessSubscription.unsubscribe();
-  }
-
   ngOnInit(): void {
     this.searchService.getMultipleSearch().subscribe(([country, allergen, diet]) => {
       this.countries = country;
