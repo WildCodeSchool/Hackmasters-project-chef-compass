@@ -1,5 +1,5 @@
-import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Output} from '@angular/core';
-import {faMagnifyingGlass, faBars, faUser, faSearch} from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { faMagnifyingGlass, faBars, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search/search.service';
@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authUserService: AuthUserService
   ) {
     this.loginSuccessSubscription = new Subscription();
-    this.screenWidth = window.innerWidth
+    this.screenWidth = window.innerWidth;
     const userFirstName = localStorage.getItem('userFirstName');
     if (userFirstName) {
       this.userFirstName = userFirstName;
@@ -142,7 +142,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
     this.searchRecipes();
   }
-
 
   toggleSearch() {
     this.showSearch = !this.showSearch;

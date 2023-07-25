@@ -107,9 +107,25 @@
 
 
 }
+@keyframes translateSearch {
+  0% {
+    max-width: 0;
+    overflow: hidden;
+  }
+  100% {
+    max-width: 250px;
+  }
+}
 
 
+@keyframes translateBurger {
+  0% {
+  left: 23%;
+  }
+  100% {
+    left: 9%;
+  }
 
-
+}
 
 
