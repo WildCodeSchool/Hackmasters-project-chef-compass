@@ -13,8 +13,12 @@
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-      <button * (click)="showCreateModal()">S'enregistrer</button>
-      <button (click)="onClose()">Fermer</button>
     </form>
+
+    <ng-template #loginButton>
+      <button (click)="createOpenUser()">Create</button>
+    </ng-template>
+    <button *ngIf="!authUserService.isCreatedIn()" (click)="showCreateModal()"></button>
+    <button (click)="onClose()">Fermer</button>
   </div>
 </div>

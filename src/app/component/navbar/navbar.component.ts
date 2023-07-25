@@ -21,9 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   email = '';
   password = '';
-
   userFirstName!: string;
-  private loginSuccessSubscription: Subscription;
 
   faMagnifyingGlass = faMagnifyingGlass;
   faBars = faBars;
@@ -41,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dietsList: string[] = [];
   selectedDiets = '';
   showNav = false;
+  loginSuccessSubscription: any;
 
   constructor(
     private recipesService: RecipesService,
@@ -51,6 +50,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {
     this.loginSuccessSubscription = new Subscription();
   }
+  ngOnDestroy(): void {
+    this.loginSuccessSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.searchService.getMultipleSearch().subscribe(([country, allergen, diet]) => {
@@ -58,19 +60,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.allergens = allergen;
       this.diets = diet;
       this.updateUserFirstName();
-      this.loginSuccessSubscription = this.authUserService.loginSuccessEvent.subscribe((userFirstName: string) => {
-        this.userFirstName = userFirstName;
-      });
     });
   }
 
   private updateUserFirstName(): void {
     const userCredentials = this.authUserService.getUserCredentials();
     this.userFirstName = userCredentials.userFirstName;
-  }
-
-  ngOnDestroy(): void {
-    this.loginSuccessSubscription.unsubscribe();
   }
 
   showLoginModal(): void {

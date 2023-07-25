@@ -20,18 +20,9 @@ export class AuthUserService {
     private tokenService: TokenService
   ) {}
 
-  isCreateModalVisible = false;
-  showLoginModal(): void {
-    this.isCreateModalVisible = true;
-  }
-
   // Define the showResetPasswordForm method
   showResetPasswordForm(): void {
     // Implementation here...
-  }
-
-  showCreateModal(): void {
-    this.isCreateModalVisible = true;
   }
 
   registerUser(email: string, password: string, firstname: string): Observable<any> {
@@ -79,7 +70,9 @@ export class AuthUserService {
   isLoggedIn(): boolean {
     return !!this.tokenService.getToken();
   }
-
+  isCreatedIn(): boolean {
+    return !!this.tokenService.getToken();
+  }
   saveUserCredentials(email: string, password: string, userFirstName: string): void {
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
