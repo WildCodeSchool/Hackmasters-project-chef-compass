@@ -121,7 +121,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.countriesList.push(countries);
     }
     this.searchRecipes();
-    console.log(this.countriesList);
   }
 
   allergensSelected(allergens: string) {
@@ -131,7 +130,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.allergensList.push(allergens);
     }
-    console.log(this.allergensList);
     this.searchRecipes();
   }
 
@@ -142,7 +140,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.dietsList.push(diet);
     }
-    console.log(this.dietsList);
     this.searchRecipes();
   }
 

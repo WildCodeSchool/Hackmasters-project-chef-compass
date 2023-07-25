@@ -12,11 +12,12 @@
             class="allrecipes_container--card"
             [style.transform]="'translateX(' + translateValueAppetizersReverse + 'px)'"
           >
-            <app-card-recipes
-              *ngFor="let recipe of recipes.appetizers; let i = index"
-              [recipe]="recipe"
-              [ngClass]="[isPageLoaded ? 'yes' : 'card_animation--' + (i + 1)]"
-            ></app-card-recipes>
+            <ul class="card">
+              <li *ngFor="let recipe of recipes.appetizers; let i = index" [ngClass]="[isPageLoaded ? 'yes' : 'card_animation--' + (i + 1)]">
+                <app-card-recipes [recipe]="recipe"></app-card-recipes>
+              </li>
+            </ul>
+
           </div>
         </div>
         <div class="allrecipes_container--card--buttons">
@@ -46,11 +47,12 @@
             class="allrecipes_container--card"
             [style.transform]="'translateX(' + translateValueBreakfastsReverse + 'px)'"
           >
-            <app-card-recipes
-              *ngFor="let recipe of recipes.breakfasts; let i = index"
-              [recipe]="recipe"
-              [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]"
-            ></app-card-recipes>
+            <ul class="card">
+              <li *ngFor="let recipe of recipes.breakfasts; let i = index" [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]">
+                <app-card-recipes [recipe]="recipe"></app-card-recipes>
+              </li>
+            </ul>
+
           </div>
         </div>
         <div class="allrecipes_container--card--buttons">
@@ -80,11 +82,12 @@
             class="allrecipes_container--card"
             [style.transform]="'translateX(' + translateValueMainDishesReverse + 'px)'"
           >
-            <app-card-recipes
-              *ngFor="let recipe of recipes.mainDishes; let i = index"
-              [recipe]="recipe"
-              [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]"
-            ></app-card-recipes>
+            <ul class="card">
+              <li *ngFor="let recipe of recipes.mainDishes; let i = index" [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]">
+                <app-card-recipes [recipe]="recipe"></app-card-recipes>
+              </li>
+            </ul>
+
           </div>
         </div>
         <div class="allrecipes_container--card--buttons">
@@ -114,11 +117,12 @@
             class="allrecipes_container--card infinite-scroll"
             [style.transform]="'translateX(' + translateValueSideDishesReverse + 'px)'"
           >
-            <app-card-recipes
-              *ngFor="let recipe of recipes.sideDishes; let i = index"
-              [recipe]="recipe"
-              [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]"
-            ></app-card-recipes>
+            <ul class="card">
+              <li *ngFor="let recipe of recipes.sideDishes; let i = index" [ngClass]="[isPageLoaded ? '' : 'card_animation--' + (i + 1)]">
+                <app-card-recipes [recipe]="recipe"></app-card-recipes>
+              </li>
+            </ul>
+
           </div>
         </div>
         <div class="allrecipes_container--card--buttons">
@@ -148,11 +152,11 @@
             class="allrecipes_container--card infinite-scroll"
             [style.transform]="'translateX(' + translateValueDessertsReverse + 'px)'"
           >
-            <app-card-recipes
-              *ngFor="let recipe of recipes.desserts; let i = index"
-              [recipe]="recipe"
-              [ngClass]="[isPageLoaded ? 'card_animation--slide' : 'card_animation--' + (i + 1)]"
-            ></app-card-recipes>
+            <ul class="card">
+              <li *ngFor="let recipe of recipes.desserts; let i = index" [ngClass]="[isPageLoaded ? 'card_animation--slide' : 'card_animation--' + (i + 1)]">
+                <app-card-recipes [recipe]="recipe"></app-card-recipes>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="allrecipes_container--card--buttons">

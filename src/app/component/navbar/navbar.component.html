@@ -47,20 +47,20 @@
               <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
             </select>
           </div>
-          <div class="search_burger--unselected">
-            <button (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
+          <ul class="search_burger--unselected">
+            <li (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
               {{ countries }}
               <b>x</b>
-            </button>
-            <button (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
+            </li>
+            <li (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
               {{ allergens }}
               <b>x</b>
-            </button>
-            <button (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
+            </li>
+            <li (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
               {{ diets }}
               <b>x</b>
-            </button>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -73,18 +73,18 @@
         <ng-template #loginButton>
           <button (click)="showLoginModal()">Login</button>
         </ng-template>
-        <button class="links_menu--login-button" (click)="showLoginModal()">
+        <li class="links_menu--login-button" (click)="showLoginModal()">
           <p>Login</p>
-        </button>
+        </li>
       </div>
 
-      <div class="links_menu--login" *ngIf="authUserService.isLoggedIn()">
+      <li class="links_menu--login" *ngIf="authUserService.isLoggedIn()">
         <div>
           <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
           <button class="links_menu--login-button" (click)="logout()">Logout</button>
         </div>
         <p>Hello, Chef! {{ userFirstName }}</p>
-      </div>
+      </li>
       <li>
         <a>
           <lucide-icon class="links_menu-icon" name="chef-hat" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>

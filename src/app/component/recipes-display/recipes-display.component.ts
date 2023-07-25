@@ -95,8 +95,7 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
     } else if (recipe === 'sideDishes') {
       recipeList = this.recipes.sideDishes;
     } else {
-      console.error('Invalid recipe category');
-      return;
+      return
     }
 
     if (direction > 0) {
@@ -105,7 +104,7 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
       this.changeValue(recipe, this.translateValue);
       recipeList.unshift(lastCard);
     } else {
-      // Scroll left
+
       const firstCard = recipeList[0];
       recipeList.shift();
       this.changeValue(recipe, this.translateValue * -1);

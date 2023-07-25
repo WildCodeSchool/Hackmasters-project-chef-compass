@@ -13,6 +13,12 @@
         transition: transform 0.5s cubic-bezier(.25,.1,.16,1.46);
 
         }
+      .card{
+        display: flex;
+        gap: 25px;
+        margin-left: -46px;
+        list-style-type: none;
+      }
 
     &--buttons{
     &--right{
