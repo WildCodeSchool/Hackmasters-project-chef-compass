@@ -10,7 +10,7 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class AuthUserService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:3000';
   private userFirstName = '';
   userId!: number;
   private userIdSubject = new Subject<number>();
@@ -24,6 +24,27 @@ export class AuthUserService {
     private modalService: BsModalService,
     private tokenService: TokenService
   ) {}
+
+  // Define the showResetPasswordForm method
+  showResetPasswordForm(): void {
+    // Implementation here...
+  }
+
+  registerUser(email: string, password: string, firstname: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users/register`, { email, password, firstname });
+  }
+
+  sendPasswordResetEmail(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  resetPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  login(email: string, password: string): Observable<Users> {
+    return this.http.post<Users>(`${this.baseUrl}/auth/login`, { email, password });
+  }
 
   public getUserFirstName(): string {
     return this.userFirstName;
@@ -43,14 +64,10 @@ export class AuthUserService {
     const authToken = response?.authToken;
     if (authToken) {
       const userFirstName = response?.firstname;
-      const id = response?.id;
       this.loginSuccessEvent.emit(userFirstName);
       this.tokenService.setToken(authToken);
       this.setLoggedInUserFirstName(userFirstName);
-      this.userId = id;
-      this.userIdSubject.next(id);
-      this.saveUserCredentials(response.email, response.password, userFirstName, id);
-      this.userFirstNameSubject.next(userFirstName);
+      this.saveUserCredentials(response.email, response.password, userFirstName);
     } else {
       console.error('Auth token not found in response:', response);
     }
@@ -63,8 +80,10 @@ export class AuthUserService {
   isLoggedIn(): boolean {
     return !!this.tokenService.getToken();
   }
-
-  saveUserCredentials(email: string, password: string, userFirstName: string, id: string): void {
+  isCreatedIn(): boolean {
+    return !!this.tokenService.getToken();
+  }
+  saveUserCredentials(email: string, password: string, userFirstName: string): void {
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
     localStorage.setItem('userFirstName', userFirstName);
@@ -75,7 +94,6 @@ export class AuthUserService {
     const email = localStorage.getItem('userEmail') || '';
     const password = localStorage.getItem('userPassword') || '';
     const userFirstName = localStorage.getItem('userFirstName') || '';
-
     return { email, password, userFirstName };
   }
 
