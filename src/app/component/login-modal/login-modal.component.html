@@ -13,10 +13,13 @@
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-      <button type="submit">Login</button>
+     <div class="flex-button">
+       <button class="buttons" type="submit">Login</button>
+       <button class="buttons" *ngIf="!authUserService.isCreatedIn()" (click)="createOpenUser()">Create</button>
+     </div>
+
       <form (ngSubmit)="onSubmit()"></form>
-      <button *ngIf="!authUserService.isCreatedIn()" (click)="createOpenUser()">Create</button>
-      <button (click)="onClose()">Close</button>
+      <button class="buttons" (click)="onClose()">Close</button>
     </form>
   </div>
 </div>

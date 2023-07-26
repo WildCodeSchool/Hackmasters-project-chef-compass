@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class SuccessModalComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { message: string },
+    @Inject(MAT_DIALOG_DATA) public data: { message: string ,component: string},
     public dialogRef: MatDialogRef<SuccessModalComponent>
   ) {}
 }

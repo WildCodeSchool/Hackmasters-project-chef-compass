@@ -183,6 +183,9 @@ header {
     padding: 5px;
     border-radius: 4px;
     color: #555;
+    &:hover {
+      cursor: pointer;
+    }
 
     .login-icon {
       font-size: 24px;
@@ -196,7 +199,11 @@ header {
   text-wrap: nowrap;
   &--login{
     &-button{
+      cursor: pointer;
       @include button;
+      &:hover {
+        background-color: lighten($primaryColor, 30%);
+      }
     }
   }
   & ul {
