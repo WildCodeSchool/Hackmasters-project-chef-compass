@@ -17,7 +17,7 @@ const SIDE_DISH_CATEGORY = 'SideDishes';
   providedIn: 'root',
 })
 export class RecipesService {
-  private recipesUrl = 'http://localhost:8080/recipes';
+  private recipesUrl = 'http://localhost:3000/recipes';
 
   public recipes: Recipes = {
     desserts: [],

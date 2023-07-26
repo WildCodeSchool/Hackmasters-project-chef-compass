@@ -11,7 +11,7 @@ import { AuthUserService } from '../auth-user/auth-user.service';
   providedIn: 'root',
 })
 export class UsersService {
-  url = 'http://localhost:8080';
+  url = 'http://localhost:3000';
   user = this.authService.userId;
   favoriteRecipes: number[] = [];
 

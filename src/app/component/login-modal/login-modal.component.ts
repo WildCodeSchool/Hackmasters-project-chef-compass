@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { CreateUserModalComponent } from '../create-user-modal/create-user-modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
+import { Users } from 'src/app/models/modelRecipe/Users.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
@@ -11,17 +13,23 @@ import { Subscription } from 'rxjs';
 })
 export class LoginModalComponent implements OnInit, OnDestroy {
   private loginSuccessSubscription: Subscription;
+  showForgotPasswordButton = false;
   isLoggedIn = false;
-
-  email = '';
-  password = '';
   errorMessage = '';
+  loginForm!: FormGroup;
+
+  userForm: FormGroup;
 
   constructor(
     public bsModalRef: BsModalRef,
     public authUserService: AuthUserService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private formBuilder: FormBuilder
   ) {
+    this.userForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
     this.loginSuccessSubscription = new Subscription();
   }
 
@@ -31,19 +39,21 @@ export class LoginModalComponent implements OnInit, OnDestroy {
     });
   }
 
-  someFunction() {
-    // Use the showResetPasswordForm method
-    this.authUserService.showResetPasswordForm();
-  }
-
   ngOnInit(): void {
     this.isLoggedIn = this.authUserService.isLoggedIn();
-  }
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+    }
+
   ngOnDestroy(): void {
     this.loginSuccessSubscription.unsubscribe();
   }
+
   onSubmit(): void {
-    this.authUserService.login(this.email, this.password).subscribe(
+    const formData: Users = this.userForm.value;
+    this.authUserService.login(formData.email, formData.password).subscribe(
       (response: any) => {
         console.log('Response object from backend:', response);
         const authToken = response?.authToken;
@@ -65,6 +75,10 @@ export class LoginModalComponent implements OnInit, OnDestroy {
 
   createOpenUser() {
     this.showCreateModal();
+    this.onClose();
+  }
+
+  loginOpenUser() {
     this.onClose();
   }
 

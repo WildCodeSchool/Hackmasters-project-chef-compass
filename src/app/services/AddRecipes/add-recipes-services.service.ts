@@ -13,7 +13,7 @@ import { UsersService } from '../users/users.service';
 export class AddRecipesServicesService {
   constructor(private http: HttpClient, private userService: UsersService) {}
 
-  searchUrl = 'http://localhost:8080';
+  searchUrl = 'http://localhost:3000';
 
   getMultipleQuery(): Observable<any[]> {
     const country = this.http.get<Country[]>(`${this.searchUrl}/countries`);
