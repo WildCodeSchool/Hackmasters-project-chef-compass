@@ -1,5 +1,5 @@
 // create-user-modal.component.ts
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -9,14 +9,13 @@ import { BsModalService } from 'ngx-bootstrap/modal';
   templateUrl: './create-user-modal.component.html',
   styleUrls: ['./create-user-modal.component.scss'],
 })
-export class CreateUserModalComponent implements OnInit {
+export class CreateUserModalComponent  {
   isCreateModal = false;
   userForm: any = {
     firstname: '',
     email: '',
     password: '',
     confirmPassword: '',
-    // Variable pour stocker l'e-mail de réinitialisation du mot de passe
     resetPasswordEmail: '',
   };
   errorMessage = '';
@@ -35,14 +34,6 @@ export class CreateUserModalComponent implements OnInit {
 
   isValidEmail(email: string): boolean {
     return true;
-  }
-
-  ngOnInit(): void {
-    this.isCreateModal = this.authUserService.isCreatedIn();
-  }
-
-  someFunction() {
-    this.showRegisterForm = true;
   }
 
   onRegisterSubmit(): void {

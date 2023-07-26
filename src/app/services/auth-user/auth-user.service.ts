@@ -25,21 +25,18 @@ export class AuthUserService {
     private tokenService: TokenService
   ) {}
 
-  // Define the showResetPasswordForm method
   showResetPasswordForm(): void {
-    // Implementation here...
   }
 
-  registerUser(email: string, password: string, firstname: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/users/create`, { email, password, firstname });
+  registerUser(email: string, password: string, firstname: string): Observable<Users> {
+    return this.http.post<Users>(`${this.baseUrl}/users/create`, { email, password, firstname });
+  }
+  sendPasswordResetEmail(email: string): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/auth/reset-password`, { email });
   }
 
-  sendPasswordResetEmail(email: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
-  }
-
-  resetPassword(email: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  resetPassword(email: string): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/auth/reset-password`, { email });
   }
 
   public getUserFirstName(): string {

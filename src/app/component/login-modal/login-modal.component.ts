@@ -41,6 +41,7 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.loginSuccessSubscription.unsubscribe();
   }
+
   onSubmit(): void {
     this.authUserService.login(this.email, this.password).subscribe(
       (response: any) => {
