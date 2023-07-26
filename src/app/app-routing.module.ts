@@ -8,6 +8,7 @@ import { AllRecipesComponent } from './pages/all-recipes/all-recipes.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { RecipeFormComponent } from './pages/recipe-form/recipe-form.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'favourites', component: FavoritesComponent },
   { path: 'add-recipe', component: RecipeFormComponent },
   { path: 'logout', redirectTo: '/', pathMatch: 'full' },
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: '**', component: NotfoundComponent },
 ];
 

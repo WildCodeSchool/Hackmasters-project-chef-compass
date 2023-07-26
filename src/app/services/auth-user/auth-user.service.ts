@@ -44,8 +44,8 @@ export class AuthUserService {
     return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
   }
 
-  resetPassword(email: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  resetPassword(email: string, resetToken: string, password: string): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/auth/reset-password`, { email, resetToken, password });
   }
 
   public getUserFirstName(): string {

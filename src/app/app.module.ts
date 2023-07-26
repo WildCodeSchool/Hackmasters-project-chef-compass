@@ -34,6 +34,7 @@ import { CreateUserModalComponent } from './component/create-user-modal/create-u
 import { ResetPasswordFormComponent } from './component/reset-password-form/reset-password-form.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     LogoAndGreetingComponent,
     CreateUserModalComponent,
     ResetPasswordFormComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
