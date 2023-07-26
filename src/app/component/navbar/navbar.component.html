@@ -68,7 +68,7 @@
     <ul>
       <div class="links_menu--login" *ngIf="!authUserService.isLoggedIn()">
         <lucide-icon class="login-icon" name="user"></lucide-icon>
-        <button class="links_menu--login-button" (click)="showLoginModal()">Login</button>
+        <button class="links_menu--login-button" (click)="showLoginModal()">Login / Sign-up</button>
       </div>
 
       <li class="links_menu--login" *ngIf="authUserService.isLoggedIn()">

@@ -3,6 +3,8 @@ import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import {MatDialog} from "@angular/material/dialog";
+import {SuccessModalComponent} from "../success-modal/success-modal.component";
 
 @Component({
   selector: 'app-create-user-modal',
@@ -29,7 +31,8 @@ export class CreateUserModalComponent  {
   constructor(
     public bsModalRef: BsModalRef,
     private authUserService: AuthUserService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private dialog: MatDialog
   ) {}
 
   isValidEmail(email: string): boolean {
@@ -47,6 +50,12 @@ export class CreateUserModalComponent  {
     this.authUserService.registerUser(email, password, firstname).subscribe(
       (response: any) => {
         this.bsModalRef.hide();
+        let dialogRef = this.dialog.open(SuccessModalComponent, {
+          data: { message: 'created successfully!' ,component: 'User'}
+        });
+        setTimeout(() => {
+          dialogRef.close();
+        }, 3000);
       },
       (error: any) => {
         this.errorMessage = error.message;

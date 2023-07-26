@@ -54,8 +54,7 @@ export class AddRecipesServicesService {
           .toPromise();
       }
 
-      for (const ingredient of recipeFormValue.ingredients) {
-        console.log(ingredient);
+      for (const ingredient of recipeFormValue.ingredients) {;
         await this.http
           .post(`${this.searchUrl}/ingredients-recipe`, [
             {
@@ -80,7 +79,6 @@ export class AddRecipesServicesService {
       }
       if (recipeFormValue.allergens.length > 0) {
         for (const allergenId of recipeFormValue.allergens) {
-          console.log(allergenId);
           await this.http
             .post(`${this.searchUrl}/recipesallergens`, [
               {
