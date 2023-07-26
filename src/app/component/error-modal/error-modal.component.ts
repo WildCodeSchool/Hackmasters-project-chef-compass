@@ -22,6 +22,6 @@ export class ErrorModalComponent {
 
   closeModal(): void {
     this.dialogRef.close();
-    this.recipeService.closeModal(); // Appel de la méthode closeModal() du service RecipesService
+    this.recipeService.closeModal();
   }
 }

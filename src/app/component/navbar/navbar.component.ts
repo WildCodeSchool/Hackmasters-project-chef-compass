@@ -1,5 +1,6 @@
-import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Output} from '@angular/core';
-import { faMagnifyingGlass, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { faMagnifyingGlass, faBars, faUser, faSearch, faX } from '@fortawesome/free-solid-svg-icons';
+
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search/search.service';
@@ -22,16 +23,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   email = '';
   password = '';
   responsive!: number;
+  faSearch = faSearch;
 
   userFirstName!: string;
   private loginSuccessSubscription: Subscription;
 
   faMagnifyingGlass = faMagnifyingGlass;
   faBars = faBars;
+  faX = faX;
   faUser = faUser;
   searchQuery = '';
   bsModalRef?: BsModalRef;
-
   countries!: Country[];
   countriesList: string[] = [];
   selectedCountries = '';
@@ -43,6 +45,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   selectedDiets = '';
   showNav = false;
   screenWidth!: number;
+  showSearch = false;
 
   constructor(
     private recipesService: RecipesService,
@@ -52,7 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authUserService: AuthUserService
   ) {
     this.loginSuccessSubscription = new Subscription();
-    this.screenWidth = window.innerWidth
+    this.screenWidth = window.innerWidth;
     const userFirstName = localStorage.getItem('userFirstName');
     if (userFirstName) {
       this.userFirstName = userFirstName;
@@ -63,7 +66,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onResize({ event }: { event: any }) {
     this.screenWidth = event.target.innerWidth;
   }
-
   ngOnInit(): void {
     this.searchService.getMultipleSearch().subscribe(([country, allergen, diet]) => {
       this.countries = country;
@@ -140,5 +142,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.dietsList.push(diet);
     }
     this.searchRecipes();
+  }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
   }
 }

@@ -82,6 +82,23 @@
 
     }
 
-
 }
+@media (max-width: 768px){
 
+  .card{
+        width: 200px;
+        &_information{
+          height: unset;
+            &--title{
+                height: 30px;
+                font-size: 1.3rem;
+            }
+            &--description{
+                display: none;
+            }
+            &--price-duree{
+                display: none;
+            }
+        }
+    }
+}

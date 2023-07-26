@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SingleRecipeComponent } from './pages/single-recipe/single-recipe.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -31,6 +30,10 @@ import { TokenService } from './services/token/token.service';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { LogoAndGreetingComponent } from './component/logo-and-greeting/logo-and-greeting.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateUserModalComponent } from './component/create-user-modal/create-user-modal.component';
+import { ResetPasswordFormComponent } from './component/reset-password-form/reset-password-form.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     WarningModalComponent,
     NotfoundComponent,
     LogoAndGreetingComponent,
+    CreateUserModalComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +71,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatInputModule,
     NoopAnimationsModule,
+    ModalModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

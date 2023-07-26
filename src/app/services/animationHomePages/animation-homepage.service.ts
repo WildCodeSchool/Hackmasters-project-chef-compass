@@ -10,7 +10,7 @@ export class AnimationHomepageService {
   constructor( private router: Router) { }
   create_animation() {
     const countdownTimer = anime.timeline({
-      duration: 3000,
+      duration: 2000,
       update: () => {
         const countdownText = document.getElementById('countdown-text');
         if (countdownText) {
@@ -29,14 +29,14 @@ export class AnimationHomepageService {
     countdownTimer.add({
       targets: '.countdown',
       opacity: 100,
-      duration: 6000,
-      delay: 300,
+      duration: 5000,
+      delay: 0,
       fill: '#f96b11',
     });
 
     const timeline2 = anime.timeline({
       direction: 'linear',
-      duration: 3000,
+      duration: 2800,
       transformOrigin: '50% 50%',
       loop: false,
     });
@@ -50,7 +50,7 @@ export class AnimationHomepageService {
         duration: 50,
         easing: 'linear',
       },
-      duration: 2000,
+      duration: 1800,
       easing: 'linear',
       offset: 100,
     });
@@ -64,7 +64,7 @@ export class AnimationHomepageService {
         duration: 50,
         easing: 'linear',
       },
-      duration: 2000,
+      duration: 1800,
       easing: 'linear',
       offset: 100,
     });
@@ -79,7 +79,7 @@ export class AnimationHomepageService {
         duration: 5,
         easing: 'linear',
       },
-      duration: 600 * 3,
+      duration: 400 * 3,
       easing: 'linear',
     });
 
@@ -90,7 +90,7 @@ export class AnimationHomepageService {
       rotate: -10,
       opacity: {
         value: 1,
-        duration: 200,
+        duration: 10,
         easing: 'linear',
       },
       fill: '#eeeeee',
@@ -104,7 +104,7 @@ export class AnimationHomepageService {
       direction: 'normal',
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutSine',
-      duration: 1000 * 5,
+      duration: 800 * 5,
       fill: '#181a1b',
 
       delay: (el, i) => {
@@ -120,7 +120,7 @@ export class AnimationHomepageService {
       direction: 'normal',
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutSine',
-      duration: 1000 * 5,
+      duration: 800 * 5,
       fill: '#e9e9e9',
 
       delay: (el, i) => {
@@ -136,7 +136,7 @@ export class AnimationHomepageService {
       direction: 'static',
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutSine',
-      duration: 1000 * 5,
+      duration: 800 * 5,
       fill: '#181a1b',
       delay: (el, i) => {
         return i * 200;
@@ -151,10 +151,10 @@ export class AnimationHomepageService {
       direction: 'normal',
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutSine',
-      duration: 400 * 5 + 500 * 5,
+      duration: 100 * 5 + 500 * 5,
       fill: '#eeeeee',
       delay: (el, i) => {
-        return i * 600 * 5;
+        return i * 300 * 5;
       },
     });
 

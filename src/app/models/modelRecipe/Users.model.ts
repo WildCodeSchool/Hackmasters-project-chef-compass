@@ -5,4 +5,5 @@ export interface Users {
   username: string;
   firstname: string;
   token: string;
+  confirmPassword: string;
 }

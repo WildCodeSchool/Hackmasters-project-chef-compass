@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, HostListener, OnChanges } from '@angular/core';
 import { RecipesService } from 'src/app/services/recipies/recipes.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users/users.service';
 import { Recipes } from 'src/app/models/modelRecipe/recipes.model';
 
@@ -31,11 +31,21 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
     private http: HttpClient,
     private recipesService: RecipesService,
     private route: ActivatedRoute,
-    private userService: UsersService
+    private userService: UsersService,
+    private router: Router
   ) {}
   isPageLoaded = false;
 
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const url = event.url;
+        if ("/favourites" === url) {
+          location.reload();
+
+        }
+      }
+    })
     this.onResize({ event: null });
     setTimeout(() => {
       this.isPageLoaded = true;
@@ -55,7 +65,6 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
   }
 
   updateTranslateValues(): void {
-    setTimeout(() => {
       this.translateValueSideDishes =
         this.recipes?.sideDishes?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueSideDishesReverse = 0;
@@ -70,7 +79,7 @@ export class RecipesdisplayComponent implements OnInit, OnChanges {
       this.translateValueMainDishesReverse = 0;
       this.translateValueDesserts = this.recipes?.desserts?.length * 275 > this.screenWidth ? this.translateValue : 0;
       this.translateValueDessertsReverse = 0;
-    }, 200);
+
   }
 
   screenWidth!: number;

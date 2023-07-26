@@ -7,7 +7,11 @@
   </div>
 
   <div class="search">
-    <div class="search_module">
+    <button class="search_module-button" (click)="toggleSearch()">
+      <fa-icon class="search_module-button-icon" [icon]="faSearch"></fa-icon>
+    </button>
+
+    <div *ngIf="showSearch" class="search_module">
       <input
         class="search_module--input"
         type="text"
@@ -15,49 +19,46 @@
         (input)="searchRecipes()"
         placeholder="Dishes,ingredients..."
       />
-    </div>
-    <fa-icon class="search_module-button-icon" [icon]="faMagnifyingGlass"></fa-icon>
-    <div class="search_burger" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
-      <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
-        <button class="search_burger--button" (click)="toggleNav()">
-          <fa-icon
-            [ngStyle]="{ color: showNav ? '#F96B11FF' : '' }"
-            class="search_burger--button-icon"
-            size="lg"
-            [icon]="faBars"
-          ></fa-icon>
-        </button>
-        <div class="search_burger--nav" *ngIf="showNav">
-          <div class="search_burger--selected">
-            <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
-              <option value="" disabled selected hidden>pays</option>
-              <option *ngFor="let country of countries" [value]="country.countryName">{{ country.countryName }}</option>
-            </select>
-            <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
-              <option value="" disabled selected hidden>allergens</option>
-              <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
-                {{ allergen.allergenName }}
-              </option>
-            </select>
-            <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected(selectedDiets)">
-              <option value="" disabled selected hidden>diets</option>
-              <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
-            </select>
+      <button class="search_burger--button" (click)="toggleNav()">
+        <fa-icon *ngIf="showSearch && !showNav" class="search_burger--button-icon" size="lg" [icon]="faBars"></fa-icon>
+        <fa-icon *ngIf="showSearch && showNav" class="search_burger--button-icon" size="lg" [icon]="faX"></fa-icon>
+      </button>
+      <div class="search_burger" *ngIf="showSearch" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
+        <div class="search_burger--size " *ngIf="showSearch && showNav" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
+          <div class="search_burger--nav" *ngIf="showNav">
+            <div class="search_burger--selected">
+              <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
+                <option value="" disabled selected hidden>pays</option>
+                <option *ngFor="let country of countries" [value]="country.countryName">
+                  {{ country.countryName }}
+                </option>
+              </select>
+              <select place [(ngModel)]="selectedAllergens" (ngModelChange)="allergensSelected(selectedAllergens)">
+                <option value="" disabled selected hidden>allergens</option>
+                <option *ngFor="let allergen of allergens" [value]="allergen.allergenName">
+                  {{ allergen.allergenName }}
+                </option>
+              </select>
+              <select [(ngModel)]="selectedDiets" (ngModelChange)="dietsSelected(selectedDiets)">
+                <option value="" disabled selected hidden>diets</option>
+                <option *ngFor="let diet of diets" [ngValue]="diet.dietName">{{ diet.dietName }}</option>
+              </select>
+            </div>
+            <ul class="search_burger--unselected">
+              <li (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
+                {{ countries }}
+                <b>x</b>
+              </li>
+              <li (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
+                {{ allergens }}
+                <b>x</b>
+              </li>
+              <li (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
+                {{ diets }}
+                <b>x</b>
+              </li>
+            </ul>
           </div>
-          <ul class="search_burger--unselected">
-            <li (click)="countriesSelected(countries)" *ngFor="let countries of countriesList">
-              {{ countries }}
-              <b>x</b>
-            </li>
-            <li (click)="allergensSelected(allergens)" *ngFor="let allergens of allergensList">
-              {{ allergens }}
-              <b>x</b>
-            </li>
-            <li (click)="dietsSelected(diets)" *ngFor="let diets of dietsList">
-              {{ diets }}
-              <b>x</b>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -67,12 +68,7 @@
     <ul>
       <div class="links_menu--login" *ngIf="!authUserService.isLoggedIn()">
         <lucide-icon class="login-icon" name="user"></lucide-icon>
-        <ng-template #loginButton>
-          <button (click)="showLoginModal()">Login</button>
-        </ng-template>
-        <li class="links_menu--login-button" (click)="showLoginModal()">
-          <p>Login</p>
-        </li>
+        <button class="links_menu--login-button" (click)="showLoginModal()">Login</button>
       </div>
 
       <li class="links_menu--login" *ngIf="authUserService.isLoggedIn()">
@@ -80,13 +76,6 @@
           <lucide-icon class="login-icon" name="user" style="color: green"></lucide-icon>
           <button class="links_menu--login-button" (click)="logout()">Logout</button>
         </div>
-        <p>Hello, Chef! {{ userFirstName }}</p>
-      </li>
-      <li>
-        <a>
-          <lucide-icon class="links_menu-icon" name="chef-hat" [size]="screenWidth < 768 ? 45 : 28"></lucide-icon>
-          <p>Community</p>
-        </a>
       </li>
       <li>
         <a routerLink="favourites">
