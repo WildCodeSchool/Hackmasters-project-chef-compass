@@ -10,13 +10,12 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" [(ngModel)]="password" required />
       </div>
-
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
-
       <button type="submit">Login</button>
       <form (ngSubmit)="onSubmit()"></form>
+      <button *ngIf="!authUserService.isCreatedIn()" (click)="createOpenUser()">Create</button>
       <button (click)="onClose()">Close</button>
     </form>
   </div>

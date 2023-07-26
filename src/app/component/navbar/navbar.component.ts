@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { faMagnifyingGlass, faBars, faUser, faSearch, faX } from '@fortawesome/free-solid-svg-icons';
+
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search/search.service';
@@ -65,7 +66,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onResize({ event }: { event: any }) {
     this.screenWidth = event.target.innerWidth;
   }
-
   ngOnInit(): void {
     this.searchService.getMultipleSearch().subscribe(([country, allergen, diet]) => {
       this.countries = country;
@@ -122,6 +122,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.countriesList.push(countries);
     }
     this.searchRecipes();
+    console.log(this.countriesList);
   }
 
   allergensSelected(allergens: string) {
@@ -131,6 +132,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.allergensList.push(allergens);
     }
+    console.log(this.allergensList);
     this.searchRecipes();
   }
 
@@ -141,6 +143,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.dietsList.push(diet);
     }
+    console.log(this.dietsList);
     this.searchRecipes();
   }
 

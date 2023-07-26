@@ -25,6 +25,23 @@ export class AuthUserService {
     private tokenService: TokenService
   ) {}
 
+  // Define the showResetPasswordForm method
+  showResetPasswordForm(): void {
+    // Implementation here...
+  }
+
+  registerUser(email: string, password: string, firstname: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users/create`, { email, password, firstname });
+  }
+
+  sendPasswordResetEmail(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  resetPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
   public getUserFirstName(): string {
     return this.userFirstName;
   }
@@ -63,7 +80,9 @@ export class AuthUserService {
   isLoggedIn(): boolean {
     return !!this.tokenService.getToken();
   }
-
+  isCreatedIn(): boolean {
+    return !!this.tokenService.getToken();
+  }
   saveUserCredentials(email: string, password: string, userFirstName: string, id: string): void {
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
@@ -75,7 +94,6 @@ export class AuthUserService {
     const email = localStorage.getItem('userEmail') || '';
     const password = localStorage.getItem('userPassword') || '';
     const userFirstName = localStorage.getItem('userFirstName') || '';
-
     return { email, password, userFirstName };
   }
 
