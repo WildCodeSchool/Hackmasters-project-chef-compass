@@ -9,7 +9,6 @@ export class ConverterRecipesService {
   calculateTotalTime(recipe: any): string {
     const totalTime = recipe.prepTime + recipe.cookTime;
     return this.timeString(totalTime);
-
   }
   timeString(time: number): string {
     if (time < 60) {

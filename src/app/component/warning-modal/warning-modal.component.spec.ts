@@ -8,9 +8,8 @@ describe('WarningModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WarningModalComponent ]
-    })
-    .compileComponents();
+      declarations: [WarningModalComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(WarningModalComponent);
     component = fixture.componentInstance;

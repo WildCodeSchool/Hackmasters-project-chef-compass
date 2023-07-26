@@ -2,6 +2,9 @@
 @use './app/style/_variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 
 
 :root {
@@ -24,6 +27,9 @@ b{
 p, li ,textarea, input, select, option, button{
     font-size: 1.2rem;
   margin: 0;
+}
+ul{
+  list-style: none;
 }
 
 a{

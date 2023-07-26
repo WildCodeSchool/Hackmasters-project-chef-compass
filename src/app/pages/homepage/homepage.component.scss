@@ -3,45 +3,43 @@
 @use '../../style/variables' as *;
 
 .page-container {
-    height: 100%; /* Make sure the body takes up the full height of the viewport */
-    margin: 0;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%; 
+  margin: 0;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents {
+  position: relative;
+  height: 81vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+
+  &_img {
+    max-width: 250px;
+    animation: logo 1.6s ease-in-out;
   }
 
-  .contents {
-    position: relative;
-
-    height: 81vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    &_img{
-      max-width: 250px;
-      animation: logo 1.6s ease-in-out;
+  & .button {
+    margin-top: 1rem;
+    padding: 1.5rem 1rem;
+    @include button;
+    &:hover {
+      @include buttonHover;
     }
-
-    & .button{
-
-      margin-top: 1rem;
-      margin-left: 5rem;
-      padding: 1.5rem 1rem;
-      @include button;
-      &:hover{
-        @include buttonHover;
-      }
-    }
-
   }
+}
 
-  :host {
-    display: block;
-    position: relative;
-  }
+:host {
+  display: block;
+  position: relative;
+}
 
 :host::before {
   content: "";
@@ -55,5 +53,3 @@
   background-size: cover;
   z-index: -1;
 }
-
-

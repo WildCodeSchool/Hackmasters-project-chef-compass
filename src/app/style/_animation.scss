@@ -16,13 +16,13 @@
 }
 @keyframes logo {
   0% {
-    transform: rotate(0deg);
+  transform: rotate(0deg);
   }
   70% {
-    transform: rotate(360deg) scale(1.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
+  transform: rotate(360deg) scale(1.5);
+ }
+ 100% {
+   transform: rotate(360deg) scale(1);
   }
 
 }
@@ -57,7 +57,7 @@
     -webkit-line-clamp: 4;
   }
   100% {
-    -webkit-line-clamp: 150;
+    -ebkit-line-clamp: 150;
     overflow: visible;
     transform: translateY(-10px);
 
@@ -107,9 +107,25 @@
 
 
 }
+@keyframes translateSearch {
+  0% {
+    max-width: 0;
+    overflow: hidden;
+  }
+  100% {
+    max-width: 250px;
+  }
+}
 
 
+@keyframes translateBurger {
+  0% {
+  left: 23%;
+  }
+  100% {
+    left: 9%;
+  }
 
-
+}
 
 
