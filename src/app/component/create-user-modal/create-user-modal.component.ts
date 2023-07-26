@@ -68,11 +68,9 @@ export class CreateUserModalComponent implements OnInit, OnDestroy {
               .registerUser(email, this.userForm.get('password')?.value, this.userForm.get('firstname')?.value)
               .subscribe(
                 (response: any) => {
-                  console.log('New user created successfully!', response);
                   this.bsModalRef.hide();
                 },
                 (error: any) => {
-                  console.error('Error while creating user:', error);
                   this.errorMessage = 'An error occurred while creating the user.';
                 }
               );
@@ -80,7 +78,7 @@ export class CreateUserModalComponent implements OnInit, OnDestroy {
         },
         (error: any) => {
           console.error('Error while checking email existence:', error);
-          this.emailExists = false; // Assuming email doesn't exist to proceed with registration
+          this.emailExists = false;
           this.errorMessage = 'An error occurred while checking email existence.';
         }
       );
@@ -91,12 +89,10 @@ export class CreateUserModalComponent implements OnInit, OnDestroy {
     if (this.resetPasswordEmail) {
       this.authUserService.resetPassword(this.resetPasswordEmail).subscribe(
         (response: any) => {
-          console.log('Mot de passe réinitialisé avec succès !', response);
           this.resetPasswordErrorMessage = '';
           this.resetPasswordSuccess = true;
         },
         (error: any) => {
-          console.error('Erreur lors de la réinitialisation du mot de passe:', error);
           this.resetPasswordErrorMessage = 'Une erreur est survenue lors de la réinitialisation du mot de passe';
         }
       );
@@ -105,15 +101,12 @@ export class CreateUserModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Méthode pour vérifier si l'e-mail est valide
   isValidEmail(email: string): boolean {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   }
 
-  // Méthode pour gérer le clic sur le bouton "Mot de passe oublié ?"
   onForgotPassword(): void {
-    // Afficher le formulaire de réinitialisation du mot de passe
     this.showResetPasswordForm = true;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { CreateUserModalComponent } from '../create-user-modal/create-user-modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -45,7 +45,7 @@ export class LoginModalComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
-    }
+  }
 
   ngOnDestroy(): void {
     this.loginSuccessSubscription.unsubscribe();
@@ -83,9 +83,6 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   }
 
   onForgotPassword(): void {
-    // You can handle the forgot password functionality here
-    console.log('Forgot password clicked.');
-    // Show the reset password form
     this.authUserService.showResetPasswordForm();
   }
 }

@@ -61,7 +61,6 @@ export class UsersService {
       comment: comment,
       rating: rating,
     };
-    console.log(data, url);
     return this.http.post(url, data);
   }
 

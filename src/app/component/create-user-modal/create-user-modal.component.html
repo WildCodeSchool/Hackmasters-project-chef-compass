@@ -32,7 +32,6 @@
   </div>
 </div>
 
-<!-- Formulaire de réinitialisation du mot de passe -->
 <form *ngIf="showResetPasswordForm">
   <div class="form-group">
     <label for="resetEmail">Entrez votre email :</label>
@@ -41,7 +40,6 @@
   <button (click)="onResetPasswordSubmit()">Envoyer la demande de réinitialisation</button>
   <p>{{ resetPasswordErrorMessage }}</p>
   <div *ngIf="resetPasswordSuccess">
-    <!-- Message de succès de réinitialisation du mot de passe -->
     <p>Votre demande de réinitialisation du mot de passe a été envoyée avec succès.</p>
     <p>Veuillez vérifier votre boîte de réception pour les instructions de réinitialisation du mot de passe.</p>
   </div>

@@ -93,7 +93,6 @@ export class RecipesService {
         })
       )
       .subscribe();
-    console.log(param);
   }
 
   setSearchQuery(query: string): void {
