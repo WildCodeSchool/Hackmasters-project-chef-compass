@@ -32,7 +32,6 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   }
 
   someFunction() {
-    // Use the showResetPasswordForm method
     this.authUserService.showResetPasswordForm();
   }
 
@@ -45,7 +44,6 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.authUserService.login(this.email, this.password).subscribe(
       (response: any) => {
-        console.log('Response object from backend:', response);
         const authToken = response?.authToken;
         if (authToken) {
           this.authUserService.onLoginSuccess(response);
@@ -53,7 +51,6 @@ export class LoginModalComponent implements OnInit, OnDestroy {
         }
       },
       (error: any) => {
-        console.error('Login failed:', error);
         this.errorMessage = 'An error occurred during login. Please try again.';
       }
     );
@@ -69,9 +66,6 @@ export class LoginModalComponent implements OnInit, OnDestroy {
   }
 
   onForgotPassword(): void {
-    // You can handle the forgot password functionality here
-    console.log('Forgot password clicked.');
-    // Show the reset password form
     this.authUserService.showResetPasswordForm();
   }
 }

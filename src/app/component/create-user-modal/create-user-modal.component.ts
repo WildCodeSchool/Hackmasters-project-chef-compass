@@ -34,8 +34,6 @@ export class CreateUserModalComponent implements OnInit {
   ) {}
 
   isValidEmail(email: string): boolean {
-    // Ajoutez ici la logique pour valider si l'e-mail est correct
-    // Par exemple, vous pouvez utiliser une expression régulière pour la validation de l'e-mail
     return true;
   }
 
@@ -57,12 +55,9 @@ export class CreateUserModalComponent implements OnInit {
 
     this.authUserService.registerUser(email, password, firstname).subscribe(
       (response: any) => {
-        console.log('New user created successfully!', response);
-        // Hide the modal after user creation
         this.bsModalRef.hide();
       },
       (error: any) => {
-        console.error('Error while creating user:', error);
         this.errorMessage = error.message;
       }
     );
@@ -76,7 +71,6 @@ export class CreateUserModalComponent implements OnInit {
   }
 
   onForgotPassword(): void {
-    // Show the password reset form
     this.authUserService.showResetPasswordForm();
   }
 
@@ -88,7 +82,6 @@ export class CreateUserModalComponent implements OnInit {
 
     this.authUserService.resetPassword(this.userForm.resetPasswordEmail).subscribe(
       (response: any) => {
-        console.log('password rest', response);
         setTimeout(() => {
           this.resetPasswordErrorMessage = '';
           this.resetPasswordSuccess = true;
