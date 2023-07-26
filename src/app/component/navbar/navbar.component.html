@@ -24,7 +24,7 @@
         <fa-icon *ngIf="showSearch && showNav" class="search_burger--button-icon" size="lg" [icon]="faX"></fa-icon>
       </button>
       <div class="search_burger" *ngIf="showSearch" [ngStyle]="{ height: showNav ? '50px' : '26px' }">
-        <div class="search_burger--size" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
+        <div class="search_burger--size " *ngIf="showSearch && showNav" [ngStyle]="{ 'min-height': showNav ? '110px' : '0px' }">
           <div class="search_burger--nav" *ngIf="showNav">
             <div class="search_burger--selected">
               <select [(ngModel)]="selectedCountries" (ngModelChange)="countriesSelected(selectedCountries)">
