@@ -68,9 +68,7 @@
     }
 
 
-
   }
-
 
 }
 @media (max-width: 768px) {
@@ -78,6 +76,8 @@
     padding: 1vh;
     &--title{
       text-align: center;
+      margin: 0;
+
     }
   }
 }

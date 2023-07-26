@@ -1,5 +1,6 @@
 <div *ngIf="recipes">
-  <ng-container *ngIf="!haveFavorites && currentRoute === 'favourites'">
+  <ng-container *ngIf="recipes.appetizers.length === 0 && recipes.breakfasts.length === 0 &&
+            recipes.desserts.length === 0 && recipes.sideDishes.length === 0 && recipes.mainDishes.length === 0 && currentRoute === 'favourites'">
     <h2>You haven't added any recipes to your favorites.</h2>
   </ng-container>
 

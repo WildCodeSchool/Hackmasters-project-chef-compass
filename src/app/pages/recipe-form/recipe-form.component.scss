@@ -60,7 +60,7 @@
 }
 
     .form-container {
-      background-color: #f2f2f2;
+      background-color: #dedddd;
       border-radius: 8px;
       padding: 40px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -162,8 +162,13 @@
 }
 
 @media (max-width: 769px) {
+  .container{
+    align-items: center;
+    background-color: #dedddd;
+  }
   .form-container{
     margin: 0;
+    padding: 0;
   }
   .video-container{
   display: none;

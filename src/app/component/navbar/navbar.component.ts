@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
-import { faMagnifyingGlass, faBars, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faBars, faUser, faSearch, faX } from '@fortawesome/free-solid-svg-icons';
 import { RecipesService } from '../../services/recipies/recipes.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search/search.service';
@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   faMagnifyingGlass = faMagnifyingGlass;
   faBars = faBars;
+  faX = faX;
   faUser = faUser;
   searchQuery = '';
   bsModalRef?: BsModalRef;

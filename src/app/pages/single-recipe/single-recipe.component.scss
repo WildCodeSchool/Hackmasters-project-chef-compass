@@ -47,7 +47,7 @@ b:hover{
   padding: $paddingPageRoute;
     &_fav{
         position: absolute;
-        top: 2%;
+        top: 0.1%;
         right: 5%;
         background-color:transparent;
         border: none;
@@ -206,7 +206,7 @@ b:hover{
 
         }
         &--msg {
-          max-height: 245px;
+          max-height: 350px;
           overflow-y: auto;
           padding-right: 10px;
           &::-webkit-scrollbar {
@@ -233,6 +233,9 @@ b:hover{
     }
 }
 @media (max-width: 768px) {
+  .title{
+    white-space: unset;
+  }
   .container{
     margin-top: 0;
   }
