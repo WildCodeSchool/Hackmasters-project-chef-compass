@@ -1,8 +1,8 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, catchError, throwError } from 'rxjs';
 import { Users } from 'src/app/models/modelRecipe/Users.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TokenService } from '../token/token.service';
 
@@ -10,11 +10,12 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class AuthUserService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:3000';
   private userFirstName = '';
   userId!: number;
   private userIdSubject = new Subject<number>();
   private userFirstNameSubject = new Subject<string>();
+  private isResetPasswordFormVisible = false;
 
   userId$: Observable<number> = this.userIdSubject.asObservable();
 
@@ -24,6 +25,28 @@ export class AuthUserService {
     private modalService: BsModalService,
     private tokenService: TokenService
   ) {}
+
+  showResetPasswordForm(): void {
+    this.isResetPasswordFormVisible = true;
+  }
+
+  registerUser(email: string, password: string, firstname: string): Observable<any> {
+    return this.http
+      .post<any>(`${this.baseUrl}/users/create`, { email, password, firstname })
+      .pipe(catchError(this.handleError));
+  }
+
+  checkIfEmailExists(email: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/auth/check-email`, { email });
+  }
+
+  sendPasswordResetEmail(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
+
+  resetPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/reset-password`, { email });
+  }
 
   public getUserFirstName(): string {
     return this.userFirstName;
@@ -63,7 +86,9 @@ export class AuthUserService {
   isLoggedIn(): boolean {
     return !!this.tokenService.getToken();
   }
-
+  isCreatedIn(): boolean {
+    return !!this.tokenService.getToken();
+  }
   saveUserCredentials(email: string, password: string, userFirstName: string, id: string): void {
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
@@ -75,12 +100,23 @@ export class AuthUserService {
     const email = localStorage.getItem('userEmail') || '';
     const password = localStorage.getItem('userPassword') || '';
     const userFirstName = localStorage.getItem('userFirstName') || '';
-
     return { email, password, userFirstName };
   }
 
   clearUserCredentials(): void {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userPassword');
+  }
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

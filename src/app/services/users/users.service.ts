@@ -11,7 +11,7 @@ import { AuthUserService } from '../auth-user/auth-user.service';
   providedIn: 'root',
 })
 export class UsersService {
-  url = 'http://localhost:8080';
+  url = 'http://localhost:3000';
   user = this.authService.userId;
   favoriteRecipes: number[] = [];
 
@@ -61,7 +61,6 @@ export class UsersService {
       comment: comment,
       rating: rating,
     };
-    console.log(data, url);
     return this.http.post(url, data);
   }
 

@@ -13,7 +13,7 @@ import { UsersService } from '../users/users.service';
 export class AddRecipesServicesService {
   constructor(private http: HttpClient, private userService: UsersService) {}
 
-  searchUrl = 'http://localhost:8080';
+  searchUrl = 'http://localhost:3000';
 
   getMultipleQuery(): Observable<any[]> {
     const country = this.http.get<Country[]>(`${this.searchUrl}/countries`);
@@ -55,7 +55,6 @@ export class AddRecipesServicesService {
       }
 
       for (const ingredient of recipeFormValue.ingredients) {
-        console.log(ingredient);
         await this.http
           .post(`${this.searchUrl}/ingredients-recipe`, [
             {
@@ -80,7 +79,6 @@ export class AddRecipesServicesService {
       }
       if (recipeFormValue.allergens.length > 0) {
         for (const allergenId of recipeFormValue.allergens) {
-          console.log(allergenId);
           await this.http
             .post(`${this.searchUrl}/recipesallergens`, [
               {

@@ -38,32 +38,29 @@
           border: 1px solid #ccc;
           border-radius: 4px;
         }
-
-        .error-message {
-          color: red;
-          font-size: 14px;
-          margin-top: 5px;
-        }
       }
+    }
 
-      .buttons {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
+    button {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+      color: #555;
 
-        button {
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-          padding: 5px;
-          border-radius: 4px;
-          color: #555;
-
-          &:not(:last-child) {
-            margin-right: 10px;
-          }
-        }
+      &.login-icon {
+        font-size: 24px;
+        margin-right: 5px;
       }
     }
   }
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }

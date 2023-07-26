@@ -1,26 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
+import { CreateUserModalComponent } from '../create-user-modal/create-user-modal.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Subscription } from 'rxjs';
+import { Users } from 'src/app/models/modelRecipe/Users.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.scss'],
 })
-export class LoginModalComponent implements OnInit {
+export class LoginModalComponent implements OnInit, OnDestroy {
+  private loginSuccessSubscription: Subscription;
+  showForgotPasswordButton = false;
   isLoggedIn = false;
-  email = '';
-  password = '';
   errorMessage = '';
+  loginForm!: FormGroup;
 
-  constructor(public bsModalRef: BsModalRef, private authUserService: AuthUserService) {}
+  userForm: FormGroup;
+
+  constructor(
+    public bsModalRef: BsModalRef,
+    public authUserService: AuthUserService,
+    private modalService: BsModalService,
+    private formBuilder: FormBuilder
+  ) {
+    this.userForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+    this.loginSuccessSubscription = new Subscription();
+  }
+
+  showCreateModal(): void {
+    this.modalService.show(CreateUserModalComponent, {
+      initialState: {},
+    });
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authUserService.isLoggedIn();
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.loginSuccessSubscription.unsubscribe();
   }
 
   onSubmit(): void {
-    this.authUserService.login(this.email, this.password).subscribe(
+    const formData: Users = this.userForm.value;
+    this.authUserService.login(formData.email, formData.password).subscribe(
       (response: any) => {
         console.log('Response object from backend:', response);
         const authToken = response?.authToken;
@@ -29,7 +62,7 @@ export class LoginModalComponent implements OnInit {
           this.bsModalRef.hide();
         }
       },
-      (error) => {
+      (error: any) => {
         console.error('Login failed:', error);
         this.errorMessage = 'An error occurred during login. Please try again.';
       }
@@ -38,5 +71,18 @@ export class LoginModalComponent implements OnInit {
 
   onClose(): void {
     this.bsModalRef.hide();
+  }
+
+  createOpenUser() {
+    this.showCreateModal();
+    this.onClose();
+  }
+
+  loginOpenUser() {
+    this.onClose();
+  }
+
+  onForgotPassword(): void {
+    this.authUserService.showResetPasswordForm();
   }
 }

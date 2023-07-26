@@ -61,7 +61,6 @@ export class SingleRecipeComponent implements OnInit, OnDestroy {
               this.isLoading = false;
               this.favoriteSubscription = this.userService.isActive(this.recipe.id).subscribe((isActive) => {
                 this.favorite = isActive;
-                console.log(this.favorite);
               });
               this.userService.isCreateRecipe(recipe.id).subscribe(
                 (isCreated: boolean) => {

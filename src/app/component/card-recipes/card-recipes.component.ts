@@ -26,7 +26,6 @@ export class CardRecipesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.favoriteSubscription = this.userService.isActive(this.recipe.id).subscribe((isActive) => {
       this.favorite = isActive;
-      console.log(this.favorite);
     });
   }
   addFavorite(recipeId: number): void {
